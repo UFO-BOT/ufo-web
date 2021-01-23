@@ -1,18 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div style="text-align: -webkit-center">
+    <div class="name"><b>UFO</b></div>
+    <img alt="UFO Logo" src="../assets/logo.png" class="icon">
+    <div class="description">{{ content.descriptions[Math.floor(Math.random() * content.descriptions.length)] }}</div>
+    <v-btn depressed x-large color="info" class="invite" to="/invite">{{ content.invite }}</v-btn>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CookieParser from '@/util/Cookies'
+
+let cookies = CookieParser.parse()
+import content from '@/content.json'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
+  data: () => ({
+    content: content.home[cookies.language]
+  })
 }
 </script>
+
+<style scoped>
+.name {
+  margin: 0 0 10px;
+  color: white;
+  font-size: 5em;
+}
+
+.description {
+  color: white;
+  margin: 10px;
+  font-size: 2.2em;
+  width: 80%;
+}
+.invite {
+  font-size: 1.5em;
+}
+.icon {
+  max-width: 100%;
+  max-height: 50%;
+}
+</style>
