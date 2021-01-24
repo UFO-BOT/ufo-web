@@ -30,7 +30,21 @@ code {
   padding: .2rem .4rem!important;
   font-size: .875em!important;
   color: #fff!important;
-  background-color: #0b0d0e !important;
+  background-color: #171b1d !important;
   border-radius: .2rem!important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #181d1f;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #121315;
+  border-radius: 10px;
 }
 </style>
