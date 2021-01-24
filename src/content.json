@@ -27,13 +27,13 @@
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
           "blank": true
-        },
-        {
-          "name": "Войти",
-          "path": "/login",
-          "right": true
         }
-      ]
+      ],
+      "login": {
+        "name": "Войти",
+        "path": "/public/auth",
+        "right": true
+      }
     },
     "en": {
       "list": [
@@ -62,13 +62,12 @@
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
           "blank": true
-        },
-        {
-          "name": "Log in",
-          "path": "/login",
-          "right": true
         }
-      ]
+      ],
+      "login": {
+        "name": "Log in",
+        "path": "/login"
+      }
     }
   },
   "home": {
@@ -155,6 +154,16 @@
       "noPerms": "No perms",
       "neededPerms": "Needed perms",
       "allPerms": "All perms"
+    }
+  },
+  "login": {
+    "ru": {
+      "title": "Вход",
+      "name": "Входим в аккаунт..."
+    },
+    "en": {
+      "title": "Log in",
+      "name": "Logging in..."
     }
   }
 }
