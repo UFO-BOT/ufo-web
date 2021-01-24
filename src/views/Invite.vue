@@ -3,9 +3,9 @@
     <div class="name"><b>{{ content.name }}</b></div>
     <img alt="UFO Avatar" src="@/assets/avatar.png" class="icon">
     <div class="buttons-container">
-      <v-btn color="error" x-large class="invite-btn" :href="`${API}/public/invite?permissions=no`">{{ content.noPerms }}</v-btn>
-      <v-btn color="secondary" x-large class="invite-btn" :href="`${API}/public/invite?permissions=needed`">{{ content.neededPerms }}</v-btn>
-      <v-btn color="primary" x-large class="invite-btn" :href="`${API}/public/invite?permissions=all`">{{ content.allPerms }}</v-btn>
+      <v-btn color="error" x-large class="invite-btn" :href="`https://discord.com/api/oauth2/authorize?client_id=705372408281825350&response_type=code&permissions=0&redirect_uri=${encodeURIComponent(location + '/landing')}&scope=bot`">{{ content.noPerms }}</v-btn>
+      <v-btn color="secondary" x-large class="invite-btn" :href="`https://discord.com/api/oauth2/authorize?client_id=705372408281825350&response_type=code&permissions=403549302&redirect_uri=${encodeURIComponent(location + '/landing')}&scope=bot`">{{ content.neededPerms }}</v-btn>
+      <v-btn color="primary" x-large class="invite-btn" :href="`https://discord.com/api/oauth2/authorize?client_id=705372408281825350&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(location + '/landing')}&scope=bot`">{{ content.allPerms }}</v-btn>
     </div>
   </div>
 </template>
@@ -13,7 +13,6 @@
 <script>
 import WebContent from '@/content.json'
 import CookieParser from '@/util/Cookies'
-import config from "@/config.json";
 
 let cookies = CookieParser.parse()
 let content = WebContent.invite[cookies.language]
@@ -25,7 +24,7 @@ export default {
   },
   data: () => ({
     content,
-    API: config.API
+    location: window.location.origin
   })
 }
 </script>

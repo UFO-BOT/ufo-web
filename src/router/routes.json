@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/",
+    "name": "Home",
+    "component": "Home.vue"
+  },
+  {
+    "path": "/commands",
+    "name": "Commands",
+    "component": "Commands.vue"
+  },
+  {
+    "path": "/stats",
+    "name": "Stats",
+    "component": "Stats.vue"
+  },
+  {
+    "path": "/donate",
+    "name": "Donate",
+    "component": "Donate.vue"
+  },
+  {
+    "path": "/invite",
+    "name": "Invite",
+    "component": "Invite.vue"
+  },
+  {
+    "path": "/login",
+    "name": "Login",
+    "component": "Login.vue"
+  }
+]

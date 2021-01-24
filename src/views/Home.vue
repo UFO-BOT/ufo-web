@@ -3,7 +3,7 @@
     <div class="name"><b>UFO</b></div>
     <img alt="UFO Logo" src="../assets/logo.png" class="icon">
     <div class="description">{{ content.descriptions[Math.floor(Math.random() * content.descriptions.length)] }}</div>
-    <v-btn depressed x-large color="info" class="invite" to="/invite">{{ content.invite }}</v-btn>
+    <v-btn x-large color="info" class="invite" to="/invite">{{ content.invite }}</v-btn>
   </div>
 </template>
 

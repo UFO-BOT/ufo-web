@@ -118,5 +118,6 @@ export default {
   margin-top: 7px;
   margin-bottom: 5px;
   font-size: 1em;
+  color: white;
 }
 </style>

@@ -140,6 +140,46 @@
       "all": "All"
     }
   },
+  "donate": {
+    "ru": {
+      "title": "Донат",
+      "name": "Донат",
+      "description": "Поддержите нас чтобы получить UFO бусты! Их вы сможете активировать на любых серверах командой <code>буст</code><br>Активация буста на сервере открывает на нем бонусные функции:",
+      "features": [
+        {
+          "name": "Деньги за сообщения",
+          "description": "Настройте количество денег, которое будет выдаваться участникам за сообщения с определенной вероятностью"
+        },
+        {
+          "name": "Сообщения в ЛС при наказании",
+          "description": "Настройте сообщения с переменными шаблона, которые будут отправляться участникам при кике/софтбане/бане в личку"
+        },
+        {
+          "name": "Денежные бонусы",
+          "description": "Настройте ежедневный и еженедельный бонусы на сервере"
+        }
+      ]
+    },
+    "en": {
+      "title": "Donate",
+      "name": "Donate",
+      "description": "Support us to get UFO Boosts! You can activate them on servers with command <code>boost</code><br>Activating the boost on the server opens bonus features on it:",
+      "features": [
+        {
+          "name": "Money for messages",
+          "description": "Set amount of money that will be given to members for messages with certain chance"
+        },
+        {
+          "name": "Punishments DM messages",
+          "description": "Set message with template variables that will be sent to kicked/softbanned/banned members id DM"
+        },
+        {
+          "name": "Money bonuses",
+          "description": "Set daily and weekly bonuses on the server"
+        }
+      ]
+    }
+  },
   "invite": {
     "ru": {
       "title": "Пригласить",
