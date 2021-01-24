@@ -1,9 +1,6 @@
 <template>
   <div>
-    <v-toolbar
-        color="blue-grey darken-4"
-        dark
-    >
+    <v-toolbar color="blue-grey darken-4" dark>
       <v-app-bar-nav-icon id="nav-menu" @click="mobileNav = !mobileNav"></v-app-bar-nav-icon>
       <v-toolbar-title style="padding: 3px 5px 3px 3px">UFO</v-toolbar-title>
       <v-toolbar-items style="margin-left: 12px" id="nav-links">

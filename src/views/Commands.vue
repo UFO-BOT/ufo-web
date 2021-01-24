@@ -2,7 +2,7 @@
   <div style="text-align: -webkit-center">
     <div class="name"><b>{{ content.name }}</b></div>
     <v-progress-circular v-if="loading" :size="60" width="5" color="white" indeterminate></v-progress-circular>
-    <v-expansion-panels class="commands" accordion dark focusable>
+    <v-expansion-panels v-else class="commands" accordion dark focusable>
       <v-expansion-panel
           v-for="(category, i) of categories"
           :key="i"
@@ -49,17 +49,21 @@
 </template>
 
 <script>
+import WebContent from '@/content.json'
 import Cookies from '@/util/Cookies'
 import ParsePerms from "@/util/ParsePerms";
 import config from '@/config.json';
 
 let cookies = Cookies.parse()
-import content from '@/content.json'
+let content = WebContent.commands[cookies.language]
 
 export default {
   name: "Commands",
+  metaInfo: {
+    title: content.title
+  },
   data: () => ({
-    content: content.commands[cookies.language],
+    content,
     language: cookies.language,
     loading: true,
     commands: [],

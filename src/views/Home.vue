@@ -8,15 +8,19 @@
 </template>
 
 <script>
+import WebContent from '@/content.json'
 import CookieParser from '@/util/Cookies'
 
 let cookies = CookieParser.parse()
-import content from '@/content.json'
+let content = WebContent.home[cookies.language]
 
 export default {
   name: 'Home',
+  metaInfo: {
+    title: content.title
+  },
   data: () => ({
-    content: content.home[cookies.language]
+    content
   })
 }
 </script>

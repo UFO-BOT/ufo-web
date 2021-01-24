@@ -1,5 +1,5 @@
 {
-  "name": "vue-project",
+  "name": "ufo-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "vue": "^2.6.11",
+    "vue-meta": "^2.4.0",
     "vue-router": "^3.2.0",
     "vuetify": "^2.2.11"
   },

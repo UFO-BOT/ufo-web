@@ -17,7 +17,7 @@ export default {
 </script>
 <style>
 #app {
-  background-color: #292c30;
+  background-color: #252a31;
 }
 img {
   user-select: none;
