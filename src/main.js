@@ -4,6 +4,7 @@ import VueMeta from 'vue-meta'
 import router from './router'
 import vuetify from './plugins/vuetify'
 import Cookies from './util/Cookies'
+
 let cookies = Cookies.parseWithoutLang()
 if (!cookies.language && navigator.language === 'ru-RU') {
   Cookies.set('language', 'ru', 1e15)

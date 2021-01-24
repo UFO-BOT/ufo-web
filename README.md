@@ -1,4 +1,4 @@
-# vue-project
+# ufo-web
 
 ## Project setup
 ```

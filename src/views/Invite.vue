@@ -1,0 +1,54 @@
+<template>
+  <div style="text-align: -webkit-center">
+    <div class="name"><b>{{ content.name }}</b></div>
+    <img alt="UFO Avatar" src="@/assets/avatar.png" class="icon">
+    <div class="buttons-container">
+      <v-btn color="error" x-large class="invite-btn" :href="`${API}/public/invite?permissions=no`">{{ content.noPerms }}</v-btn>
+      <v-btn color="secondary" x-large class="invite-btn" :href="`${API}/public/invite?permissions=needed`">{{ content.neededPerms }}</v-btn>
+      <v-btn color="primary" x-large class="invite-btn" :href="`${API}/public/invite?permissions=all`">{{ content.allPerms }}</v-btn>
+    </div>
+  </div>
+</template>
+
+<script>
+import WebContent from '@/content.json'
+import CookieParser from '@/util/Cookies'
+import config from "@/config.json";
+
+let cookies = CookieParser.parse()
+let content = WebContent.invite[cookies.language]
+
+export default {
+  name: "Invite",
+  metaInfo: {
+    title: content.title
+  },
+  data: () => ({
+    content,
+    API: config.API
+  })
+}
+</script>
+
+<style scoped>
+.name {
+  margin: 0 0 10px;
+  color: white;
+  font-size: 3.5em;
+}
+.icon {
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+}
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.invite-btn {
+  font-size: 1.5em;
+  margin: 10px;
+}
+</style>

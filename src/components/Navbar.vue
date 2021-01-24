@@ -8,7 +8,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items style="margin-left: 10px">
-        <v-btn text @click="translate()"><img alt="Translate" src="../assets/translate.png" class="translate"></v-btn>
+        <v-btn text @click="translate()"><v-icon large>translate</v-icon></v-btn>
         <v-btn v-for="link of rightLinks" text :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">{{ link.name }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>

@@ -75,14 +75,16 @@
     "ru": {
       "title": "UFO",
       "descriptions": [
-        "Неопознанный летающий Discord бот"
+        "Неопознанный летающий Discord бот",
+        "Летающая тарелка для вашего сервера"
       ],
       "invite": "Пригласить"
     },
     "en": {
       "title": "UFO",
       "descriptions": [
-        "Unknown flying Discord bot"
+        "Unknown flying Discord bot",
+        "Flying plate for your server"
       ],
       "invite": "Invite"
     }
@@ -137,6 +139,22 @@
       "status": "Status",
       "shardsPerPage": "Shards per page",
       "all": "All"
+    }
+  },
+  "invite": {
+    "ru": {
+      "title": "Пригласить",
+      "name": "Пригласить UFO",
+      "noPerms": "Без прав",
+      "neededPerms": "Нужные права",
+      "allPerms": "Все права"
+    },
+    "en": {
+      "title": "Invite",
+      "name": "Invite UFO",
+      "noPerms": "No perms",
+      "neededPerms": "Needed perms",
+      "allPerms": "All perms"
     }
   }
 }
