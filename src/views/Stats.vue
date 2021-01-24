@@ -55,7 +55,7 @@
                   :headers="shardsHeaders"
                   :items="shards"
                   :items-per-page=5
-                  class="elevation-1 blue-grey darken-3"
+                  class="elevation-1"
                   sort-by="id">
       <template v-slot:item.ready="{ item }">
         <div v-if="item.ready" class="status-circle status-circle-green"></div>
@@ -95,7 +95,20 @@ export default {
     shards: []
   }),
   async mounted() {
-    async function loadStats() {
+    let stats = await fetch(`${config.API}/public/stats`)
+    this.stats = await stats.json()
+    this.shards = [];
+    this.stats.shards.forEach(shard => {
+      this.shards.push({
+        id: shard.id,
+        ready: shard.ready,
+        guilds: shard.guilds,
+        users: shard.users,
+        ping: shard.ping + ' ms'
+      })
+    })
+    this.loading = false;
+    setInterval(async () => {
       let stats = await fetch(`${config.API}/public/stats`)
       this.stats = await stats.json()
       this.shards = [];
@@ -108,10 +121,7 @@ export default {
           ping: shard.ping + ' ms'
         })
       })
-    }
-    await loadStats;
-    this.loading = false;
-    setInterval(loadStats, 30000)
+    }, 30000)
   }
 }
 </script>
@@ -131,14 +141,14 @@ export default {
 }
 
 .stats_element {
-  background-color: #37474f;
+  background-color: #1e1e1e;
   padding: 15px 15px;
   text-align: center;
   margin: 10px 10px 10px 10px;
   border-radius: 4px;
   width: 230px;
   word-break: break-all;
-  box-shadow: 0 0 20px #393939;
+  box-shadow: 0 0 15px #363636;
 }
 
 .value {

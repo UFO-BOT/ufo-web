@@ -17,7 +17,7 @@ export default {
 </script>
 <style>
 #app {
-  background-color: #252a31;
+  background-color: #21252b;
 }
 img {
   user-select: none;
@@ -30,7 +30,7 @@ code {
   padding: .2rem .4rem!important;
   font-size: .875em!important;
   color: #fff!important;
-  background-color: #212529!important;
+  background-color: #0b0d0e !important;
   border-radius: .2rem!important;
 }
 </style>

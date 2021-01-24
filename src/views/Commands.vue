@@ -7,8 +7,8 @@
           v-for="(category, i) of categories"
           :key="i"
       >
-        <v-expansion-panel-header color="blue-grey darken-3" class="category" ripple v-if="commands.find(c => c.category.en === category)">{{emojis[i]}} {{commands.find(c => c.category.en === category).category[language]}}</v-expansion-panel-header>
-        <v-expansion-panel-content color="blue-grey darken-3">
+        <v-expansion-panel-header class="category" ripple v-if="commands.find(c => c.category.en === category)">{{emojis[i]}} {{commands.find(c => c.category.en === category).category[language]}}</v-expansion-panel-header>
+        <v-expansion-panel-content>
           <div class="command" v-for="cmd of commands.filter(c => c.category.en === category)">
             <div>{{cmd.name[language]}}</div>
             <v-dialog v-model="dialogs[cmd.name.en]" width="500" dark scrollable persistent>
@@ -16,11 +16,11 @@
                 <v-icon x-large class="info-icon" v-bind="attrs" v-on="on">info</v-icon>
               </template>
               <v-card>
-                <v-card-title class="blue-grey darken-3 cmd-name">
+                <v-card-title class="grey darken-3 cmd-name">
                   {{ cmd.name[language].toUpperCase() }}
                 </v-card-title>
 
-                <v-card-text class="blue-grey darken-4 cmd-info">
+                <v-card-text class="cmd-info">
                   <div class="info-title">{{ content.description }}</div>
                   <div v-html="cmd.description[language]"></div>
                   <div class="info-title">{{ content.usage }}</div>
@@ -35,7 +35,7 @@
 
                 <v-divider class="blue-grey darken-3"></v-divider>
 
-                <v-card-actions class="blue-grey darken-4">
+                <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn color="white" text @click="dialogs[cmd.name.en] = false">{{ content.close }}</v-btn>
                 </v-card-actions>

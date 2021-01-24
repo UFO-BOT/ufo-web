@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="blue-grey darken-4" dark>
+    <v-toolbar dark>
       <v-app-bar-nav-icon id="nav-menu" @click="mobileNav = !mobileNav"></v-app-bar-nav-icon>
       <v-toolbar-title style="padding: 3px 5px 3px 3px">UFO</v-toolbar-title>
       <v-toolbar-items style="margin-left: 12px" id="nav-links">
@@ -12,7 +12,7 @@
         <v-btn v-for="link of rightLinks" text :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">{{ link.name }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-list flat color="blue-grey darken-3" v-if="mobileNav" :style="{marginTop: '5px'}">
+    <v-list flat dark v-if="mobileNav" :style="{marginTop: '5px'}">
       <v-list-item-group color="primary" v-for="link of links">
         <v-list-item dark @click="mobileNav = false" :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">{{ link.name }}</v-list-item>
       </v-list-item-group>

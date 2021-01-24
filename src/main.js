@@ -5,7 +5,10 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import Cookies from './util/Cookies'
 let cookies = Cookies.parseWithoutLang()
-if (!cookies.language && navigator.language === 'ru-RU') window.location.replace(`/translate?redirect=${document.location.href}`);
+if (!cookies.language && navigator.language === 'ru-RU') {
+  Cookies.set('language', 'ru', 1e15)
+  window.location.reload()
+}
 
 Vue.config.productionTip = false
 
