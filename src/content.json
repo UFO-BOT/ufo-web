@@ -158,7 +158,29 @@
           "name": "Денежные бонусы",
           "description": "Настройте ежедневный и еженедельный бонусы на сервере"
         }
-      ]
+      ],
+      "cards": {
+        "standard": {
+          "name": "Стандарт",
+          "perks": [
+            "Бусты для 2 серверов",
+            "Роль Donator на сервере поддержки с правом изменить никнейм",
+            "Доступ в скрытый канал"
+          ],
+          "price": 39
+        },
+        "premium": {
+          "name": "Премиум",
+          "perks": [
+            "Бусты для 4 серверов",
+            "Роль Premium Donator на сервере поддержки с правом на просмотр журнала аудита",
+            "Доступ в скрытый канал"
+          ],
+          "price": 79
+        }
+      },
+      "perMonth": "/месяц",
+      "close": "Закрыть"
     },
     "en": {
       "title": "Donate",
@@ -177,7 +199,29 @@
           "name": "Money bonuses",
           "description": "Set daily and weekly bonuses on the server"
         }
-      ]
+      ],
+      "cards": {
+        "standard": {
+          "name": "Standard",
+          "perks": [
+            "Boosts for 2 servers",
+            "Donator role on support server with permission to change nickname",
+            "Access to secret channel"
+          ],
+          "price": 39
+        },
+        "premium": {
+          "name": "Premium",
+          "perks": [
+            "Boosts for 4 servers",
+            "Premium Donator role on support server with permission to view audit log",
+            "Access to secret channel"
+          ],
+          "price": 79
+        }
+      },
+      "perMonth": "/month",
+      "close": "Close"
     }
   },
   "invite": {
