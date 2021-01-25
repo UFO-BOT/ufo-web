@@ -11,7 +11,7 @@
         <v-btn text @click="translate()"><v-icon large>translate</v-icon></v-btn>
         <v-btn text :href="`https://discord.com/api/oauth2/authorize?client_id=705372408281825350&redirect_uri=${encodeURIComponent(location + '/login')}&response_type=code&scope=identify%20guilds`" v-if="!loadingUser && !user.username">{{ content.login.name }}</v-btn>
         <v-btn text disabled v-if="loadingUser && !user.username"><v-progress-circular indeterminate color="white"></v-progress-circular></v-btn>
-        <v-btn text to="/@me" v-if="user.username"><v-avatar><img :src="UserAvatar(user)" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
+        <v-btn text @click="mobileNav = false" to="/@me" v-if="user.username"><v-avatar><img :src="UserAvatar(user)" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-list flat dark v-if="mobileNav" :style="{marginTop: '5px'}">
