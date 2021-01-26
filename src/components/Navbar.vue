@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar dark>
+    <v-toolbar>
       <v-app-bar-nav-icon id="nav-menu" @click="mobileNav = !mobileNav"></v-app-bar-nav-icon>
       <v-toolbar-title style="padding: 3px 5px 3px 3px">UFO</v-toolbar-title>
       <v-toolbar-items style="margin-left: 12px" id="nav-links">
@@ -14,9 +14,9 @@
         <v-btn text @click="mobileNav = false" to="/@me" v-if="user.username"><v-avatar><img :src="user.avatarURL" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-list flat dark v-if="mobileNav" :style="{marginTop: '5px'}">
+    <v-list flat v-if="mobileNav" :style="{marginTop: '5px'}">
       <v-list-item-group color="primary" v-for="link of links">
-        <v-list-item dark @click="mobileNav = false" :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">{{ link.name }}</v-list-item>
+        <v-list-item @click="mobileNav = false" :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">{{ link.name }}</v-list-item>
       </v-list-item-group>
     </v-list>
   </div>
