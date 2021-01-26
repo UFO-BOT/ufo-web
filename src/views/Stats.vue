@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="header"><b>{{ content.shards }}</b></div>
-    <v-data-table dark :footer-props="{itemsPerPageText: content.shardsPerPage, itemsPerPageAllText: content.all}"
+    <v-data-table :footer-props="{itemsPerPageText: content.shardsPerPage, itemsPerPageAllText: content.all}"
                   :headers="shardsHeaders"
                   :items="shards"
                   :items-per-page=5

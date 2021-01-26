@@ -2,7 +2,7 @@
   <div style="text-align: -webkit-center">
     <div class="name"><b>{{ content.name }}</b></div>
     <v-progress-circular v-if="loading" :size="60" width="5" color="white" indeterminate></v-progress-circular>
-    <v-expansion-panels v-else class="commands" accordion dark focusable>
+    <v-expansion-panels v-else class="commands" accordion focusable>
       <v-expansion-panel
           v-for="(category, i) of categories"
           :key="i"
@@ -11,7 +11,7 @@
         <v-expansion-panel-content>
           <div class="command" v-for="cmd of commands.filter(c => c.category.en === category)">
             <div>{{cmd.name[language]}}</div>
-            <v-dialog v-model="dialogs[cmd.name.en]" width="500" dark scrollable persistent>
+            <v-dialog v-model="dialogs[cmd.name.en]" width="500" scrollable persistent>
               <template v-slot:activator="{ on, attrs }">
                 <v-icon x-large class="info-icon" v-bind="attrs" v-on="on">info</v-icon>
               </template>

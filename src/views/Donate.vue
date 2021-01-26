@@ -2,27 +2,27 @@
   <div style="text-align: -webkit-center" class="content">
     <div class="name"><b>{{ content.name }}</b></div>
     <div class="description" v-html="content.description"></div>
-    <v-expansion-panels accordion dark focusable>
+    <v-expansion-panels accordion focusable>
       <v-expansion-panel v-for="feature of content.features">
         <v-expansion-panel-header v-ripple class="feature-name">{{ feature.name }}</v-expansion-panel-header>
         <v-expansion-panel-content class="feature-description">{{ feature.description }}</v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
     <div class="cards-container">
-      <v-card v-for="(card, i) in content.cards" dark :class="`donate-card donate-card-${i}`">
+      <v-card v-for="(card, i) in content.cards" :class="`donate-card donate-card-${i}`">
         <div>
           <div class="donate-name">{{ card.name }}</div>
-          <v-divider class="donate-card-divider" dark></v-divider>
+          <v-divider class="donate-card-divider"></v-divider>
           <ul class="donate-bonuses">
             <li v-for="perk of card.perks" :class="`donate-bonus-${i} donate-bonus`" v-html="perk"></li>
           </ul>
         </div>
         <div>
-          <v-divider class="donate-card-divider" dark></v-divider>
+          <v-divider class="donate-card-divider"></v-divider>
           <v-btn @click="donate(i)" :loading="loading" :color="i === 'premium' ? 'primary' : 'success'" class="donate-buy">{{ card.price }}₽<span class="per">{{ content.perMonth }}</span></v-btn>
         </div>
       </v-card>
-      <v-snackbar v-model="error" dark :timeout="5000" color="secondary">
+      <v-snackbar v-model="error" :timeout="5000" color="secondary">
           <div class="error-text">{{ errorText }}</div>
           <template v-slot:action="{ attrs }">
             <v-btn color="pink" text v-bind="attrs" @click="error = false">{{ content.close }}</v-btn>

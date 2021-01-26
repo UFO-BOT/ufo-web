@@ -19,7 +19,6 @@
               :label="content.show"
               class="show-select"
               color="primary"
-              dark
           ></v-select>
           <div class="guilds-container">
             <div class="guild" v-for="guild of guilds" v-if="guild.managePermission || (leaders && guild.invited)">
@@ -28,7 +27,7 @@
                 {{ guild.name }}
               </div>
               <div>
-                <v-divider class="guild-divider" dark></v-divider>
+                <v-divider class="guild-divider"></v-divider>
                 <div class="guild-buttons">
                   <v-btn :href="generateInvite(guild.id)" color="primary" outlined v-if="!guild.invited && guild.managePermission"
                          class="action-button">{{ content.invite }}
