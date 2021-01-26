@@ -12,10 +12,10 @@
 
 <script>
 import WebContent from '@/content.json'
-import CookieParser from '@/util/Cookies'
+import Cookies from '@/util/Cookies'
 import Oauth2 from "@/util/Oauth2";
 
-let cookies = CookieParser.parse()
+let cookies = Cookies.parse()
 let content = WebContent.login[cookies.language]
 
 export default {

@@ -25,6 +25,11 @@
     "component": "Invite.vue"
   },
   {
+    "path": "/@me",
+    "name": "Me",
+    "component": "Me.vue"
+  },
+  {
     "path": "/login",
     "name": "Login",
     "component": "Login.vue"

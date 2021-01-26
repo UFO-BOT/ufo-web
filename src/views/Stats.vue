@@ -2,28 +2,28 @@
   <div style="text-align: -webkit-center">
     <div class="header"><b>{{ content.name }}</b></div>
     <div class="stats_container">
-      <div class="stats_element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.guilds }}
         </div>
         <div class="value-name">{{ content.servers }}</div>
       </div>
-      <div class="stats_element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.users }}
         </div>
         <div class="value-name">{{ content.users }}</div>
       </div>
-      <div class="stats_element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.channels }}
         </div>
         <div class="value-name">{{ content.channels }}</div>
       </div>
-      <div class="stats_element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.emojis }}
@@ -33,7 +33,7 @@
     </div>
     <div class="header"><b>{{ content.ping }}</b></div>
     <div class="stats_container">
-      <div class="stats_element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else
              :style="{color: stats.ping.bot < 100 ? '#00f56e' : stats.ping.bot > 1000 ? '#e20000' : '#ffd70c'}">
@@ -41,7 +41,7 @@
         </div>
         <div class="value-name">{{ content.bot }}</div>
       </div>
-      <div class="stats_element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else
              :style="{color: stats.ping.bot < 100 ? '#00f56e' : stats.ping.database > 1000 ? '#e20000' : '#ffd70c'}">
@@ -67,10 +67,10 @@
 
 <script>
 import WebContent from '@/content.json'
-import CookieParser from '@/util/Cookies'
+import Cookies from '@/util/Cookies'
 import config from "@/config.json";
 
-let cookies = CookieParser.parse()
+let cookies = Cookies.parse()
 let content = WebContent.stats[cookies.language]
 
 export default {
@@ -140,7 +140,7 @@ export default {
   justify-content: center;
 }
 
-.stats_element {
+.stats-element {
   background-color: #1e1e1e;
   padding: 15px 15px;
   text-align: center;

@@ -11,7 +11,7 @@
         <v-btn text @click="translate()"><v-icon large>translate</v-icon></v-btn>
         <v-btn text :href="`https://discord.com/api/oauth2/authorize?client_id=705372408281825350&redirect_uri=${encodeURIComponent(location + '/login')}&response_type=code&scope=identify%20guilds`" v-if="!loadingUser && !user.username">{{ content.login.name }}</v-btn>
         <v-btn text disabled v-if="loadingUser && !user.username"><v-progress-circular indeterminate color="white"></v-progress-circular></v-btn>
-        <v-btn text @click="mobileNav = false" to="/@me" v-if="user.username"><v-avatar><img :src="UserAvatar(user)" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
+        <v-btn text @click="mobileNav = false" to="/@me" v-if="user.username"><v-avatar><img :src="user.avatarURL" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-list flat dark v-if="mobileNav" :style="{marginTop: '5px'}">
@@ -25,7 +25,6 @@
 <script>
 import Cookies from '@/util/Cookies'
 import Oauth2 from '@/util/Oauth2'
-import UserAvatar from "@/util/UserAvatar";
 
 let cookies = Cookies.parse()
 import content from '@/content.json'
@@ -40,28 +39,22 @@ export default {
     content: content.nav[cookies.language],
     config,
     loadingUser: Boolean(cookies.token),
-    user: {},
-    UserAvatar,
     location: window.location.origin,
     translate: () => {
       Cookies.set('language', cookies.language === 'ru' ? 'en' : 'ru', 1e15)
       window.location.reload()
     }
   }),
-  async mounted() {
-    let token = cookies.token;
-    if (Date.now() > Number(cookies.tokenExpiresTimestamp) && cookies.refreshToken) {
-      let response = await Oauth2.refreshToken(cookies.refreshToken).catch(() => {
-      })
-      token = response.accessToken;
+  computed: {
+    user() {
+      return this.$store.getters.user
     }
-    if (cookies.token) {
-      Oauth2.getUser(token).then(user => {
-        this.user = user;
-        this.loadingUser = false;
-      }).catch(() => {
-        this.loadingUser = false;
-      })
+  },
+  async mounted() {
+    if(cookies.token) {
+      this.loadingUser = true;
+      await this.$store.dispatch('getUser')
+      this.loadingUser = false;
     }
   }
 }

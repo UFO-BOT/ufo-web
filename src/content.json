@@ -240,6 +240,22 @@
       "allPerms": "All perms"
     }
   },
+  "me": {
+    "ru": {
+      "logout": "ВЫЙТИ",
+      "invite": "Пригласить",
+      "settings": "Настройки",
+      "leaders": "Лидеры",
+      "show": "Показывать"
+    },
+    "en": {
+      "logout": "LOG OUT",
+      "invite": "Invite",
+      "settings": "Settings",
+      "leaders": "Leaders",
+      "show": "Show"
+    }
+  },
   "login": {
     "ru": {
       "title": "Вход",

@@ -12,9 +12,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import CookieParser from '@/util/Cookies'
+import Cookies from '@/util/Cookies'
 
-let cookies = CookieParser.parse()
+let cookies = Cookies.parse()
 let content = WebContent.invite[cookies.language]
 
 export default {

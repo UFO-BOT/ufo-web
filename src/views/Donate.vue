@@ -34,10 +34,10 @@
 
 <script>
 import WebContent from '@/content.json'
-import CookieParser from '@/util/Cookies'
+import Cookies from '@/util/Cookies'
 import config from '@/config.json';
 
-let cookies = CookieParser.parse()
+let cookies = Cookies.parse()
 let content = WebContent.donate[cookies.language]
 
 export default {
