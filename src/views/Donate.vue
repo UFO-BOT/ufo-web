@@ -48,7 +48,7 @@ export default {
   data: () => ({
     content,
     error: false,
-    errorText: 'ты лох',
+    errorText: '',
     loading: false,
     async donate(subscription) {
       this.loading = true
@@ -62,7 +62,7 @@ export default {
         window.location.replace(body.payUrl);
       }
       else {
-        this.errorText = body.message;
+        this.errorText = response.status === 401 ? content.unauthorized : body.message;
         this.error = true;
         this.loading = false;
       }

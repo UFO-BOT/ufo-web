@@ -180,6 +180,7 @@
         }
       },
       "perMonth": "/месяц",
+      "unauthorized": "Не авторизован",
       "close": "Закрыть"
     },
     "en": {
@@ -221,6 +222,7 @@
         }
       },
       "perMonth": "/month",
+      "unauthorized": "Unauthorized",
       "close": "Close"
     }
   },
