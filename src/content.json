@@ -316,10 +316,42 @@
   },
   "GuildGeneral": {
     "ru": {
-      "title": "Основное"
+      "title": "Основное",
+      "subtitles": {
+        "prefix": "Префикс",
+        "language": "Язык",
+        "commands": "Команд",
+        "interface": "Интерфейса"
+      },
+      "errors": {
+        "noPrefix": "Введите префикс",
+        "prefixLength": "Длина префикса не должна превышать 20 символов",
+        "invalidChars": "Префикс содержит недопустимые символы"
+      },
+      "ru": "Русский",
+      "en": "Английский",
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "close": "Закрыть"
     },
     "en": {
-      "title": "General"
+      "title": "General",
+      "subtitles": {
+        "prefix": "Prefix",
+        "language": "Language",
+        "commands": "Commands",
+        "interface": "Interface"
+      },
+      "errors": {
+        "noPrefix": "Enter prefix",
+        "prefixLength": "Prefix cannot be longer than 20 characters",
+        "invalidChars": "Prefix contains invalid characters"
+      },
+      "ru": "Russian",
+      "en": "English",
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "close": "Close"
     }
   },
   "login": {

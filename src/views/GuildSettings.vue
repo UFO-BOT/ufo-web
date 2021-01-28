@@ -7,7 +7,9 @@
     </v-tabs>
     <v-window>
       <v-tab-item v-for="link of links">
-        <router-view></router-view>
+        <div class="settings">
+          <router-view></router-view>
+        </div>
       </v-tab-item>
     </v-window>
   </div>
@@ -54,5 +56,8 @@ export default {
 }
 .guild-menu {
   box-shadow: 0 5px 15px #14161a;
+}
+.settings {
+  padding: 20px 0 0 30px;
 }
 </style>
