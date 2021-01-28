@@ -73,7 +73,7 @@ export default {
       }
       else {
         this.error = true;
-        this.resultText = body.message;
+        this.resultText = content.error;
         this.result = true;
       }
       this.submitting = false;

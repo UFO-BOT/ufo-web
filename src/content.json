@@ -332,6 +332,7 @@
       "en": "Английский",
       "submit": "Сохранить",
       "submitted": "Сохранено!",
+      "error": "Ошибка",
       "close": "Закрыть"
     },
     "en": {
@@ -351,6 +352,7 @@
       "en": "English",
       "submit": "Submit",
       "submitted": "Submitted!",
+      "error": "Error",
       "close": "Close"
     }
   },
