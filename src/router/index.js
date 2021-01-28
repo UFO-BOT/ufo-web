@@ -4,14 +4,19 @@ import routesList from './routes.json'
 
 Vue.use(VueRouter)
 
-let routes = []
-routesList.forEach(route => {
-  routes.push({
-    path: route.path,
-    name: route.name,
-    component: () => import(`@/views/${route.component}`)
+function loadRoutes(routes) {
+  let newRoutes = []
+  routes.forEach(route => {
+    newRoutes.push({
+      path: route.path,
+      name: route.name,
+      component: () => import(`@/views/${route.component}`),
+      children: route.children ? loadRoutes(route.children) : []
+    })
   })
-})
+  return newRoutes;
+}
+let routes = loadRoutes(routesList);
 
 const router = new VueRouter({
   mode: 'history',

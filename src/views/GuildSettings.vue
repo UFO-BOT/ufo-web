@@ -2,9 +2,14 @@
   <div>
     <div class="guild-name" v-if="loadingGuild">{{ content.loading }}</div>
     <div class="guild-name">{{ guild.name }}</div>
-    <v-tabs show-arrows class="guild-menu">
+    <v-tabs show-arrows fixed-tabs class="guild-menu">
       <v-tab v-for="link of links" :to="link.path.replace(':id', $route.params.id || '0')">{{ link.name}}</v-tab>
     </v-tabs>
+    <v-window>
+      <v-tab-item v-for="link of links">
+        <router-view></router-view>
+      </v-tab-item>
+    </v-window>
   </div>
 </template>
 

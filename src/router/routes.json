@@ -30,9 +30,21 @@
     "component": "Me.vue"
   },
   {
-    "path": "/server/:id/general",
-    "name": "GuildGeneral",
-    "component": "GuildSettings/General.vue"
+    "path": "/server/:id",
+    "name": "GuildSettings",
+    "component": "GuildSettings.vue",
+    "children": [
+      {
+        "path": "general",
+        "name": "GuildGeneral",
+        "component": "GuildSettings/General.vue"
+      },
+      {
+        "path": "economy",
+        "name": "GuildEconomy",
+        "component": "GuildSettings/Economy.vue"
+      }
+    ]
   },
   {
     "path": "/login",

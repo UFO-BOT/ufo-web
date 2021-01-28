@@ -1,6 +1,6 @@
 <template>
   <div>
-    да
+
   </div>
 </template>
 
