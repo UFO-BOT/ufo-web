@@ -32,7 +32,6 @@ export default {
 <style scoped>
 .name {
   margin: 0 0 10px;
-  color: white;
   font-size: 3.5em;
 }
 .icon {

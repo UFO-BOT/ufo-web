@@ -38,6 +38,5 @@ export default {
 .name {
   margin: 15px;
   font-size: 3em;
-  color: white;
 }
 </style>

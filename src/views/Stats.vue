@@ -129,7 +129,6 @@ export default {
 <style scoped>
 .header {
   margin: 7px 0 12px 0;
-  color: white;
   font-size: 2.5em;
 }
 
@@ -152,7 +151,6 @@ export default {
 }
 
 .value {
-  color: white;
   font-size: 2em;
 }
 

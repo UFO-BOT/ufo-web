@@ -24,20 +24,18 @@
 
 <script>
 import Cookies from '@/util/Cookies'
-import Oauth2 from '@/util/Oauth2'
 
 let cookies = Cookies.parse()
-import content from '@/content.json'
-import config from '@/config.json'
-let links = content.nav[cookies.language].list;
+import WebContent from '@/content.json'
+let content = WebContent.nav[cookies.language]
+let links = content.list;
 
 export default {
   name: "Navbar",
   data: () => ({
     mobileNav: false,
-    links: links,
-    content: content.nav[cookies.language],
-    config,
+    links,
+    content,
     loadingUser: Boolean(cookies.token),
     location: window.location.origin,
     translate: () => {
@@ -53,7 +51,7 @@ export default {
   async mounted() {
     if(cookies.token) {
       this.loadingUser = true;
-      await this.$store.dispatch('getUser')
+      await this.$store.dispatch('getUser').catch(() => {})
       this.loadingUser = false;
     }
   }

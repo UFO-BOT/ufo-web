@@ -83,7 +83,6 @@ export default {
 <style scoped>
 .name {
   margin: 7px 0 12px 0;
-  color: white;
   font-size: 2.5em;
 }
 .category {
@@ -118,6 +117,5 @@ export default {
   margin-top: 7px;
   margin-bottom: 5px;
   font-size: 1em;
-  color: white;
 }
 </style>

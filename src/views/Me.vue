@@ -24,7 +24,7 @@
             <div class="guild" v-for="guild of guilds" v-if="guild.managePermission || (leaders && guild.invited)">
               <div>
                 <v-avatar><img :src="guild.icon" alt="Icon"></v-avatar>
-                {{ guild.name }}
+                {{ guild.name.length <= 25 ? guild.name : guild.name.slice(0, 25) + '...' }}
               </div>
               <div>
                 <v-divider class="guild-divider"></v-divider>
@@ -126,7 +126,7 @@ export default {
 }
 
 .guilds {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .guilds-container {

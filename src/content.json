@@ -70,12 +70,66 @@
       }
     }
   },
+  "guild": {
+    "ru": {
+      "list": [
+        {
+          "name": "Основное",
+          "path": "/server/:id/general"
+        },
+        {
+          "name": "Экономика",
+          "path": "/server/:id/economy"
+        },
+        {
+          "name": "Модерация",
+          "path": "/server/:id/moderation"
+        },
+        {
+          "name": "Логи",
+          "path": "/server/:id/logs"
+        },
+        {
+          "name": "Приветствия",
+          "path": "/server/:id/greetings"
+        }
+      ],
+      "loading": "Загрузка..."
+    },
+    "en": {
+      "list": [
+        {
+          "name": "General",
+          "path": "/server/:id/general"
+        },
+        {
+          "name": "Economy",
+          "path": "/server/:id/economy"
+        },
+        {
+          "name": "Moderation",
+          "path": "/server/:id/moderation"
+        },
+        {
+          "name": "Logs",
+          "path": "/server/:id/logs"
+        },
+        {
+          "name": "Greetings",
+          "path": "/server/:id/greetings"
+        }
+      ],
+      "loading": "Loading..."
+    }
+  },
   "home": {
     "ru": {
       "title": "UFO",
       "descriptions": [
         "Неопознанный летающий Discord бот",
-        "Летающая тарелка для вашего сервера"
+        "Летающая тарелка для вашего сервера",
+        "Пришельцы будут сотрудничать с вашим сервером",
+        "Не показывайте это Рен ТВ"
       ],
       "invite": "Пригласить"
     },
@@ -83,7 +137,9 @@
       "title": "UFO",
       "descriptions": [
         "Unknown flying Discord bot",
-        "Flying plate for your server"
+        "Flying plate for your server",
+        "Aliens will cooperate with your server",
+        "Don't show this to Ren TV"
       ],
       "invite": "Invite"
     }
@@ -258,6 +314,14 @@
       "show": "Show"
     }
   },
+  "GuildGeneral": {
+    "ru": {
+      "title": "Основное"
+    },
+    "en": {
+      "title": "General"
+    }
+  },
   "login": {
     "ru": {
       "title": "Вход",
@@ -266,6 +330,18 @@
     "en": {
       "title": "Log in",
       "name": "Logging in..."
+    }
+  },
+  "notfound": {
+    "ru": {
+      "title": "Страница не найдена",
+      "name": "Вы улетели в открытый космос",
+      "home": "ГЛАВНАЯ"
+    },
+    "en": {
+      "title": "Страница не найдена",
+      "name": "You flew into outer space",
+      "home": "HOME"
     }
   }
 }

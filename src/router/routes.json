@@ -30,8 +30,18 @@
     "component": "Me.vue"
   },
   {
+    "path": "/server/:id/general",
+    "name": "GuildGeneral",
+    "component": "GuildSettings/General.vue"
+  },
+  {
     "path": "/login",
     "name": "Login",
     "component": "Login.vue"
+  },
+  {
+    "path": "*",
+    "name": "Notfound",
+    "component": "Notfound.vue"
   }
 ]

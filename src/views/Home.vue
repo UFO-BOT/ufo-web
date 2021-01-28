@@ -28,12 +28,10 @@ export default {
 <style scoped>
 .name {
   margin: 0 0 10px;
-  color: white;
   font-size: 5em;
 }
 
 .description {
-  color: white;
   margin: 10px;
   font-size: 2.2em;
   width: 80%;

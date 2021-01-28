@@ -77,7 +77,6 @@ export default {
   padding-left: 20px;
 }
 .name {
-  color: white;
   font-size: 3.5em;
 }
 .description {
@@ -121,7 +120,6 @@ export default {
   margin: 5px 5px;
 }
 .donate-name {
-  color: white;
   font-size: 1.8em;
   margin-top: 3px;
 }

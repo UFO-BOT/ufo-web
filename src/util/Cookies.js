@@ -23,6 +23,6 @@ export default {
         return cookies
     },
     set: (name, value, maxAge) => {
-        document.cookie = `${name}=${value};max-age=${maxAge}`
+        document.cookie = `${name}=${value};max-age=${maxAge};path=/`
     }
 }

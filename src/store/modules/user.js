@@ -19,7 +19,7 @@ export default {
                         user.avatarURL = UserAvatar(user)
                         ctx.commit('updateUser', user)
                         resolve(user)
-                    }).catch(() => {})
+                    }).catch(err => reject(err))
                 }
             })
         }
