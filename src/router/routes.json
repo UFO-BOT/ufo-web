@@ -48,6 +48,11 @@
         "path": "logs",
         "name": "GuildLogs",
         "component": "GuildSettings/Logs.vue"
+      },
+      {
+        "path": "greetings",
+        "name": "GuildGreetings",
+        "component": "GuildSettings/Greetings.vue"
       }
     ]
   },

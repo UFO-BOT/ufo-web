@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .guild-name {
   font-size: calc(1rem + 3.5vw);
   background-color: #1b1e23;

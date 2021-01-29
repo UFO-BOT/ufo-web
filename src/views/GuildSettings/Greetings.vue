@@ -5,11 +5,14 @@
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
-      <div class="subtitle">{{ content.subtitles.prefix }}</div>
-      <v-text-field v-model="settings.prefix" counter="20" :rules="rules.prefix" :label="content.subtitles.prefix" class="prefix"></v-text-field>
-      <div class="subtitle">{{ content.subtitles.language }}</div>
-      <v-select v-model="settings.language.commands" :items="languages" :label="content.subtitles.commands" class="language"></v-select>
-      <v-select v-model="settings.language.interface" :items="languages" :label="content.subtitles.interface" class="language"></v-select>
+      <div class="subtitle">{{ content.subtitles.jm }}</div>
+      <v-select v-model="settings.jmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
+      <v-textarea :disabled="settings.jmchan === 'none'" v-model="settings.jm" filled :label="content.subtitles.template" class="template"></v-textarea>
+      <div class="subtitle">{{ content.subtitles.lm }}</div>
+      <v-select v-model="settings.lmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
+      <v-textarea :disabled="settings.lmchan === 'none'" v-model="settings.lm" filled :label="content.subtitles.template" class="template"></v-textarea>
+      <div class="subtitle">{{ content.subtitles.jdm }}</div>
+      <v-textarea v-model="settings.jdm" filled :label="content.subtitles.template" style="margin-top: 5px" class="template"></v-textarea>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -24,10 +27,11 @@
 <script>
 import WebContent from '@/content.json'
 import Cookies from '@/util/Cookies'
+import ParseForSelect from "@/util/ParseForSelect";
 import config from "@/config.json";
 
 let cookies = Cookies.parse()
-let content = WebContent.GuildGeneral[cookies.language]
+let content = WebContent.GuildGreetings[cookies.language]
 
 export default {
   name: 'Home',
@@ -40,36 +44,36 @@ export default {
     valid: true,
     languages: [{text: content.ru, value: 'ru'}, {text: content.en, value: 'en'}],
     settings: {
-      prefix: '',
-      language: {
-        commands: '',
-        interface: ''
-      }
-    },
-    rules: {
-      prefix: [
-          prefix => !!prefix || content.errors.noPrefix,
-          prefix => prefix.length <= 20 || content.errors.prefixLength,
-          prefix => !prefix.match(/[`| ]/gmi) || content.errors.invalidChars
-      ]
+      jmchan: 'none',
+      jm: '',
+      lmchan: 'none',
+      lm: '',
+      jdm: ''
     },
     submitting: false,
     result: null,
     resultText: '',
     error: false
   }),
+  computed: {
+    channels() {
+      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      if(!guild) return [];
+      return ParseForSelect.channels(guild.channels)
+    }
+  },
   methods: {
     async submit() {
       this.submitting = true;
-      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/general`, {method: 'POST', headers: {
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/greetings`, {method: 'POST', headers: {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-          prefix: this.settings.prefix,
-          language: {
-            commands: this.settings.language.commands,
-            interface: this.settings.language.interface
-          }
+          jmchan: this.settings.jmchan,
+          jm: this.settings.jm,
+          lmchan: this.settings.lmchan,
+          lm: this.settings.lm,
+          jdm: this.settings.jdm
         })})
       if(response.ok) {
         this.error = false;
@@ -86,8 +90,8 @@ export default {
   },
   async mounted() {
     let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {headers: {
-      Authorization: cookies.token
-    }})
+        Authorization: cookies.token
+      }})
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');
     this.settings = body;
@@ -97,13 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.subtitle {
-  font-size: 1.2em;
-}
-.prefix {
-  width: 80vw;
-}
-.language {
+.channel-select {
   width: 250px;
 }
 .submit {
@@ -112,5 +110,8 @@ export default {
 }
 .result-text {
   font-size: 1.4em;
+}
+.template {
+  width: 90%;
 }
 </style>

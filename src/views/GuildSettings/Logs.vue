@@ -11,7 +11,7 @@
       <v-select v-model="settings.modlog" :items="channels" :label="content.subtitles.modlog" class="channel-select"></v-select>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
     </v-form>
-    <v-snackbar v-model="result" :timeout="3000" color="secondary">
+    <v-snackbar v-model="result" color="secondary">
       <div class="result-text">{{ resultText }}</div>
       <template v-slot:action="{ attrs }">
         <v-btn :color="error ? 'pink' : 'success'" text v-bind="attrs" @click="result = false">{{ content.close }}</v-btn>
@@ -100,13 +100,10 @@ export default {
   width: 250px;
 }
 .submit {
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
   font-size: 1.1em;
 }
 .result-text {
   font-size: 1.4em;
-}
-.switcher {
-  width: fit-content;
 }
 </style>

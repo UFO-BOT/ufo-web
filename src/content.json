@@ -384,6 +384,38 @@
       "close": "Close"
     }
   },
+  "GuildGreetings": {
+    "ru": {
+      "title": "Приветствия",
+      "subtitles": {
+        "jm": "Сообщение о входе",
+        "lm": "Сообщение о выходе",
+        "jdm": "Приветствие в ЛС",
+        "channel": "Канал",
+        "template": "Шаблон сообщения",
+        "joinroles": "Роли при входе"
+      },
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Greetings",
+      "subtitles": {
+        "jm": "Join message",
+        "lm": "Leave message",
+        "jdm": "DM greeting",
+        "channel": "Channel",
+        "template": "Message template",
+        "joinroles": "Join roles"
+      },
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
   "login": {
     "ru": {
       "title": "Вход",
