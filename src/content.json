@@ -356,6 +356,34 @@
       "close": "Close"
     }
   },
+  "GuildLogs": {
+    "ru": {
+      "title": "Логи",
+      "subtitles": {
+        "logs": "Логи",
+        "deletelog": "Удаление сообщений",
+        "editlog": "Изменение сообщений",
+        "modlog": "Модерация"
+      },
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Logs",
+      "subtitles": {
+        "logs": "Logs",
+        "deletelog": "Message delete",
+        "editlog": "Message edit",
+        "modlog": "Moderation"
+      },
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
   "login": {
     "ru": {
       "title": "Вход",

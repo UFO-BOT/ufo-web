@@ -43,6 +43,11 @@
         "path": "economy",
         "name": "GuildEconomy",
         "component": "GuildSettings/Economy.vue"
+      },
+      {
+        "path": "logs",
+        "name": "GuildLogs",
+        "component": "GuildSettings/Logs.vue"
       }
     ]
   },
