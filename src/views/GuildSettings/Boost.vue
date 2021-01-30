@@ -13,9 +13,9 @@
       <v-text-field v-model="settings.moneybonuses.weekly" type="number" :rules="rules.moneybonuses" :label="content.subtitles.weeklyBonus" class="number-input"></v-text-field>
       <br>
       <div class="subtitle">{{ content.subtitles.punishmentsDM }}</div>
-      <v-textarea counter="1500" :rules="rules.template" v-model="settings.kickdm" filled :label="content.subtitles.kickdm" :placeholder="content.subtitles.template" class="template"></v-textarea>
-      <v-textarea counter="1500" :rules="rules.template" v-model="settings.softbandm" filled :label="content.subtitles.softbandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
-      <v-textarea counter="1500" :rules="rules.template" v-model="settings.bandm" filled :label="content.subtitles.bandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" v-model="settings.kickdm" :rules="rules.template" filled :label="content.subtitles.kickdm" :placeholder="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" v-model="settings.softbandm" :rules="rules.template" filled :label="content.subtitles.softbandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" v-model="settings.bandm" :rules="rules.template" filled :label="content.subtitles.bandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -31,6 +31,7 @@
 import WebContent from '@/content.json'
 import Cookies from '@/util/Cookies'
 import config from "@/config.json";
+import guild from "@/store/modules/guild";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildBoost[cookies.language]
@@ -45,6 +46,17 @@ export default {
     loading: true,
     valid: true,
     settings: {
+      messagemoney: {
+        chance: 0,
+        amount: 0
+      },
+      moneybonuses: {
+        daily: 0,
+        weekly: 0
+      },
+      kickdm: '',
+      softbandm: '',
+      bandm: ''
     },
     rules: {
       messagemoney: {

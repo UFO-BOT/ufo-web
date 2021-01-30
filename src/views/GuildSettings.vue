@@ -5,7 +5,7 @@
     <div class="guild-content">
       <v-list class="guild-menu">
         <v-subheader class="guild-name" v-if="loadingGuild">{{ content.loading }}</v-subheader>
-        <v-subheader class="guild-name" :style="{wordBreak: guild.name.length > 25 ? 'break-all' : 'break-word'}" v-else>{{ guild.name.length <= 25 ? guild.name : guild.name.slice(0, 25) + '...'}}</v-subheader>
+        <v-subheader class="guild-name" v-else :style="{wordBreak: guild.name.length > 25 ? 'break-all' : 'break-word'}">{{ guild.name.length <= 25 ? guild.name : guild.name.slice(0, 25) + '...'}}</v-subheader>
         <v-divider></v-divider>
         <v-list-item-group color="primary">
           <v-list-item v-for="link of links" :to="link.path">
@@ -48,7 +48,7 @@ export default {
   }),
   computed: {
     guild() {
-      return this.$store.getters.guilds.find(g => g.id === this.$route.params.id) || {}
+      return this.$store.getters.guilds.find(g => g.id === this.$route.params.id) || {name: ''}
     }
   },
   async mounted() {
