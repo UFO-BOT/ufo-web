@@ -417,7 +417,7 @@
         "joinroles": "Роли при входе"
       },
       "errors": {
-        "invLength": "Длина сообщения не может быть больше 1500 симовлов"
+        "invLength": "Длина сообщения не может быть больше 1500 символов"
       },
       "submit": "Сохранить",
       "submitted": "Сохранено!",
@@ -448,8 +448,23 @@
     "ru": {
       "title": "Буст",
       "subtitles": {
+        "messageMoney": "Деньги за сообщения",
+        "chance": "Вероятность",
+        "amount": "Количество",
+        "moneyBonuses": "Денежные бонусы",
+        "dailyBonus": "Ежедневный бонус",
+        "weeklyBonus": "Еженедельный бонус",
+        "punishmentsDM": "Сообщение в ЛС при наказании",
+        "kickdm": "Сообщение при кике",
+        "softbandm": "Сообщение при софтбане",
+        "bandm": "Сообщение при бане",
+        "template": "Шаблон сообщения"
       },
       "errors": {
+        "invChance": "Вероятность не должна быть меньше 0% и больше 5%",
+        "invAmount": "Количество должно быть целым положительным числом",
+        "invMoneyBonus": "Денежный бонус должен быть целым положительным числом",
+        "invLength": "Длина сообщения не может быть больше 1500 символов"
       },
       "submit": "Сохранить",
       "submitted": "Сохранено!",
@@ -459,8 +474,23 @@
     "en": {
       "title": "Boost",
       "subtitles": {
+        "messageMoney": "Money for messages",
+        "chance": "Chance",
+        "amount": "Amount",
+        "moneyBonuses": "Money bonuses",
+        "dailyBonus": "Daily bonus",
+        "weeklyBonus": "Weekly bonus",
+        "punishmentsDM": "Punishments DM messages",
+        "kickdm": "Kick message",
+        "softbandm": "Softban message",
+        "bandm": "Ban message",
+        "template": "Message template"
       },
       "errors": {
+        "invChance": "Chance may not be less than 0% and more than 5%",
+        "invAmount": "Amount must be a positive integer",
+        "invMoneyBonus": "Money bonus must be a positive integer",
+        "invLength": "Message may not be longer than 1500 characters"
       },
       "submit": "Submit",
       "submitted": "Submitted!",

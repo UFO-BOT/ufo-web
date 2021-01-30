@@ -5,6 +5,17 @@
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
+      <div class="subtitle">{{ content.subtitles.messageMoney }}</div>
+      <v-text-field v-model="settings.messagemoney.chance" type="number" :rules="rules.messagemoney.chance" :label="content.subtitles.chance" prefix="%" class="number-input"></v-text-field>
+      <v-text-field v-model="settings.messagemoney.amount" type="number" :rules="rules.messagemoney.amount"  :label="content.subtitles.amount" class="number-input"></v-text-field>
+      <div class="subtitle">{{ content.subtitles.moneyBonuses }}</div>
+      <v-text-field v-model="settings.moneybonuses.daily" type="number" :rules="rules.moneybonuses" :label="content.subtitles.dailyBonus" class="number-input"></v-text-field>
+      <v-text-field v-model="settings.moneybonuses.weekly" type="number" :rules="rules.moneybonuses" :label="content.subtitles.weeklyBonus" class="number-input"></v-text-field>
+      <br>
+      <div class="subtitle">{{ content.subtitles.punishmentsDM }}</div>
+      <v-textarea counter="1500" :rules="rules.template" v-model="settings.kickdm" filled :label="content.subtitles.kickdm" :placeholder="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" v-model="settings.softbandm" filled :label="content.subtitles.softbandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" v-model="settings.bandm" filled :label="content.subtitles.bandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -36,6 +47,20 @@ export default {
     settings: {
     },
     rules: {
+      messagemoney: {
+        chance: [
+          chance => (chance >= 0 && chance <= 5) || content.errors.invChance
+        ],
+        amount: [
+          amount => (amount >= 0) || content.errors.invAmount
+        ]
+      },
+      moneybonuses: [
+          moneybonus => moneybonus >= 0 || content.errors.invMoneyBonus
+      ],
+      template: [
+          template => template.length <= 1500 || content.errors.invLength
+      ]
     },
     submitting: false,
     result: null,
@@ -49,7 +74,17 @@ export default {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-
+          messagemoney: {
+            chance: this.settings.messagemoney.chance,
+            amount: this.settings.messagemoney.amount
+          },
+          moneybonuses: {
+            daily: this.settings.moneybonuses.daily,
+            weekly: this.settings.moneybonuses.weekly
+          },
+          kickdm: this.settings.kickdm,
+          softbandm: this.settings.softbandm,
+          bandm: this.settings.bandm
         })})
       if(response.ok) {
         this.error = false;
@@ -80,11 +115,14 @@ export default {
 .subtitle {
   font-size: 1.2em;
 }
-.prefix {
-  width: 80%;
+.number-input {
+  width: 200px;
+  display: inline-block;
+  margin-right: 50px;
 }
-.language {
-  width: 250px;
+.template {
+  width: 90%;
+  margin-top: 5px!important;
 }
 .submit {
   margin: 10px 0 10px 0;
