@@ -53,6 +53,11 @@
         "path": "greetings",
         "name": "GuildGreetings",
         "component": "GuildSettings/Greetings.vue"
+      },
+      {
+        "path": "boost",
+        "name": "GuildBoost",
+        "component": "GuildSettings/Boost.vue"
       }
     ]
   },

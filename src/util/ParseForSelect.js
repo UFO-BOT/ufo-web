@@ -12,5 +12,19 @@ export default {
             })
         })
         return newChannels
+    },
+    roles(roles, none = true) {
+        let newRoles = []
+        if(none) newRoles.push({
+            value: 'none',
+            text: '-'
+        })
+        roles.forEach(role => {
+            newRoles.push({
+                value: role.id,
+                text: role.name
+            })
+        })
+        return newRoles
     }
 }

@@ -1,17 +1,33 @@
 <template>
-  <div>
-    <div class="guild-name" v-if="loadingGuild">{{ content.loading }}</div>
-    <div class="guild-name">{{ guild.name }}</div>
-    <v-tabs show-arrows fixed-tabs class="guild-menu">
-      <v-tab v-for="link of links" :to="link.path.replace(':id', $route.params.id || '0')">{{ link.name}}</v-tab>
-    </v-tabs>
-    <v-window>
-      <v-tab-item v-for="link of links">
+  <div style="height: 100%">
+    <!-- <div class="guild-name" v-if="loadingGuild">{{ content.loading }}</div>
+    <div class="guild-name"></div> -->
+    <div class="guild-content">
+      <v-list class="guild-menu">
+        <v-subheader class="guild-name" v-if="loadingGuild">{{ content.loading }}</v-subheader>
+        <v-subheader class="guild-name" :style="{wordBreak: guild.name.length > 25 ? 'break-all' : 'break-word'}" v-else>{{ guild.name.length <= 25 ? guild.name : guild.name.slice(0, 25) + '...'}}</v-subheader>
+        <v-divider></v-divider>
+        <v-list-item-group color="primary">
+          <v-list-item v-for="link of links" :to="link.path">
+            <v-list-item-icon>
+              <v-icon>{{ link.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>{{ link.name }}</v-list-item-content>
+          </v-list-item>
+          <v-list-item :to="content.boost.path" color="#7777ff" v-if="guild.boost">
+            <v-list-item-icon>
+              <v-icon>{{ content.boost.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>{{ content.boost.name }}</v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+      <v-window class="guild-settings">
         <div class="settings">
           <router-view></router-view>
         </div>
-      </v-tab-item>
-    </v-window>
+      </v-window>
+    </div>
   </div>
 </template>
 
@@ -50,14 +66,29 @@ export default {
 
 <style>
 .guild-name {
-  font-size: calc(1rem + 3.5vw);
-  background-color: #1b1e23;
+  font-size: 1.2em!important;
   padding: 5px 5px 5px 15px;
+  margin-bottom: 8px;
 }
-.guild-menu {
-  box-shadow: 0 5px 15px #14161a;
+@media screen and (min-width: 900px){
+  .guild-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+  .guild-menu {
+    /* box-shadow: 0 5px 15px #14161a; */
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+  }
+  .guild-settings {
+    width: 80%;
+    display: inline-block;
+  }
 }
 .settings {
-  padding: 20px 0 0 30px;
+  padding: 20px 0 0 20px;
 }
 </style>

@@ -5,11 +5,6 @@
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
-      <div class="subtitle">{{ content.subtitles.prefix }}</div>
-      <v-text-field v-model="settings.prefix" counter="20" :rules="rules.prefix" :label="content.subtitles.prefix" class="prefix"></v-text-field>
-      <div class="subtitle">{{ content.subtitles.language }}</div>
-      <v-select v-model="settings.language.commands" :items="languages" :label="content.subtitles.commands" class="language"></v-select>
-      <v-select v-model="settings.language.interface" :items="languages" :label="content.subtitles.interface" class="language"></v-select>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -27,10 +22,10 @@ import Cookies from '@/util/Cookies'
 import config from "@/config.json";
 
 let cookies = Cookies.parse()
-let content = WebContent.GuildGeneral[cookies.language]
+let content = WebContent.GuildBoost[cookies.language]
 
 export default {
-  name: 'General',
+  name: 'Boost',
   metaInfo: {
     title: content.title
   },
@@ -38,20 +33,9 @@ export default {
     content,
     loading: true,
     valid: true,
-    languages: [{text: content.ru, value: 'ru'}, {text: content.en, value: 'en'}],
     settings: {
-      prefix: '',
-      language: {
-        commands: '',
-        interface: ''
-      }
     },
     rules: {
-      prefix: [
-          prefix => !!prefix || content.errors.noPrefix,
-          prefix => prefix.length <= 20 || content.errors.prefixLength,
-          prefix => !prefix.match(/[`| ]/gmi) || content.errors.invalidChars
-      ]
     },
     submitting: false,
     result: null,
@@ -61,15 +45,11 @@ export default {
   methods: {
     async submit() {
       this.submitting = true;
-      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/general`, {method: 'POST', headers: {
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/boost`, {method: 'POST', headers: {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-          prefix: this.settings.prefix,
-          language: {
-            commands: this.settings.language.commands,
-            interface: this.settings.language.interface
-          }
+
         })})
       if(response.ok) {
         this.error = false;
@@ -86,8 +66,8 @@ export default {
   },
   async mounted() {
     let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {headers: {
-      Authorization: cookies.token
-    }})
+        Authorization: cookies.token
+      }})
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');
     this.settings = body;

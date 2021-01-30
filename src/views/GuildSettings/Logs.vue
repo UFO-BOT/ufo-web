@@ -30,7 +30,7 @@ let cookies = Cookies.parse()
 let content = WebContent.GuildLogs[cookies.language]
 
 export default {
-  name: 'Home',
+  name: 'Logs',
   metaInfo: {
     title: content.title
   },
@@ -38,7 +38,6 @@ export default {
     content,
     loading: true,
     valid: true,
-    languages: [{text: content.ru, value: 'ru'}, {text: content.en, value: 'en'}],
     settings: {
       deletelog: 'none',
       editlog: 'none',

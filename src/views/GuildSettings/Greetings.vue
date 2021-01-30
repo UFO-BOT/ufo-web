@@ -7,12 +7,14 @@
     <v-form ref="form" v-model="valid" v-if="!loading">
       <div class="subtitle">{{ content.subtitles.jm }}</div>
       <v-select v-model="settings.jmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
-      <v-textarea :disabled="settings.jmchan === 'none'" v-model="settings.jm" filled :label="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.jmchan === 'none'" v-model="settings.jm" filled :label="content.subtitles.template" class="template"></v-textarea>
       <div class="subtitle">{{ content.subtitles.lm }}</div>
       <v-select v-model="settings.lmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
-      <v-textarea :disabled="settings.lmchan === 'none'" v-model="settings.lm" filled :label="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.lmchan === 'none'" v-model="settings.lm" filled :label="content.subtitles.template" class="template"></v-textarea>
       <div class="subtitle">{{ content.subtitles.jdm }}</div>
-      <v-textarea v-model="settings.jdm" filled :label="content.subtitles.template" style="margin-top: 5px" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" v-model="settings.jdm" filled :label="content.subtitles.template" style="margin-top: 5px" class="template"></v-textarea>
+      <div class="subtitle">{{ content.subtitles.joinroles }}</div>
+      <v-select v-model="settings.joinroles" multiple chips :items="roles" :label="content.subtitles.selectRoles" class="roles-select"></v-select>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -34,7 +36,7 @@ let cookies = Cookies.parse()
 let content = WebContent.GuildGreetings[cookies.language]
 
 export default {
-  name: 'Home',
+  name: 'Greetings',
   metaInfo: {
     title: content.title
   },
@@ -42,13 +44,17 @@ export default {
     content,
     loading: true,
     valid: true,
-    languages: [{text: content.ru, value: 'ru'}, {text: content.en, value: 'en'}],
     settings: {
       jmchan: 'none',
       jm: '',
       lmchan: 'none',
       lm: '',
       jdm: ''
+    },
+    rules: {
+      template: [
+          template => template.length <= 1500 || content.errors.invLength
+      ]
     },
     submitting: false,
     result: null,
@@ -60,6 +66,11 @@ export default {
       let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
       if(!guild) return [];
       return ParseForSelect.channels(guild.channels)
+    },
+    roles() {
+      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      if(!guild) return [];
+      return ParseForSelect.roles(guild.roles, false)
     }
   },
   methods: {
@@ -69,11 +80,12 @@ export default {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-          jmchan: this.settings.jmchan,
+          jmchan: this.settings.jm.trim().length ? this.settings.jmchan : 'none',
           jm: this.settings.jm,
-          lmchan: this.settings.lmchan,
+          lmchan: this.settings.lm.trim().length ? this.settings.lmchan : 'none',
           lm: this.settings.lm,
-          jdm: this.settings.jdm
+          jdm: this.settings.jdm,
+          joinroles: this.settings.joinroles
         })})
       if(response.ok) {
         this.error = false;
@@ -101,6 +113,9 @@ export default {
 </script>
 
 <style scoped>
+.subtitle {
+  font-size: 1.2em;
+}
 .channel-select {
   width: 250px;
 }
@@ -112,6 +127,9 @@ export default {
   font-size: 1.4em;
 }
 .template {
+  width: 90%;
+}
+.roles-select {
   width: 90%;
 }
 </style>

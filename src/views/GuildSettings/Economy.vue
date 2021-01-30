@@ -12,7 +12,7 @@ let cookies = Cookies.parse()
 let content = WebContent.GuildGeneral[cookies.language]
 
 export default {
-  name: 'Home',
+  name: 'Economy',
   metaInfo: {
     title: content.title
   },

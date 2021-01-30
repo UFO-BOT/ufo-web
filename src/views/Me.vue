@@ -7,19 +7,12 @@
         <img :src="user.avatarURL" class="user-avatar" alt="">
         <div class="user-tag"><span class="username">{{ user.username }}</span><span
             class="discriminator">#{{ user.discriminator }}</span></div>
-        <v-btn @click="logout" class="logout" color="error" outlined large>{{ content.logout }}</v-btn>
+        <v-btn @click="logout" class="logout" color="error" outlined large><v-icon class="logout-icon" medium>logout</v-icon> {{ content.logout }}</v-btn>
         <br>
         <div class="guilds">
           <v-progress-circular v-if="loadingGuilds" :size="60" :width="5" color="white"
                                indeterminate></v-progress-circular>
-          <v-select
-              v-if="!loadingGuilds"
-              :items="showItems"
-              v-model="leaders"
-              :label="content.show"
-              class="show-select"
-              color="primary"
-          ></v-select>
+          <v-select v-if="!loadingGuilds" :items="showItems" v-model="leaders" :label="content.show" class="show-select" color="primary"></v-select>
           <div class="guilds-container">
             <div class="guild" v-for="guild of guilds" v-if="guild.managePermission || (leaders && guild.invited)">
               <div>
@@ -123,6 +116,10 @@ export default {
 .logout {
   font-size: 1.4em;
   margin-top: 5px;
+}
+
+.logout-icon {
+  margin-right: 8px;
 }
 
 .guilds {

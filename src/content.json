@@ -75,50 +75,70 @@
       "list": [
         {
           "name": "Основное",
-          "path": "/server/:id/general"
+          "path": "general",
+          "icon": "settings"
         },
         {
           "name": "Экономика",
-          "path": "/server/:id/economy"
+          "path": "economy",
+          "icon": "attach_money"
         },
         {
           "name": "Модерация",
-          "path": "/server/:id/moderation"
+          "path": "moderation",
+          "icon": "shield"
         },
         {
           "name": "Логи",
-          "path": "/server/:id/logs"
+          "path": "logs",
+          "icon": "article"
         },
         {
           "name": "Приветствия",
-          "path": "/server/:id/greetings"
+          "path": "greetings",
+          "icon": "group"
         }
       ],
+      "boost": {
+        "name": "Буст",
+        "path": "boost",
+        "icon": "grade"
+      },
       "loading": "Загрузка..."
     },
     "en": {
       "list": [
         {
           "name": "General",
-          "path": "/server/:id/general"
+          "path": "general",
+          "icon": "settings"
         },
         {
           "name": "Economy",
-          "path": "/server/:id/economy"
+          "path": "economy",
+          "icon": "attach_money"
         },
         {
           "name": "Moderation",
-          "path": "/server/:id/moderation"
+          "path": "moderation",
+          "icon": "shield"
         },
         {
           "name": "Logs",
-          "path": "/server/:id/logs"
+          "path": "logs",
+          "icon": "article"
         },
         {
           "name": "Greetings",
-          "path": "/server/:id/greetings"
+          "path": "greetings",
+          "icon": "group"
         }
       ],
+      "boost": {
+        "name": "Boost",
+        "path": "boost",
+        "icon": "grade"
+      },
       "loading": "Loading..."
     }
   },
@@ -393,7 +413,11 @@
         "jdm": "Приветствие в ЛС",
         "channel": "Канал",
         "template": "Шаблон сообщения",
+        "selectRoles": "Выберите роли",
         "joinroles": "Роли при входе"
+      },
+      "errors": {
+        "invLength": "Длина сообщения не может быть больше 1500 симовлов"
       },
       "submit": "Сохранить",
       "submitted": "Сохранено!",
@@ -408,7 +432,35 @@
         "jdm": "DM greeting",
         "channel": "Channel",
         "template": "Message template",
+        "selectRoles": "Select roles",
         "joinroles": "Join roles"
+      },
+      "errors": {
+        "invLength": "Message may not be longer than 1500 characters"
+      },
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
+  "GuildBoost": {
+    "ru": {
+      "title": "Буст",
+      "subtitles": {
+      },
+      "errors": {
+      },
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Boost",
+      "subtitles": {
+      },
+      "errors": {
       },
       "submit": "Submit",
       "submitted": "Submitted!",
