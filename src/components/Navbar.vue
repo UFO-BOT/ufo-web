@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Cookies from '@/util/Cookies'
+import Cookies from '@/util/cookies'
 
 let cookies = Cookies.parse()
 import WebContent from '@/content.json'

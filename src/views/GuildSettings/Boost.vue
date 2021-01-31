@@ -16,7 +16,7 @@
       <v-textarea counter="1500" v-model="settings.kickdm" :rules="rules.template" filled :label="content.subtitles.kickdm" :placeholder="content.subtitles.template" class="template"></v-textarea>
       <v-textarea counter="1500" v-model="settings.softbandm" :rules="rules.template" filled :label="content.subtitles.softbandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
       <v-textarea counter="1500" v-model="settings.bandm" :rules="rules.template" filled :label="content.subtitles.bandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
-      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
+      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
       <div class="result-text">{{ resultText }}</div>
@@ -29,7 +29,7 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/Cookies'
+import Cookies from '@/util/cookies'
 import config from "@/config.json";
 import guild from "@/store/modules/guild";
 
@@ -135,6 +135,9 @@ export default {
 .template {
   width: 90%;
   margin-top: 5px!important;
+}
+.save-icon {
+  margin-right: 5px;
 }
 .submit {
   margin: 10px 0 10px 0;

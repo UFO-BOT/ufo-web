@@ -20,9 +20,9 @@
     "component": "Donate.vue"
   },
   {
-    "path": "/invite",
-    "name": "Invite",
-    "component": "Invite.vue"
+    "path": "/landing",
+    "name": "Landing",
+    "component": "Landing.vue"
   },
   {
     "path": "/@me",

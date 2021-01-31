@@ -1,5 +1,5 @@
 import config from '@/config.json'
-import Cookies from "@/util/Cookies";
+import Cookies from "@/util/cookies";
 
 export default {
     async getUser(token) {

@@ -50,8 +50,8 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/Cookies'
-import ParsePerms from "@/util/ParsePerms";
+import Cookies from '@/util/cookies'
+import ParsePerms from "@/util/parsePerms";
 import config from '@/config.json';
 
 let cookies = Cookies.parse()

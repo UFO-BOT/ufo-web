@@ -3,13 +3,14 @@
     <div class="name"><b>UFO</b></div>
     <img alt="UFO Logo" src="../assets/logo.png" class="icon">
     <div class="description">{{ content.descriptions[Math.floor(Math.random() * content.descriptions.length)] }}</div>
-    <v-btn x-large color="info" class="invite" to="/invite">{{ content.invite }}</v-btn>
+    <v-btn x-large color="info" class="invite" @click="invite">{{ content.invite }}</v-btn>
   </div>
 </template>
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/Cookies'
+import Cookies from '@/util/cookies'
+import config from '@/config.json'
 
 let cookies = Cookies.parse()
 let content = WebContent.home[cookies.language]
@@ -21,7 +22,12 @@ export default {
   },
   data: () => ({
     content
-  })
+  }),
+  methods: {
+    invite() {
+      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&scope=bot`
+    }
+  }
 }
 </script>
 

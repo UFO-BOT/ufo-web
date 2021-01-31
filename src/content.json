@@ -19,10 +19,6 @@
           "path": "/donate"
         },
         {
-          "name": "Пригласить",
-          "path": "/invite"
-        },
-        {
           "name": "Поддержка",
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
@@ -52,10 +48,6 @@
         {
           "name": "Donate",
           "path": "/donate"
-        },
-        {
-          "name": "Invite",
-          "path": "/invite"
         },
         {
           "name": "Support",
@@ -96,7 +88,7 @@
         {
           "name": "Приветствия",
           "path": "greetings",
-          "icon": "group"
+          "icon": "person_add"
         }
       ],
       "boost": {
@@ -131,7 +123,7 @@
         {
           "name": "Greetings",
           "path": "greetings",
-          "icon": "group"
+          "icon": "person_add"
         }
       ],
       "boost": {
@@ -316,6 +308,22 @@
       "noPerms": "No perms",
       "neededPerms": "Needed perms",
       "allPerms": "All perms"
+    }
+  },
+  "landing": {
+    "ru": {
+      "title": "Спасибо за добавление!",
+      "name": "Спасибо за добавление UFO!",
+      "commands": "Команды",
+      "support": "Поддержка",
+      "settings": "Настройки"
+    },
+    "en": {
+      "title": "Thanks for inviting!",
+      "name": "Thanks for inviting UFO!",
+      "commands": "Commands",
+      "support": "Support",
+      "settings": "Settings"
     }
   },
   "me": {

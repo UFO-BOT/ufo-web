@@ -12,8 +12,8 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/Cookies'
-import Oauth2 from "@/util/Oauth2";
+import Cookies from '@/util/cookies'
+import Oauth2 from "@/util/oauth2";
 
 let cookies = Cookies.parse()
 let content = WebContent.login[cookies.language]

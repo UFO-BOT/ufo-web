@@ -1,6 +1,6 @@
-import Oauth2 from "@/util/Oauth2";
-import Cookies from "@/util/Cookies";
-import UserAvatar from "@/util/UserAvatar";
+import Oauth2 from "@/util/oauth2";
+import Cookies from "@/util/cookies";
+import UserAvatar from "@/util/userAvatar";
 
 export default {
     actions: {

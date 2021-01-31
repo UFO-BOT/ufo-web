@@ -43,7 +43,7 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from "@/util/Cookies";
+import Cookies from "@/util/cookies";
 import config from '@/config.json';
 
 let cookies = Cookies.parse()
@@ -54,15 +54,6 @@ export default {
   name: 'Home',
   data: () => ({
     content,
-    logout() {
-      Cookies.set('token', '')
-      Cookies.set('refreshToken', '')
-      Cookies.set('tokenExpiresTimestamp', '')
-      window.location.replace('/')
-    },
-    generateInvite(guildID) {
-      return `https://discord.com/api/oauth2/authorize?client_id=705372408281825350&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&guild_id=${guildID}&scope=bot`
-    },
     loadingGuilds: true,
     guilds: [],
     showItems: [{text: content.settings,value:false}, {text: content.leaders, value:true}],
@@ -72,6 +63,17 @@ export default {
     user() {
       document.title = this.$store.getters.user.username ? this.$store.getters.user.username : ''
       return this.$store.getters.user
+    }
+  },
+  methods: {
+    logout() {
+      Cookies.set('token', '')
+      Cookies.set('refreshToken', '')
+      Cookies.set('tokenExpiresTimestamp', '')
+      window.location.replace('/')
+    },
+    generateInvite(guildID) {
+      return `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&guild_id=${guildID}&scope=bot`
     }
   },
   async mounted() {

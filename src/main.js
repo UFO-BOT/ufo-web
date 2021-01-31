@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import router from './router'
 import store from '@/store'
 import vuetify from './plugins/vuetify'
-import Cookies from './util/Cookies'
+import Cookies from './util/cookies'
 
 let cookies = Cookies.parseWithoutLang()
 if (!cookies.language && navigator.language === 'ru-RU') {

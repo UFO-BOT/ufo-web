@@ -10,7 +10,7 @@
       <div class="subtitle">{{ content.subtitles.language }}</div>
       <v-select v-model="settings.language.commands" :items="languages" :label="content.subtitles.commands" class="language"></v-select>
       <v-select v-model="settings.language.interface" :items="languages" :label="content.subtitles.interface" class="language"></v-select>
-      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
+      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
       <div class="result-text">{{ resultText }}</div>
@@ -23,7 +23,7 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/Cookies'
+import Cookies from '@/util/cookies'
 import config from "@/config.json";
 
 let cookies = Cookies.parse()
@@ -105,6 +105,9 @@ export default {
 }
 .language {
   width: 250px;
+}
+.save-icon {
+  margin-right: 5px;
 }
 .submit {
   margin: 10px 0 10px 0;

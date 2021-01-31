@@ -15,7 +15,7 @@
       <v-textarea counter="1500" :rules="rules.template" v-model="settings.jdm" filled :label="content.subtitles.template" style="margin-top: 5px" class="template"></v-textarea>
       <div class="subtitle">{{ content.subtitles.joinroles }}</div>
       <v-select v-model="settings.joinroles" multiple chips :items="roles" :label="content.subtitles.selectRoles" class="roles-select"></v-select>
-      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">{{ content.submit }}</v-btn>
+      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
       <div class="result-text">{{ resultText }}</div>
@@ -28,8 +28,8 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/Cookies'
-import ParseForSelect from "@/util/ParseForSelect";
+import Cookies from '@/util/cookies'
+import ParseForSelect from "@/util/parseForSelect";
 import config from "@/config.json";
 
 let cookies = Cookies.parse()
@@ -118,6 +118,9 @@ export default {
 }
 .channel-select {
   width: 250px;
+}
+.save-icon {
+  margin-right: 5px;
 }
 .submit {
   margin: 10px 0 10px 0;
