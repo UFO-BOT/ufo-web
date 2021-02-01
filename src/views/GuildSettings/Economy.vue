@@ -28,6 +28,54 @@
       <div class="subtitle">{{ content.subtitles.minbets }}</div>
       <v-text-field v-for="minbet of content.subtitles.minbetsList" :rules="rules.positiveInteger" v-model="settings.minbets[minbet.prop]" type="number" :label="minbet.name" class="number-input"></v-text-field>
       <br>
+      <div class="subtitle" style="margin-bottom: 5px">Магазин</div>
+      <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block" indeterminate></v-progress-circular>
+      <div class="items" v-if="!loadingItems">
+        <div v-for="item of items">
+          <div class="item">
+            <div class="item-name">{{ item.name }}</div>
+            <div>
+              <v-btn icon class="item-action"><v-icon class="item-action">settings</v-icon></v-btn>
+              <v-dialog v-model="deleteDialogs[item.name]" width="500px">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon class="item-action" v-bind="attrs" v-on="on"><v-icon color="red">delete</v-icon></v-btn>
+                </template>
+                <v-card>
+                  <v-card-title>Удалить товар</v-card-title>
+                  <v-card-text>
+                    Вы действительно хотите удалить товар <code>{{ item.name }}</code>? Это действие не может быть отменено
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="red" @click="deleteItem(item.name)" :loading="deleteLoading" text>Удалить</v-btn>
+                    <v-btn text @click="deleteDialogs[item.name] = false">Отмена</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </div>
+          </div>
+          <v-divider></v-divider>
+        </div>
+        <v-btn class="create-item-btn" color="primary" outlined>Создать товар</v-btn>
+      </div>
+      <!-- <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            Open Dialog
+          </v-btn>
+        </template>
+        <v-card> <v-toolbar dark color="primary">
+            <v-btn icon dark @click="dialog = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-toolbar-title>Settings</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-btn dark text @click="dialog = false">Save</v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+        </v-card>
+      </v-dialog> -->
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -55,6 +103,7 @@ export default {
   data: () => ({
     content,
     loading: true,
+    loadingItems: true,
     valid: true,
     settings: {
       work: {
@@ -82,6 +131,9 @@ export default {
         number => !(number % 1) || content.errors.invNumber
       ]
     },
+    items: [],
+    deleteDialogs: {},
+    deleteLoading: false,
     submitting: false,
     result: null,
     resultText: '',
@@ -96,6 +148,32 @@ export default {
         days: 86400000
       }
       return time * multipliers[unit]
+    },
+    async loadItems() {
+      this.loadingItems = true;
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items`, {
+        headers: {
+          Authorization: cookies.token
+        }
+      })
+      let body = await response.json()
+      if (!response.ok) return this.items = [];
+      this.items = body;
+      this.loadingItems = false;
+    },
+    async deleteItem(name) {
+      this.deleteLoading = true
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items/${encodeURIComponent(name)}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: cookies.token
+        }
+      })
+      this.deleteLoading = false;
+      if(response.ok) {
+        this.deleteDialogs[name] = false;
+        this.loadItems()
+      }
     },
     async submit() {
       this.submitting = true;
@@ -144,6 +222,7 @@ export default {
     this.settings.moneybags.cooldown = body.moneybags.cooldown / 1000
     this.settings.moneybags.cooldownUnit = 'seconds'
     this.loading = false;
+    this.loadItems()
   }
 }
 </script>
@@ -164,6 +243,24 @@ export default {
 .unit-select {
   width: 200px;
   display: inline-block;
+}
+.items {
+  background-color: #1e1e1e;
+  padding: 15px 15px 15px 20px;
+  width: 90%;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 8px;
+}
+.item-name {
+  font-size: 1.5em;
+}
+.create-item-btn {
+  margin-top: 12px;
 }
 .save-icon {
   margin-right: 5px;
