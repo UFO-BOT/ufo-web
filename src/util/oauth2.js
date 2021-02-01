@@ -19,7 +19,7 @@ export default {
             if(response.ok) {
                 Cookies.set('token', body.accessToken, 1e15)
                 Cookies.set('refreshToken', body.refreshToken, 1e15)
-                Cookies.set('tokenExpiresTimestamp', body.expiresTimestamp, 1e15)
+                Cookies.set('tokenExpiresTimestamp', Date.now() + body.expiresIn*1000, 1e15)
                 resolve(body)
             }
             else reject(body)
@@ -32,7 +32,7 @@ export default {
             if(response.ok) {
                 Cookies.set('token', body.accessToken, 1e15)
                 Cookies.set('refreshToken', body.refreshToken, 1e15)
-                Cookies.set('tokenExpiresTimestamp', body.expiresTimestamp, 1e15)
+                Cookies.set('tokenExpiresTimestamp', Date.now() + body.expiresIn*1000, 1e15)
                 resolve(body)
             }
             else reject(body)

@@ -384,6 +384,106 @@
       "close": "Close"
     }
   },
+  "GuildEconomy": {
+    "ru": {
+      "title": "Экономика",
+      "subtitles": {
+        "minbetsList": [
+          {"name": "Минное поле", "prop": "minefield"},
+          {"name": "Краш казино", "prop": "crash"},
+          {"name": "Джекпот", "prop": "jackpot"},
+          {"name": "КНБ", "prop": "rsp"},
+          {"name": "Дуэль", "prop": "duel"}
+        ],
+        "work": "Работа",
+        "salary": "Зарплата",
+        "cooldown": "Кулдаун",
+        "money": "Деньги",
+        "unit": "Единица измерения",
+        "minbets": "Минимальные ставки",
+        "commission": "Комиссия",
+        "percent": "Процент",
+        "from": "От",
+        "to": "До"
+      },
+      "errors": {
+        "invPosNumber": "Введите целое положительное число",
+        "invNumber": "Введите целое число",
+        "invCommission": "Комиссия должна быть целым числом, не меньшим 0 и не большим 100"
+      },
+      "units": [
+        {
+          "text": "Секунд",
+          "value": "seconds"
+        },
+        {
+          "text": "Минут",
+          "value": "minutes"
+        },
+        {
+          "text": "Часов",
+          "value": "hours"
+        },
+        {
+          "text": "Дней",
+          "value": "days"
+        }
+      ],
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Economy",
+      "subtitles": {
+        "minbetsList": [
+          {"name": "Minefield", "prop": "minefield"},
+          {"name": "Crash casino", "prop": "crash"},
+          {"name": "Jackpot", "prop": "jackpot"},
+          {"name": "RSP", "prop": "rsp"},
+          {"name": "Duel", "prop": "duel"}
+        ],
+        "work": "Work",
+        "salary": "Salary",
+        "cooldown": "Cooldown",
+        "money": "Money",
+        "unit": "Unit",
+        "minbets": "Minimal bets",
+        "commission": "Commission",
+        "percent": "Percent",
+        "from": "From",
+        "to": "To"
+      },
+      "errors": {
+        "invPosNumber": "Enter a positive integer",
+        "invNumber": "Enter an integer",
+        "invCommission": "Commission must be an integer not less than 0 and not more than 100"
+      },
+      "units": [
+        {
+          "text": "Seconds",
+          "value": "seconds"
+        },
+        {
+          "text": "Minutes",
+          "value": "minutes"
+        },
+        {
+          "text": "Hours",
+          "value": "hours"
+        },
+        {
+          "text": "Days",
+          "value": "days"
+        }
+      ],
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
   "GuildLogs": {
     "ru": {
       "title": "Логи",

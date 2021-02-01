@@ -61,14 +61,14 @@ export default {
     rules: {
       messagemoney: {
         chance: [
-          chance => (chance >= 0 && chance <= 5) || content.errors.invChance
+          chance => (chance >= 0 && chance <= 5 && !(chance % 1)) || content.errors.invChance
         ],
         amount: [
-          amount => (amount >= 0) || content.errors.invAmount
+          amount => (amount >= 0 && !(amount %  1)) || content.errors.invAmount
         ]
       },
       moneybonuses: [
-          moneybonus => moneybonus >= 0 || content.errors.invMoneyBonus
+          moneybonus => (moneybonus >= 0 && !(moneybonus % 1)) || content.errors.invMoneyBonus
       ],
       template: [
           template => template.length <= 1500 || content.errors.invLength
