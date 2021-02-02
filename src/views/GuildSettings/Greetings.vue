@@ -70,7 +70,7 @@ export default {
     roles() {
       let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
       if(!guild) return [];
-      return ParseForSelect.roles(guild.roles, false)
+      return ParseForSelect.roles(guild.roles, {none: false})
     }
   },
   methods: {

@@ -28,27 +28,27 @@
       <div class="subtitle">{{ content.subtitles.minbets }}</div>
       <v-text-field v-for="minbet of content.subtitles.minbetsList" :rules="rules.positiveInteger" v-model="settings.minbets[minbet.prop]" type="number" :label="minbet.name" class="number-input"></v-text-field>
       <br>
-      <div class="subtitle" style="margin-bottom: 5px">Магазин</div>
+      <div class="subtitle" style="margin-bottom: 5px">{{ content.subtitles.shop }}</div>
       <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block" indeterminate></v-progress-circular>
       <div class="items" v-if="!loadingItems">
-        <div v-for="item of items">
+        <div v-if="items.length <= 0">¯\_(ツ)_/¯</div>
+        <div v-else v-for="item of items">
           <div class="item">
-            <div class="item-name">{{ item.name }}</div>
+            <div class="item-name text-truncate">{{ item.name }}</div>
             <div>
-              <v-btn icon class="item-action"><v-icon class="item-action">settings</v-icon></v-btn>
+              <v-btn  icon class="item-action"><v-icon class="item-action">settings</v-icon></v-btn>
               <v-dialog v-model="deleteDialogs[item.name]" width="500px">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn icon class="item-action" v-bind="attrs" v-on="on"><v-icon color="red">delete</v-icon></v-btn>
                 </template>
                 <v-card>
-                  <v-card-title>Удалить товар</v-card-title>
-                  <v-card-text>
-                    Вы действительно хотите удалить товар <code>{{ item.name }}</code>? Это действие не может быть отменено
+                  <v-card-title>{{ content.subtitles.deleteItem }}</v-card-title>
+                  <v-card-text v-html="content.subtitles.deleteConfirm.replace('{{item}}', `<code>${item.name}</code>`)">
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="red" @click="deleteItem(item.name)" :loading="deleteLoading" text>Удалить</v-btn>
-                    <v-btn text @click="deleteDialogs[item.name] = false">Отмена</v-btn>
+                    <v-btn color="red" @click="deleteItem(item.name)" :loading="deleteLoading" text>{{ content.subtitles.delete }}</v-btn>
+                    <v-btn text @click="deleteDialogs[item.name] = false">{{ content.subtitles.cancel }}</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -56,26 +56,42 @@
           </div>
           <v-divider></v-divider>
         </div>
-        <v-btn class="create-item-btn" color="primary" outlined>Создать товар</v-btn>
-      </div>
-      <!-- <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            Open Dialog
-          </v-btn>
-        </template>
-        <v-card> <v-toolbar dark color="primary">
-            <v-btn icon dark @click="dialog = false">
+        <v-dialog v-model="createDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn class="create-item-btn" color="primary" v-if="items.length < 15" v-bind="attrs" v-on="on" outlined>{{ content.subtitles.createItem }}</v-btn>
+            <div v-else class="itemsLimit">{{ content.subtitles.itemsLimit }}</div>
+          </template>
+          <v-card>
+            <v-toolbar dark color="primary">
+            <v-btn icon dark @click="createDialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>Settings</v-toolbar-title>
+            <v-toolbar-title>{{ content.subtitles.createItem }}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-              <v-btn dark text @click="dialog = false">Save</v-btn>
+              <v-btn dark text :disabled="!createItemValid" :loading="createLoading" @click="createItem"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
             </v-toolbar-items>
           </v-toolbar>
-        </v-card>
-      </v-dialog> -->
+          <div class="item-settings">
+            <v-form ref="form" v-model="createItemValid">
+              <div class="subtitle">{{ content.subtitles.general }}</div>
+              <v-text-field v-model="createItemData.name" counter="50" :rules="rules.item.name" :label="content.subtitles.name" class="general-item-field"></v-text-field>
+              <v-textarea v-model="createItemData.description" counter="200" :rules="rules.item.description" :label="content.subtitles.description" class="general-item-field"></v-textarea>
+              <div class="subtitle">{{ content.subtitles.values }}</div>
+              <div class="item-flex">
+                <div><v-text-field v-model="createItemData.price" :rules="rules.positiveInteger" class="number-input" type="number" :label="content.subtitles.price"></v-text-field></div>
+                <div><v-text-field v-model="createItemData.xp" :rules="rules.positiveInteger" class="number-input" type="number" :label="content.subtitles.xp"></v-text-field></div>
+              </div>
+              <div class="subtitle">{{ content.subtitles.roles }}</div>
+              <div class="item-flex">
+                <div><v-select v-model="createItemData.addrole" :items="roles" :label="content.subtitles.addRole" class="role-select"></v-select></div>
+                <div><v-select v-model="createItemData.removerole" :items="roles" :label="content.subtitles.removeRole" class="role-select"></v-select></div>
+              </div>
+            </v-form>
+          </div>
+          </v-card>
+        </v-dialog>
+      </div>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -91,6 +107,7 @@
 import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from "@/config.json";
+import ParseForSelect from "@/util/parseForSelect";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildEconomy[cookies.language]
@@ -129,9 +146,29 @@ export default {
       ],
       integer: [
         number => !(number % 1) || content.errors.invNumber
-      ]
+      ],
+      item: {
+        name: [
+            name => (name.length > 0 && name.length <= 50) || content.errors.invItemName,
+            name => !name.includes(" ") || content.errors.itemNameSpaces
+        ],
+        description: [
+            description => (description.length <= 200) || content.errors.invItemDescription
+        ]
+      }
     },
     items: [],
+    createItemData: {
+      name: '',
+      description: '',
+      price: 0,
+      xp: 0,
+      addrole: 'none',
+      removerole: 'none'
+    },
+    createItemValid: true,
+    createLoading: false,
+    createDialog: false,
     deleteDialogs: {},
     deleteLoading: false,
     submitting: false,
@@ -139,6 +176,13 @@ export default {
     resultText: '',
     error: false
   }),
+  computed: {
+    roles() {
+      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      if(!guild) return [];
+      return ParseForSelect.roles(guild.roles, {none: true})
+    }
+  },
   methods: {
     getTime(time, unit) {
       let multipliers = {
@@ -160,6 +204,22 @@ export default {
       if (!response.ok) return this.items = [];
       this.items = body;
       this.loadingItems = false;
+    },
+    async createItem() {
+      this.createLoading = true;
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: cookies.token
+        },
+        body: JSON.stringify(this.createItemData)
+      })
+      this.createLoading = false;
+      if(response.ok) {
+        this.createDialog = false;
+        this.loadItems()
+      }
     },
     async deleteItem(name) {
       this.deleteLoading = true
@@ -261,6 +321,25 @@ export default {
 }
 .create-item-btn {
   margin-top: 12px;
+}
+.item-settings {
+  padding: 15px;
+}
+.general-item-field {
+  padding-top: 7px!important;
+}
+.item-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.role-select {
+  width: 180px;
+}
+.itemsLimit {
+  font-size: 1.1em;
+  color: grey;
 }
 .save-icon {
   margin-right: 5px;

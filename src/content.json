@@ -403,6 +403,22 @@
         "unit": "Единица измерения",
         "minbets": "Минимальные ставки",
         "commission": "Комиссия",
+        "shop": "Магазин",
+        "deleteItem": "Удалить товар",
+        "deleteConfirm": "Вы действительно хотите удалить товар {{item}}? Это действие не может быть отменено",
+        "delete": "Удалить",
+        "cancel": "Отмена",
+        "createItem": "Создать товар",
+        "general": "Основное",
+        "name": "Название",
+        "description": "Описание",
+        "values": "Значения",
+        "price": "Цена",
+        "xp": "Опыт",
+        "roles": "Роли",
+        "addRole": "Дать роль",
+        "removeRole": "Снять роль",
+        "itemsLimit": "Достигнут лимит товаров",
         "percent": "Процент",
         "from": "От",
         "to": "До"
@@ -410,7 +426,10 @@
       "errors": {
         "invPosNumber": "Введите целое положительное число",
         "invNumber": "Введите целое число",
-        "invCommission": "Комиссия должна быть целым числом, не меньшим 0 и не большим 100"
+        "invCommission": "Комиссия должна быть целым числом, не меньшим 0 и не большим 100",
+        "invItemName": "Товар должен иметь название, не длиннее 50 символов",
+        "itemNameSpaces": "Название товара не должно содержать пробелы",
+        "invItemDescription": "Описание товара не может быть длиннее 200 символов"
       },
       "units": [
         {
@@ -453,6 +472,22 @@
         "unit": "Unit",
         "minbets": "Minimal bets",
         "commission": "Commission",
+        "shop": "Shop",
+        "deleteItem": "Delete item",
+        "deleteConfirm": "Are you sure you want to delete item {{item}}? This action is irreversible",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "createItem": "Create item",
+        "general": "General",
+        "name": "Name",
+        "description": "Description",
+        "values": "Values",
+        "price": "Price",
+        "xp": "XP",
+        "roles": "Roles",
+        "addRole": "Add role",
+        "removeRole": "Remove role",
+        "itemsLimit": "Items limit reached",
         "percent": "Percent",
         "from": "From",
         "to": "To"
@@ -460,7 +495,10 @@
       "errors": {
         "invPosNumber": "Enter a positive integer",
         "invNumber": "Enter an integer",
-        "invCommission": "Commission must be an integer not less than 0 and not more than 100"
+        "invCommission": "Commission must be an integer not less than 0 and not more than 100",
+        "invItemName": "Item must have a name not longer than 50 characters",
+        "itemNameSpaces": "Item name may not contain spaces",
+        "invItemDescription": "Description may not be longer than 200 characters"
       },
       "units": [
         {
