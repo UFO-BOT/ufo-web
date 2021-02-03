@@ -45,6 +45,11 @@
         "component": "GuildSettings/Economy.vue"
       },
       {
+        "path": "moderation",
+        "name": "GuildModeration",
+        "component": "GuildSettings/Moderation.vue"
+      },
+      {
         "path": "logs",
         "name": "GuildLogs",
         "component": "GuildSettings/Logs.vue"

@@ -300,8 +300,6 @@ export default {
       this.items = body;
       this.items.forEach((item, i) => {
         this.items[i].newName = item.name
-        if(!item.addrole) this.items[i].addrole = 'none'
-        if(!item.removerole) this.items[i].removerole = 'none'
       })
       this.loadingItems = false;
     },

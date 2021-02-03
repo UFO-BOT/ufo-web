@@ -5,16 +5,9 @@
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
-      <div class="subtitle">{{ content.subtitles.jm }}</div>
-      <v-select v-model="settings.jmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
-      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.jmchan === 'none'" v-model="settings.jm" filled :label="content.subtitles.template" class="template"></v-textarea>
-      <div class="subtitle">{{ content.subtitles.lm }}</div>
-      <v-select v-model="settings.lmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
-      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.lmchan === 'none'" v-model="settings.lm" filled :label="content.subtitles.template" class="template"></v-textarea>
-      <div class="subtitle">{{ content.subtitles.jdm }}</div>
-      <v-textarea counter="1500" :rules="rules.template" v-model="settings.jdm" filled :label="content.subtitles.template" style="margin-top: 5px" class="template"></v-textarea>
-      <div class="subtitle">{{ content.subtitles.joinroles }}</div>
-      <v-select v-model="settings.joinroles" multiple chips :items="roles" :label="content.subtitles.selectRoles" class="roles-select"></v-select>
+      <div class="subtitle">{{ content.subtitles.muterole }}</div>
+      <v-select v-model="settings.muterole" :items="roles" :label="content.subtitles.selectRole" class="role-select"></v-select>
+      <div class="subtitle">{{ content.subtitles.modroles }}</div>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -29,14 +22,14 @@
 <script>
 import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
-import ParseForSelect from "@/util/parseForSelect";
 import config from "@/config.json";
+import ParseForSelect from "@/util/parseForSelect";
 
 let cookies = Cookies.parse()
-let content = WebContent.GuildGreetings[cookies.language]
+let content = WebContent.GuildModeration[cookies.language]
 
 export default {
-  name: 'Greetings',
+  name: 'General',
   metaInfo: {
     title: content.title
   },
@@ -44,17 +37,10 @@ export default {
     content,
     loading: true,
     valid: true,
+    languages: [{text: content.ru, value: 'ru'}, {text: content.en, value: 'en'}],
     settings: {
-      jmchan: 'none',
-      jm: '',
-      lmchan: 'none',
-      lm: '',
-      jdm: ''
     },
     rules: {
-      template: [
-          template => template.length <= 1500 || content.errors.invLength
-      ]
     },
     submitting: false,
     result: null,
@@ -62,30 +48,20 @@ export default {
     error: false
   }),
   computed: {
-    channels() {
-      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
-      if(!guild) return [];
-      return ParseForSelect.channels(guild.channels)
-    },
     roles() {
       let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
       if(!guild) return [];
-      return ParseForSelect.roles(guild.roles, {none: false})
+      return ParseForSelect.roles(guild.roles, {none: !this.settings.muterole})
     }
   },
   methods: {
     async submit() {
       this.submitting = true;
-      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/greetings`, {method: 'POST', headers: {
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/moderation`, {method: 'POST', headers: {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-          jmchan: this.settings.jm.trim().length ? this.settings.jmchan : null,
-          jm: this.settings.jm,
-          lmchan: this.settings.lm.trim().length ? this.settings.lmchan : null,
-          lm: this.settings.lm,
-          jdm: this.settings.jdm,
-          joinroles: this.settings.joinroles
+          muterole: this.settings.muterole
         })})
       if(response.ok) {
         this.error = false;
@@ -116,8 +92,8 @@ export default {
 .subtitle {
   font-size: 1.2em;
 }
-.channel-select {
-  width: 250px;
+.role-select {
+  width: 220px;
 }
 .save-icon {
   margin-right: 5px;
@@ -128,11 +104,5 @@ export default {
 }
 .result-text {
   font-size: 1.4em;
-}
-.template {
-  width: 90%;
-}
-.roles-select {
-  width: 90%;
 }
 </style>

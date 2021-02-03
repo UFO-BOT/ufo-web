@@ -408,7 +408,7 @@
         "deleteConfirm": "Вы действительно хотите удалить товар {{item}}? Это действие не может быть отменено",
         "delete": "Удалить",
         "cancel": "Отмена",
-        "createItem": "Создать",
+        "createItem": "Создать товар",
         "general": "Основное",
         "name": "Название",
         "description": "Описание",
@@ -477,7 +477,7 @@
         "deleteConfirm": "Are you sure you want to delete item {{item}}? This action is irreversible",
         "delete": "Delete",
         "cancel": "Cancel",
-        "createItem": "Create",
+        "createItem": "Create item",
         "general": "General",
         "name": "Name",
         "description": "Description",
@@ -524,6 +524,40 @@
       "close": "Close"
     }
   },
+  "GuildModeration": {
+    "ru": {
+      "title": "Модерация",
+      "subtitles": {
+        "muterole": "Роль мута",
+        "selectRole": "Выбрать роль",
+        "modroles": "Модераторские роли"
+      },
+      "errors": {
+      },
+      "ru": "Русский",
+      "en": "Английский",
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Moderation",
+      "subtitles": {
+        "muterole": "Mute role",
+        "selectRole": "Select role",
+        "modroles": "Moderator roles"
+      },
+      "errors": {
+      },
+      "ru": "Russian",
+      "en": "English",
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
   "GuildLogs": {
     "ru": {
       "title": "Логи",
@@ -561,7 +595,7 @@
         "jdm": "Приветствие в ЛС",
         "channel": "Канал",
         "template": "Шаблон сообщения",
-        "selectRoles": "Выберите роли",
+        "selectRoles": "Выбрать роли",
         "joinroles": "Роли при входе"
       },
       "errors": {

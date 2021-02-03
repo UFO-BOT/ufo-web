@@ -2,7 +2,7 @@ export default {
     channels(channels, {none = true, checkMemberManageable = true, checkBotManageable = true} = {}) {
         let newChannels = []
         if(none) newChannels.push({
-            value: 'none',
+            value: null,
             text: '-'
         })
         channels.forEach(channel => {
@@ -25,7 +25,7 @@ export default {
             })
         })
         if(none) newRoles.push({
-            value: 'none',
+            value: null,
             text: '-'
         })
         return newRoles
