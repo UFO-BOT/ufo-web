@@ -342,6 +342,46 @@
       "show": "Show"
     }
   },
+  "form": {
+    "ru": {
+      "application": {
+        "title": "Заявка",
+        "name": "Заявка на роль Support"
+      },
+      "appeal": {
+        "title": "Апелляция",
+        "name": "Апелляция бана"
+      },
+      "errors": {
+        "alreadySubmitted": "Вы уже отправили эту заявку",
+        "recruitmentClosed": "Набор закрыт",
+        "memberNotFound": "Вы не являетесь участником сервера поддержки",
+        "notBanned": "Вы не забанены на сервере поддержки",
+        "invAnswers": "Ответы должны быть длиной от 1 до 500 символов"
+      },
+      "answer": "Ответ",
+      "submit": "Отправить"
+    },
+    "en": {
+      "application": {
+        "title": "Application",
+        "name": "Application for role Support"
+      },
+      "appeal": {
+        "title": "Appeal",
+        "name": "Ban appeal"
+      },
+      "errors": {
+        "alreadySubmitted": "You have already submitted this form",
+        "recruitmentClosed": "Recruitment is closed",
+        "memberNotFound": "You are not a member of support server",
+        "notBanned": "You are not banned on support server",
+        "invAnswers": "Answers must be between 1 and 500 characters long"
+      },
+      "answer": "Answer",
+      "submit": "Submit"
+    }
+  },
   "GuildGeneral": {
     "ru": {
       "title": "Основное",
@@ -408,6 +448,7 @@
         "deleteConfirm": "Вы действительно хотите удалить товар {{item}}? Это действие не может быть отменено",
         "delete": "Удалить",
         "cancel": "Отмена",
+        "create": "Создать",
         "createItem": "Создать товар",
         "general": "Основное",
         "name": "Название",
@@ -477,6 +518,7 @@
         "deleteConfirm": "Are you sure you want to delete item {{item}}? This action is irreversible",
         "delete": "Delete",
         "cancel": "Cancel",
+        "create": "Create",
         "createItem": "Create item",
         "general": "General",
         "name": "Name",

@@ -4,7 +4,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="create-item-btn" color="primary" v-if="!limit" v-bind="attrs" v-on="on" outlined>
           <v-icon medium class="save-icon">add</v-icon>
-          {{ content.subtitles.createItem }}
+          {{ content.subtitles.create }}
         </v-btn>
         <div v-else class="itemsLimit">{{ content.subtitles.itemsLimit }}</div>
       </template>

@@ -2,7 +2,7 @@
   <div>
     <v-dialog v-model="item.deleteDialog" width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn icon  v-bind="attrs" v-on="on">
+        <v-btn icon v-bind="attrs" v-on="on">
           <v-icon color="red">delete</v-icon>
         </v-btn>
       </template>
@@ -32,7 +32,7 @@ let cookies = Cookies.parse()
 let content = WebContent.GuildEconomy[cookies.language]
 
 export default {
-  name: "EditItem",
+  name: "DeleteItem",
   props: ['item'],
   data: () => ({
     content,

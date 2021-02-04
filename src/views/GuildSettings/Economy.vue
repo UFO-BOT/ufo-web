@@ -77,7 +77,6 @@
 import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from "@/config.json";
-import ParseForSelect from "@/util/parseForSelect";
 
 import CreateItem from "@/components/items/CreateItem";
 import EditItem from "@/components/items/EditItem";
@@ -247,34 +246,6 @@ export default {
 
 .item-name {
   font-size: 1.5em;
-}
-
-.create-item-btn {
-  margin-top: 12px;
-}
-
-.item-settings {
-  padding: 15px;
-}
-
-.general-item-field {
-  padding-top: 7px !important;
-}
-
-.item-flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.role-select {
-  width: 180px;
-}
-
-.itemsLimit {
-  font-size: 1.1em;
-  color: grey;
 }
 
 .save-icon {

@@ -25,6 +25,16 @@
     "component": "Landing.vue"
   },
   {
+    "path": "/support/application",
+    "name": "Form",
+    "component": "Form.vue"
+  },
+  {
+    "path": "/support/appeal",
+    "name": "Form",
+    "component": "Form.vue"
+  },
+  {
     "path": "/@me",
     "name": "Me",
     "component": "Me.vue"
