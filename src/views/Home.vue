@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: -webkit-center">
     <div class="name"><b>UFO</b></div>
-    <img alt="UFO Logo" src="../assets/logo.png" class="icon">
+    <v-img src="../assets/logo.png" max-width="500px" max-height="500px" class="icon"></v-img>
     <div class="description">{{ content.descriptions[Math.floor(Math.random() * content.descriptions.length)] }}</div>
     <v-btn x-large color="info" class="invite" @click="invite">{{ content.invite }}</v-btn>
   </div>
@@ -46,7 +46,6 @@ export default {
   font-size: 1.5em;
 }
 .icon {
-  max-width: 100%;
-  max-height: 50%;
+  margin: 10px;
 }
 </style>

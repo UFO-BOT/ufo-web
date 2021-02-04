@@ -1,5 +1,6 @@
 import Oauth2 from "@/util/oauth2";
 import Cookies from "@/util/cookies";
+import config from '@/config.json'
 import UserAvatar from "@/util/userAvatar";
 
 export default {
@@ -13,10 +14,15 @@ export default {
                     })
                     token = response.accessToken;
                 }
-                if (cookies.token) {
-                    Oauth2.getUser(token).then(user => {
+                if (token) {
+                    Oauth2.getUser(token).then(async user => {
                         user.tag = user.username + '#' + user.discriminator
                         user.avatarURL = UserAvatar(user)
+                        let responseBadges = await fetch(`${config.API}/private/badges`, {headers: {
+                            Authorization: token
+                        }})
+                        let badges = await responseBadges.json()
+                        if(responseBadges.ok) user.badges = badges
                         ctx.commit('updateUser', user)
                         resolve(user)
                     }).catch(err => reject(err))

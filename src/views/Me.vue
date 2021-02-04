@@ -4,7 +4,7 @@
       <v-progress-circular v-if="!user.username" :size="100" :width="7" color="white"
                            indeterminate></v-progress-circular>
       <div v-if="user.username">
-        <img :src="user.avatarURL" class="user-avatar" alt="">
+        <v-img :src="user.avatarURL" max-width="200px" max-height="200px" style="border-radius: 50%"></v-img>
         <div class="user-tag"><span class="username">{{ user.username }}</span><span
             class="discriminator">#{{ user.discriminator }}</span></div>
         <v-btn @click="logout" class="logout" color="error" outlined large><v-icon class="logout-icon" medium>logout</v-icon> {{ content.logout }}</v-btn>
@@ -109,10 +109,8 @@ export default {
   color: white;
 }
 
-.user-avatar {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.user-badges {
+  margin-bottom: 5px;
 }
 
 .logout {

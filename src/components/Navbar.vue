@@ -14,7 +14,7 @@
         <v-btn text @click="mobileNav = false" to="/@me" v-if="user.username"><v-avatar><img :src="user.avatarURL" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-list flat v-if="mobileNav" style="margin-top: 5px; margin-bottom: 10px">
+    <v-list v-if="mobileNav" style="margin-top: 5px; margin-bottom: 10px">
       <v-list-item-group color="primary">
         <v-list-item v-for="link of links" @click="mobileNav = false" :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">{{ link.name }}</v-list-item>
       </v-list-item-group>
