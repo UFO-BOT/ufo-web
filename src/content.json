@@ -332,14 +332,32 @@
       "invite": "Пригласить",
       "settings": "Настройки",
       "leaders": "Лидеры",
-      "show": "Показывать"
+      "show": "Показывать",
+      "badges": {
+        "developer": "Разработчик",
+        "moderator": "Модератор",
+        "support": "Поддержка",
+        "tester": "Тестер",
+        "donator": "Донатор",
+        "premium_donator": "Премиум донатор",
+        "bughunter": "Охотник за багами"
+      }
     },
     "en": {
       "logout": "LOG OUT",
       "invite": "Invite",
       "settings": "Settings",
       "leaders": "Leaders",
-      "show": "Show"
+      "show": "Show",
+      "badges": {
+        "developer": "Developer",
+        "moderator": "Moderator",
+        "support": "Support",
+        "tester": "Tester",
+        "donator": "Donator",
+        "premium_donator": "Premium donator",
+        "bughunter": "Bug hunter"
+      }
     }
   },
   "form": {

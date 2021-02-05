@@ -26,12 +26,12 @@
   },
   {
     "path": "/support/application",
-    "name": "Form",
+    "name": "Application",
     "component": "Form.vue"
   },
   {
     "path": "/support/appeal",
-    "name": "Form",
+    "name": "Appeal",
     "component": "Form.vue"
   },
   {

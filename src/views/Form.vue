@@ -14,7 +14,10 @@
             <v-textarea v-model="answers[i]" class="answer" :label="content.answer" :rules="rules.answer" counter="500" filled></v-textarea>
           </div>
         </div>
-        <v-btn color="secondary" large class="submit" :loading="submitting" :disabled="!valid" @click="submit">{{ content.submit }}</v-btn>
+        <v-btn color="secondary" large class="submit" :loading="submitting" :disabled="!valid" @click="submit">
+          <v-icon medium class="save-icon">mail</v-icon>
+          {{ content.submit }}
+        </v-btn>
       </div>
     </v-form>
   </div>
@@ -116,6 +119,10 @@ export default {
 .answer {
   width: 90%;
   margin-top: 5px!important;
+}
+
+.save-icon {
+  margin-right: 5px;
 }
 
 .submit {

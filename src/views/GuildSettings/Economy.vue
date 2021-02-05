@@ -48,8 +48,8 @@
           <div class="item">
             <div class="item-name text-truncate">{{ item.name }}</div>
             <div>
-              <EditItem :item="item" @edited="loadItems"></EditItem>
-              <DeleteItem :item="item" @deleted="loadItems"></DeleteItem>
+              <EditItem :item="item" @edited="loadItems" class="item-action"></EditItem>
+              <DeleteItem :item="item" @deleted="loadItems" class="item-action"></DeleteItem>
             </div>
           </div>
           <v-divider></v-divider>
@@ -246,6 +246,10 @@ export default {
 
 .item-name {
   font-size: 1.5em;
+}
+
+.item-action {
+  display: inline;
 }
 
 .save-icon {

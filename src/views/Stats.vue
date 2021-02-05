@@ -81,7 +81,12 @@ export default {
   data: () => ({
     content,
     loading: true,
-    stats: {},
+    stats: {
+      stats: {},
+      ping: {},
+      shards: []
+    },
+    shards: [],
     shardsHeaders: [
       {
         text: '#',
@@ -92,23 +97,9 @@ export default {
       {text: content.servers, value: 'guilds'},
       {text: content.users, value: 'users'},
       {text: content.ping, value: 'ping'}],
-    shards: []
   }),
-  async mounted() {
-    let stats = await fetch(`${config.API}/public/stats`)
-    this.stats = await stats.json()
-    this.shards = [];
-    this.stats.shards.forEach(shard => {
-      this.shards.push({
-        id: shard.id,
-        ready: shard.ready,
-        guilds: shard.guilds,
-        users: shard.users,
-        ping: shard.ping + ' ms'
-      })
-    })
-    this.loading = false;
-    setInterval(async () => {
+  methods: {
+    async loadStats() {
       let stats = await fetch(`${config.API}/public/stats`)
       this.stats = await stats.json()
       this.shards = [];
@@ -121,7 +112,12 @@ export default {
           ping: shard.ping + ' ms'
         })
       })
-    }, 30000)
+    }
+  },
+  async mounted() {
+    await this.loadStats()
+    this.loading = false;
+    setInterval(this.loadStats, 5000)
   }
 }
 </script>

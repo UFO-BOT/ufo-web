@@ -7,6 +7,14 @@
         <v-img :lazy-src="user.avatarURL" :src="user.avatarURL" max-width="200px" max-height="200px" style="border-radius: 50%"></v-img>
         <div class="user-tag"><span class="username">{{ user.username }}</span><span
             class="discriminator">#{{ user.discriminator }}</span></div>
+        <div>
+          <v-tooltip top v-for="badge in badges" color="black">
+            <template v-slot:activator="{ on, attrs }">
+              <img :src="require(`@/assets/badges/${badge}.png`)" class="user-badge" v-bind="attrs" v-on="on" alt="">
+            </template>
+            <span>{{ content.badges[badge] }}</span>
+          </v-tooltip>
+        </div>
         <v-btn @click="logout" class="logout" color="error" outlined large><v-icon class="logout-icon" medium>logout</v-icon> {{ content.logout }}</v-btn>
         <br>
         <div class="guilds">
@@ -63,6 +71,9 @@ export default {
     user() {
       document.title = this.$store.getters.user.username ? this.$store.getters.user.username : ''
       return this.$store.getters.user
+    },
+    badges() {
+      return this.$store.getters.badges
     }
   },
   methods: {
@@ -77,6 +88,7 @@ export default {
     }
   },
   async mounted() {
+    await this.$store.dispatch('getUserBadges').catch(() => {})
     let response = await fetch(`${config.API}/private/guilds`, {
       headers: {
         Authorization: cookies.token
@@ -109,8 +121,11 @@ export default {
   color: white;
 }
 
-.user-badges {
-  margin-bottom: 5px;
+.user-badge {
+  width: 40px;
+  height: 40px;
+  margin-right: 3px;
+  cursor: pointer;
 }
 
 .logout {
