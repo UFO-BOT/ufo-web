@@ -33,7 +33,7 @@
       <br>
       <div class="subtitle">{{ content.subtitles.commission }}</div>
       <v-text-field :rules="rules.commission" v-model="settings.commission" type="number"
-                    :label="content.subtitles.percent" prefix="%" class="number-input"></v-text-field>
+                    :label="content.subtitles.percent" suffix="%" class="number-input"></v-text-field>
       <div class="subtitle">{{ content.subtitles.minbets }}</div>
       <v-text-field v-for="minbet of content.subtitles.minbetsList" :rules="rules.positiveInteger"
                     v-model="settings.minbets[minbet.prop]" type="number" :label="minbet.name"

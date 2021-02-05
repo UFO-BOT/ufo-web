@@ -40,6 +40,11 @@
     "component": "Me.vue"
   },
   {
+    "path": "/leaderboard/:id",
+    "name": "Leaderboard",
+    "component": "Leaderboard.vue"
+  },
+  {
     "path": "/server/:id",
     "name": "GuildSettings",
     "component": "GuildSettings.vue",

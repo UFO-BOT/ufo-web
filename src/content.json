@@ -294,20 +294,22 @@
       "close": "Close"
     }
   },
-  "invite": {
+  "leaderboard": {
     "ru": {
-      "title": "Пригласить",
-      "name": "Пригласить UFO",
-      "noPerms": "Без прав",
-      "neededPerms": "Нужные права",
-      "allPerms": "Все права"
+      "title": "Лидеры",
+      "loading": "Загрузка...",
+      "user": "Пользователь",
+      "sort": "Сортировка",
+      "balance": "Баланс",
+      "xp": "Опыт"
     },
     "en": {
-      "title": "Invite",
-      "name": "Invite UFO",
-      "noPerms": "No perms",
-      "neededPerms": "Needed perms",
-      "allPerms": "All perms"
+      "title": "Leaderboard",
+      "loading": "Loading...",
+      "user": "User",
+      "sort": "Sort",
+      "balance": "Balance",
+      "xp": "XP"
     }
   },
   "landing": {

@@ -6,7 +6,7 @@
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
       <div class="subtitle">{{ content.subtitles.messageMoney }}</div>
-      <v-text-field v-model="settings.messagemoney.chance" type="number" :rules="rules.messagemoney.chance" :label="content.subtitles.chance" prefix="%" class="number-input"></v-text-field>
+      <v-text-field v-model="settings.messagemoney.chance" type="number" :rules="rules.messagemoney.chance" :label="content.subtitles.chance" suffix="%" class="number-input"></v-text-field>
       <v-text-field v-model="settings.messagemoney.amount" type="number" :rules="rules.messagemoney.amount"  :label="content.subtitles.amount" class="number-input"></v-text-field>
       <div class="subtitle">{{ content.subtitles.moneyBonuses }}</div>
       <v-text-field v-model="settings.moneybonuses.daily" type="number" :rules="rules.moneybonuses" :label="content.subtitles.dailyBonus" class="number-input"></v-text-field>
