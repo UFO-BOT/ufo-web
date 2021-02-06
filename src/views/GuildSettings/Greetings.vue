@@ -7,14 +7,14 @@
     <v-form ref="form" v-model="valid" v-if="!loading">
       <div class="subtitle">{{ content.subtitles.jm }}</div>
       <v-select v-model="settings.jmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
-      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.jmchan === 'none'" v-model="settings.jm" filled :label="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.jmchan === null" v-model="settings.jm" filled :label="content.subtitles.template" class="template"></v-textarea>
       <div class="subtitle">{{ content.subtitles.lm }}</div>
       <v-select v-model="settings.lmchan" :items="channels" :label="content.subtitles.channel" class="channel-select"></v-select>
-      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.lmchan === 'none'" v-model="settings.lm" filled :label="content.subtitles.template" class="template"></v-textarea>
+      <v-textarea counter="1500" :rules="rules.template" :disabled="settings.lmchan === null" v-model="settings.lm" filled :label="content.subtitles.template" class="template"></v-textarea>
       <div class="subtitle">{{ content.subtitles.jdm }}</div>
       <v-textarea counter="1500" :rules="rules.template" v-model="settings.jdm" filled :label="content.subtitles.template" style="margin-top: 5px" class="template"></v-textarea>
       <div class="subtitle">{{ content.subtitles.joinroles }}</div>
-      <v-select v-model="settings.joinroles" multiple chips :items="roles" :label="content.subtitles.selectRoles" class="roles-select"></v-select>
+      <v-select v-model="settings.joinroles" multiple chips deletable-chips :items="roles" :label="content.subtitles.selectRoles" class="roles-select"></v-select>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">

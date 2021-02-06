@@ -34,8 +34,9 @@
       <div class="subtitle">{{ content.subtitles.commission }}</div>
       <v-text-field :rules="rules.commission" v-model="settings.commission" type="number"
                     :label="content.subtitles.percent" suffix="%" class="number-input"></v-text-field>
+      <v-checkbox class="checkbox" v-model="settings.duelCommission" :label="content.subtitles.duelCommission"></v-checkbox>
       <div class="subtitle">{{ content.subtitles.minbets }}</div>
-      <v-text-field v-for="minbet of content.subtitles.minbetsList" :rules="rules.positiveInteger"
+      <v-text-field v-for="(minbet, i) of content.subtitles.minbetsList" :key="i" :rules="rules.positiveInteger"
                     v-model="settings.minbets[minbet.prop]" type="number" :label="minbet.name"
                     class="number-input"></v-text-field>
       <br>
@@ -43,7 +44,10 @@
       <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block"
                            indeterminate></v-progress-circular>
       <div class="items" v-if="!loadingItems">
-        <div v-if="items.length <= 0">¯\_(ツ)_/¯</div>
+        <div v-if="items.length <= 0">
+          <div style="margin-bottom: 5px;font-size: 1.1em">¯\_(ツ)_/¯</div>
+          <v-divider></v-divider>
+        </div>
         <div v-else v-for="item of items">
           <div class="item">
             <div class="item-name text-truncate">{{ item.name }}</div>
@@ -113,7 +117,8 @@ export default {
         cooldown: 0,
         cooldownUnit: 'seconds'
       },
-      commission: 0
+      commission: 0,
+      duelCommission: false
     },
     rules: {
       commission: [
@@ -175,6 +180,7 @@ export default {
             cooldown: this.getTime(this.settings.moneybags.cooldown, this.settings.moneybags.cooldownUnit)
           },
           commission: this.settings.commission,
+          duelCommission: this.settings.duelCommission,
           minbets: this.settings.minbets
         })
       })
@@ -228,6 +234,12 @@ export default {
 .unit-select {
   width: 200px;
   display: inline-block;
+}
+
+.checkbox {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
 }
 
 .items {

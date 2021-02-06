@@ -23,7 +23,7 @@
     </tr>
     <tr v-if="!loading" v-for="leader in leaders">
       <td>{{ leader.number }}</td>
-      <td><v-avatar width="40px" height="40px" class="mr-3"><img :src="leader.user.avatar" alt=""></v-avatar>{{ leader.user.tag }}</td>
+      <td><v-avatar width="40px" height="40px" class="mr-3"><img :src="leader.user.avatar" alt=""></v-avatar><span>{{ leader.user.tag }}</span></td>
       <td>{{ leader[sortBy] === null ? 'Infinity' : leader[sortBy] }}</td>
     </tr>
     </tbody>
