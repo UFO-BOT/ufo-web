@@ -1,7 +1,7 @@
 <template>
   <v-app id="app">
     <Navbar></Navbar>
-    <router-view></router-view>
+    <router-view/>
   </v-app>
 </template>
 
@@ -33,6 +33,11 @@ code {
   background-color: #171b1d !important;
   border-radius: .2rem!important;
 }
+
+.fit-content {
+  width: fit-content;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

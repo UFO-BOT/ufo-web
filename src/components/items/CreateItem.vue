@@ -27,7 +27,7 @@
             <div class="subtitle">{{ content.subtitles.general }}</div>
             <v-text-field v-model="createItemData.name" counter="50" :rules="rules.name"
                           :label="content.subtitles.name" class="general-item-field"></v-text-field>
-            <v-textarea v-model="createItemData.description" counter="200" :rules="rules.description"
+            <v-textarea v-model="createItemData.description" filled counter="200" :rules="rules.description"
                         :label="content.subtitles.description" class="general-item-field"></v-textarea>
             <div class="subtitle">{{ content.subtitles.values }}</div>
             <div class="item-flex">

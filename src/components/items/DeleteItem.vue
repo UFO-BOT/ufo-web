@@ -13,7 +13,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="red" @click="deleteItem(item)" :loading="loading" text>
+          <v-btn color="red" @click="deleteItem" :loading="loading" text>
             {{ content.subtitles.delete }}
           </v-btn>
           <v-btn text :disabled="loading" @click="item.deleteDialog = false">{{ content.subtitles.cancel }}</v-btn>
@@ -37,11 +37,11 @@ export default {
   data: () => ({
     content,
     loading: false,
-    dialog: false,
-    valid: true
+    dialog: false
   }),
   methods: {
-    async deleteItem(item) {
+    async deleteItem() {
+      let item = this.item;
       this.loading = true
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items/${encodeURIComponent(item.name)}`, {
         method: 'DELETE',

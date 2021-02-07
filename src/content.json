@@ -461,6 +461,12 @@
         "cooldown": "Кулдаун",
         "money": "Деньги",
         "unit": "Единица измерения",
+        "units": [
+          {"text": "Секунд", "value": "seconds"},
+          {"text": "Минут", "value": "minutes"},
+          {"text": "Часов", "value": "hours"},
+          {"text": "Дней", "value": "days"}
+        ],
         "minbets": "Минимальные ставки",
         "commission": "Комиссия",
         "duelCommission": "Действует на дуэль",
@@ -493,24 +499,6 @@
         "itemNameSpaces": "Название товара не должно содержать пробелы",
         "invItemDescription": "Описание товара не может быть длиннее 200 символов"
       },
-      "units": [
-        {
-          "text": "Секунд",
-          "value": "seconds"
-        },
-        {
-          "text": "Минут",
-          "value": "minutes"
-        },
-        {
-          "text": "Часов",
-          "value": "hours"
-        },
-        {
-          "text": "Дней",
-          "value": "days"
-        }
-      ],
       "submit": "Сохранить",
       "submitted": "Сохранено!",
       "error": "Ошибка",
@@ -532,6 +520,12 @@
         "cooldown": "Cooldown",
         "money": "Money",
         "unit": "Unit",
+        "units": [
+          {"text": "Seconds", "value": "seconds"},
+          {"text": "Minutes", "value": "minutes"},
+          {"text": "Hours", "value": "hours"},
+          {"text": "Days", "value": "days"}
+        ],
         "minbets": "Minimal bets",
         "commission": "Commission",
         "duelCommission": "Applies to duel",
@@ -564,24 +558,6 @@
         "itemNameSpaces": "Item name may not contain spaces",
         "invItemDescription": "Description may not be longer than 200 characters"
       },
-      "units": [
-        {
-          "text": "Seconds",
-          "value": "seconds"
-        },
-        {
-          "text": "Minutes",
-          "value": "minutes"
-        },
-        {
-          "text": "Hours",
-          "value": "hours"
-        },
-        {
-          "text": "Days",
-          "value": "days"
-        }
-      ],
       "submit": "Submit",
       "submitted": "Submitted!",
       "error": "Error",
@@ -594,7 +570,37 @@
       "subtitles": {
         "muterole": "Роль мута",
         "selectRole": "Выбрать роль",
-        "modroles": "Модераторские роли"
+        "modroles": "Модераторские роли",
+        "automoderation": "Автомодерация",
+        "automods": {
+          "invites": "Приглашения",
+          "dicks": "Хуи"
+        },
+        "general": "Основное",
+        "enabled": "Включен",
+        "punishment": "Наказание",
+        "reason": "Причина",
+        "duration": "Длительность",
+        "unit": "Единица",
+        "whitelist": "Белый список",
+        "roles": "Роли",
+        "channels": "Каналы",
+        "rest": "Остальное",
+        "allowedServers": "Разрешенные сервера (ID серверов)",
+        "units": [
+          {"text": "Секунд", "value": "seconds"},
+          {"text": "Минут", "value": "minutes"},
+          {"text": "Часов", "value": "hours"},
+          {"text": "Дней", "value": "days"}
+        ],
+        "punishments": {
+          "warn": "Пред",
+          "kick": "Кик",
+          "mute": "Мут",
+          "softban": "Софтбан",
+          "ban": "Бан",
+          "tempban": "Врембан"
+        }
       },
       "errors": {
       },
@@ -610,7 +616,36 @@
       "subtitles": {
         "muterole": "Mute role",
         "selectRole": "Select role",
-        "modroles": "Moderator roles"
+        "modroles": "Moderator roles",
+        "automoderation": "Automoderation",
+        "automods": {
+          "invites": "Invites"
+        },
+        "general": "General",
+        "enabled": "Enabled",
+        "punishment": "Punishment",
+        "reason": "Reason",
+        "duration": "Duration",
+        "unit": "Unit",
+        "whitelist": "Whitelist",
+        "roles": "Roles",
+        "channels": "Channels",
+        "rest": "Rest",
+        "allowedServers": "Allowed servers (Servers IDs)",
+        "units": [
+          {"text": "Seconds", "value": "seconds"},
+          {"text": "Minutes", "value": "minutes"},
+          {"text": "Hours", "value": "hours"},
+          {"text": "Days", "value": "days"}
+        ],
+        "punishments": {
+          "warn": "Warn",
+          "kick": "Kick",
+          "mute": "Mute",
+          "softban": "Softban",
+          "ban": "Ban",
+          "tempban": "Tempban"
+        }
       },
       "errors": {
       },

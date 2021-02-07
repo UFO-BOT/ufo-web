@@ -15,7 +15,7 @@
       <div class="subsubtitle">{{ content.subtitles.cooldown }}</div>
       <v-text-field v-model="settings.work.cooldown" type="number" :label="content.subtitles.cooldown"
                     class="number-input"></v-text-field>
-      <v-select v-model="settings.work.cooldownUnit" :items="content.units" :label="content.subtitles.unit"
+      <v-select v-model="settings.work.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
                 class="unit-select"></v-select>
       <br>
       <div class="subtitle">{{ content.subtitles.moneybags }}</div>
@@ -28,27 +28,27 @@
       <div class="subsubtitle">{{ content.subtitles.cooldown }}</div>
       <v-text-field v-model="settings.moneybags.cooldown" type="number" :label="content.subtitles.cooldown"
                     class="number-input"></v-text-field>
-      <v-select v-model="settings.moneybags.cooldownUnit" :items="content.units" :label="content.subtitles.unit"
+      <v-select v-model="settings.moneybags.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
                 class="unit-select"></v-select>
       <br>
       <div class="subtitle">{{ content.subtitles.commission }}</div>
       <v-text-field :rules="rules.commission" v-model="settings.commission" type="number"
                     :label="content.subtitles.percent" suffix="%" class="number-input"></v-text-field>
-      <v-checkbox class="checkbox" v-model="settings.duelCommission" :label="content.subtitles.duelCommission"></v-checkbox>
+      <v-checkbox class="ma-0 pa-0 fit-content" v-model="settings.duelCommission" :label="content.subtitles.duelCommission"></v-checkbox>
       <div class="subtitle">{{ content.subtitles.minbets }}</div>
       <v-text-field v-for="(minbet, i) of content.subtitles.minbetsList" :key="i" :rules="rules.positiveInteger"
                     v-model="settings.minbets[minbet.prop]" type="number" :label="minbet.name"
                     class="number-input"></v-text-field>
       <br>
-      <div class="subtitle" style="margin-bottom: 5px">{{ content.subtitles.shop }}</div>
-      <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block"
-                           indeterminate></v-progress-circular>
-      <div class="items" v-if="!loadingItems">
-        <div v-if="items.length <= 0">
+      <div class="subtitle">{{ content.subtitles.shop }}</div>
+      <div class="items">
+        <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block"
+                             indeterminate></v-progress-circular>
+        <div v-if="items.length <= 0 && !loadingItems">
           <div style="margin-bottom: 5px;font-size: 1.1em">¯\_(ツ)_/¯</div>
           <v-divider></v-divider>
         </div>
-        <div v-else v-for="item of items">
+        <div v-if="items.length && !loadingItems" v-for="item of items">
           <div class="item">
             <div class="item-name text-truncate">{{ item.name }}</div>
             <div>
@@ -226,26 +226,23 @@ export default {
 }
 
 .number-input {
-  width: 100px;
+  width: 120px;
   display: inline-block;
   margin-right: 20px;
 }
 
 .unit-select {
-  width: 200px;
+  width: 120px;
   display: inline-block;
-}
-
-.checkbox {
-  width: fit-content;
-  margin: 0;
-  padding: 0;
 }
 
 .items {
   background-color: #1e1e1e;
   padding: 15px 15px 15px 20px;
   width: 90%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #343434;
+  margin-top: 5px;
 }
 
 .item {

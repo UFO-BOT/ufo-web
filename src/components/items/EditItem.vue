@@ -14,18 +14,18 @@
           <v-toolbar-title>{{ item.name }}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark text :disabled="!item.valid" :loading="loading" @click="editItem(item)">
+            <v-btn dark text :disabled="!valid" :loading="loading" @click="editItem">
               <v-icon medium class="save-icon">save</v-icon>
               {{ content.submit }}
             </v-btn>
           </v-toolbar-items>
         </v-toolbar>
         <div class="item-settings">
-          <v-form ref="form" v-model="item.valid">
+          <v-form ref="form" v-model="valid">
             <div class="subtitle">{{ content.subtitles.general }}</div>
             <v-text-field v-model="item.newName" counter="50" :rules="rules.name"
                           :label="content.subtitles.name" class="general-item-field"></v-text-field>
-            <v-textarea v-model="item.description" counter="200" :rules="rules.description"
+            <v-textarea v-model="item.description" counter="200" filled :rules="rules.description"
                         :label="content.subtitles.description" class="general-item-field"></v-textarea>
             <div class="subtitle">{{ content.subtitles.values }}</div>
             <div class="item-flex">
@@ -92,7 +92,8 @@ export default {
     }
   },
   methods: {
-    async editItem(item) {
+    async editItem() {
+      let item = this.item;
       this.loading = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items/${encodeURIComponent(item.name)}`, {
         method: 'PATCH',
