@@ -111,11 +111,11 @@ export default {
         },
         body: JSON.stringify(this.createItemData)
       })
-      this.loading = false;
       if (response.ok) {
         this.dialog = false;
         this.$emit('created')
       }
+      this.loading = false;
     }
   }
 }

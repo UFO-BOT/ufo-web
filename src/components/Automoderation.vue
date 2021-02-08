@@ -8,7 +8,7 @@
       </template>
       <v-card>
         <v-toolbar dark color="primary">
-          <v-btn icon dark @click="dialog = false">
+          <v-btn icon dark :disabled="loading" @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>{{ name }}</v-toolbar-title>
@@ -31,12 +31,13 @@
             <div v-if="automod.punishment.type && punishments.find(p => p.value === automod.punishment.type).duration">
               <div class="subtitle">{{ content.subtitles.duration }}</div>
               <v-text-field v-model="automod.punishment.duration" :disabled="!automod.enabled" type="number"
-                            :rules="punishments.find(p => p.value === automod.punishment.type).durationRequired ? rules.duration : null"
+                            :rules="punishments.find(p => p.value === automod.punishment.type).durationRequired ? rules.duration : []"
                             :label="content.subtitles.duration"
                             :hint="!punishments.find(p => p.value === automod.punishment.type).durationRequired ? content.subtitles.infinityDuration : null"
                             class="number-input mt-0"></v-text-field>
               <v-select v-model="automod.punishment.durationUnit" :disabled="!automod.enabled"
                         :items="content.subtitles.units" :label="content.subtitles.unit"
+                        @change="$refs.form.validate()"
                         class="unit-select mt-0"></v-select>
             </div>
             <div class="subtitle">{{ content.subtitles.whitelist }}</div>
@@ -149,8 +150,8 @@ export default {
           whitelistGuilds: this.automod.whitelistGuilds
         })
       })
-      this.loading = false;
       if (response.ok) this.dialog = false;
+      this.loading = false;
     }
   },
   mounted() {

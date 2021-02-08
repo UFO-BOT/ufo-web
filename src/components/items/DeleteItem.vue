@@ -49,11 +49,11 @@ export default {
           Authorization: cookies.token
         }
       })
-      this.loading = false;
       if (response.ok) {
         this.dialog = false;
         this.$emit('deleted')
       }
+      this.loading = false;
     }
   }
 }

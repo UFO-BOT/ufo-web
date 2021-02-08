@@ -8,7 +8,7 @@
       </template>
       <v-card>
         <v-toolbar dark color="secondary">
-          <v-btn icon dark @click="dialog = false">
+          <v-btn icon dark :disabled="loading" @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>{{ item.name }}</v-toolbar-title>
@@ -110,11 +110,11 @@ export default {
           removerole: item.removerole
         })
       })
-      this.loading = false;
       if(response.ok) {
         this.dialog = false;
         this.$emit('edited')
       }
+      this.loading = false;
     }
   },
   mounted() {
