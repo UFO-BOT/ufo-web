@@ -571,16 +571,27 @@
         "muterole": "Роль мута",
         "selectRole": "Выбрать роль",
         "modroles": "Модераторские роли",
+        "selectRoles": "Выбрать роли",
+        "permissions": "Права",
+        "permissionsList": {
+          "warn": "Пред",
+          "mute": "Мут",
+          "kick": "Кик",
+          "softban": "Софтбан",
+          "ban": "Бан",
+          "unmute": "Размут",
+          "unban": "Разбан"
+        },
         "automoderation": "Автомодерация",
         "automods": {
-          "invites": "Приглашения",
-          "dicks": "Хуи"
+          "invites": "Приглашения"
         },
         "general": "Основное",
         "enabled": "Включен",
         "punishment": "Наказание",
         "reason": "Причина",
         "duration": "Длительность",
+        "infinityDuration": "Для бесконечного наказания введите 0",
         "unit": "Единица",
         "whitelist": "Белый список",
         "roles": "Роли",
@@ -603,6 +614,9 @@
         }
       },
       "errors": {
+        "reasonLength": "Причина не должна быть длиннее 512 символов",
+        "invalidDuration": "Длительность должна быть целым положительным числом",
+        "tooLongDuration": "Слишком большая длительность наказания"
       },
       "ru": "Русский",
       "en": "Английский",
@@ -617,6 +631,17 @@
         "muterole": "Mute role",
         "selectRole": "Select role",
         "modroles": "Moderator roles",
+        "selectRoles": "Select roles",
+        "permissions": "Permissions",
+        "permissionsList": {
+          "warn": "Warn",
+          "mute": "Mute",
+          "kick": "Kick",
+          "softban": "Softban",
+          "ban": "Ban",
+          "unmute": "Unmute",
+          "unban": "Unban"
+        },
         "automoderation": "Automoderation",
         "automods": {
           "invites": "Invites"
@@ -626,6 +651,7 @@
         "punishment": "Punishment",
         "reason": "Reason",
         "duration": "Duration",
+        "infinityDuration": "For infinity punishment enter 0",
         "unit": "Unit",
         "whitelist": "Whitelist",
         "roles": "Roles",
@@ -648,6 +674,9 @@
         }
       },
       "errors": {
+        "reasonLength": "Reason cannot be longer than 512 characters",
+        "invalidDuration": "Duration must be a positive integer",
+        "tooLongDuration": "Punishment duration is too long"
       },
       "ru": "Russian",
       "en": "English",

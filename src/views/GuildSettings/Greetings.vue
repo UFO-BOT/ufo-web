@@ -45,9 +45,9 @@ export default {
     loading: true,
     valid: true,
     settings: {
-      jmchan: 'none',
+      jmchan: null,
       jm: '',
-      lmchan: 'none',
+      lmchan: null,
       lm: '',
       jdm: ''
     },

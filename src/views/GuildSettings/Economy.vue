@@ -13,7 +13,7 @@
                     :label="content.subtitles.to" class="number-input"></v-text-field>
       <br>
       <div class="subsubtitle">{{ content.subtitles.cooldown }}</div>
-      <v-text-field v-model="settings.work.cooldown" type="number" :label="content.subtitles.cooldown"
+      <v-text-field v-model="settings.work.cooldown" type="number" :label="content.subtitles.cooldown" :rules="rules.positiveInteger"
                     class="number-input"></v-text-field>
       <v-select v-model="settings.work.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
                 class="unit-select"></v-select>
@@ -26,7 +26,7 @@
                     class="number-input"></v-text-field>
       <br>
       <div class="subsubtitle">{{ content.subtitles.cooldown }}</div>
-      <v-text-field v-model="settings.moneybags.cooldown" type="number" :label="content.subtitles.cooldown"
+      <v-text-field v-model="settings.moneybags.cooldown" type="number" :label="content.subtitles.cooldown" :rules="rules.positiveInteger"
                     class="number-input"></v-text-field>
       <v-select v-model="settings.moneybags.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
                 class="unit-select"></v-select>

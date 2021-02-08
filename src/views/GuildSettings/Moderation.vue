@@ -7,13 +7,46 @@
     <v-form ref="form" v-model="valid" v-if="!loading">
       <div class="subtitle">{{ content.subtitles.muterole }}</div>
       <v-select v-model="settings.muterole" :items="roles" :label="content.subtitles.selectRole" class="role-select"></v-select>
+      <div class="subtitle">{{ content.subtitles.modroles }}</div>
+      <v-select v-model="modroles" :items="rolesForModroles" multiple chips deletable-chips :label="content.subtitles.selectRoles" class="roles-select"></v-select>
+      <div class="settings-list">
+        <div v-if="modroles.length <= 0">
+          <div style="font-size: 1.1em">¯\_(ツ)_/¯</div>
+        </div>
+        <div v-for="(modrole, i) of modroles">
+          <div class="settings-list-item" v-if="roles.find(r => r.value === modrole)">
+            <div class="settings-list-item-name text-truncate" :style="{color: rawRoles.find(r => r.id === modrole).color}">{{ rawRoles.find(r => r.id === modrole).name  }}</div>
+            <div>
+              <v-dialog v-model="modrolesDialogs[modrole]" width="500px">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon>settings</v-icon>
+                  </v-btn>
+                </template>
+                <v-card>
+                  <v-card-title class="settings-list-item-name text-truncate" :style="{color: rawRoles.find(r => r.id === modrole).color}">{{ rawRoles.find(r => r.id === modrole).name  }}</v-card-title>
+                  <v-card-text>
+                    <v-select v-model="settings.modroles[modrole]" :items="permissions" :label="content.subtitles.permissions" multiple chips deletable-chips></v-select>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn text :disabled="loading" @click="modrolesDialogs[modrole] = false">OK</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </div>
+          </div>
+          <v-divider v-if="modroles.length - 1 > i"></v-divider>
+        </div>
+      </div>
+      <br>
       <div class="subtitle">{{ content.subtitles.automoderation }}</div>
-      <div class="automods">
+      <div class="settings-list">
         <v-progress-circular v-if="loadingAutomods" :size="40" :width="4" color="white" style="display: block"
                              indeterminate></v-progress-circular>
         <div v-if="!loadingAutomods" v-for="(name, automod, i) of content.subtitles.automods">
-          <div class="automod">
-            <div class="automod-name text-truncate">{{ name }}</div>
+          <div class="settings-list-item">
+            <div class="settings-list-item-name text-truncate">{{ name }}</div>
             <div>
               <Automoderation :automod="automods.find(a => a.type === automod) || defaultAutomod" :type="automod" :name="name"></Automoderation>
             </div>
@@ -55,8 +88,21 @@ export default {
     valid: true,
     loadingAutomods: true,
     settings: {
+      muterole: null,
+      modroles: {}
     },
+    modroles: [],
+    modrolesDialogs: {},
     automods: [],
+    permissions: [
+      {text: content.subtitles.permissionsList.warn, value: "warn"},
+      {text: content.subtitles.permissionsList.mute, value: "mute"},
+      {text: content.subtitles.permissionsList.kick, value: "kick"},
+      {text: content.subtitles.permissionsList.softban, value: "softban"},
+      {text: content.subtitles.permissionsList.ban, value: "ban"},
+      {text: content.subtitles.permissionsList.unmute, value: "unmute"},
+      {text: content.subtitles.permissionsList.unban, value: "unban"},
+    ],
     defaultAutomod: {
       enabled: false,
       punishment: {
@@ -75,6 +121,16 @@ export default {
     error: false
   }),
   computed: {
+    rawRoles() {
+      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      if(!guild) return [];
+      return guild.roles
+    },
+    rolesForModroles() {
+      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      if(!guild) return [];
+      return ParseForSelect.roles(guild.roles, {checkBotManageable: false})
+    },
     roles() {
       let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
       if(!guild) return [];
@@ -93,11 +149,16 @@ export default {
     },
     async submit() {
       this.submitting = true;
+      let modroles = {};
+      this.modroles.forEach(modrole => {
+        modroles[modrole] = this.settings.modroles[modrole];
+      })
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/moderation`, {method: 'POST', headers: {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-          muterole: this.settings.muterole
+          muterole: this.settings.muterole,
+          modroles: modroles
         })})
       if(response.ok) {
         this.error = false;
@@ -119,6 +180,7 @@ export default {
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');
     this.settings = body;
+    this.modroles = Object.keys(this.settings.modroles)
     this.loading = false;
     this.loadAutomods()
   }
@@ -134,7 +196,11 @@ export default {
   width: 220px;
 }
 
-.automods {
+.roles-select {
+  width: 90%;
+}
+
+.settings-list {
   background-color: #1e1e1e;
   padding: 15px 15px 15px 20px;
   width: 90%;
@@ -143,7 +209,7 @@ export default {
   margin-top: 5px;
 }
 
-.automod {
+.settings-list-item {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -151,7 +217,7 @@ export default {
   margin: 8px;
 }
 
-.automod-name {
+.settings-list-item-name {
   font-size: 1.5em;
 }
 
