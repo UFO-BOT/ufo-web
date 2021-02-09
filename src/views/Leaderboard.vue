@@ -31,7 +31,7 @@
   <div class="leaderboard-menu">
     <v-pagination v-model="page" :length="pageCount" :total-visible="windowWidth >= 600 ? 3 : 0" :disabled="loading" @input="loadLeaderboard"></v-pagination>
     <div>
-      <v-select v-model="sortBy" :items="sortValues" :label="content.sort" @input="loadLeaderboard" class="sort-select"></v-select>
+      <v-select v-model="sortBy" :items="sortValues" :disabled="loading" :label="content.sort" @input="loadLeaderboard" class="sort-select"></v-select>
     </div>
   </div>
   </div>
