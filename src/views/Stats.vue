@@ -55,7 +55,7 @@
                   :headers="shardsHeaders"
                   :items="shards"
                   :items-per-page=5
-                  class="elevation-1"
+                  class="shards-table elevation-1"
                   sort-by="id">
       <template v-slot:item.ready="{ item }">
         <div v-if="item.ready" class="status-circle status-circle-green"></div>
@@ -124,7 +124,7 @@ export default {
 
 <style scoped>
 .header {
-  margin: 7px 0 12px 0;
+  margin: 7px 0 0 0;
   font-size: 2.5em;
 }
 
@@ -143,7 +143,7 @@ export default {
   border-radius: 4px;
   width: 230px;
   word-break: break-all;
-  box-shadow: 0 0 15px #363636;
+  box-shadow: 0 0 12px #262626;
 }
 
 .value {
@@ -155,6 +155,12 @@ export default {
   font-size: 1.5em;
   opacity: 0.7;
 }
+
+.shards-table {
+  width: 90%;
+  border-radius: 20px;
+}
+
 .status-circle {
   width: 32px;
   height: 32px;

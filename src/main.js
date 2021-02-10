@@ -13,7 +13,7 @@ if (!cookies.language && navigator.language === 'ru-RU') {
   window.location.reload()
 }
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 Vue.use(VueMeta)
 Vue.use(Vuex)

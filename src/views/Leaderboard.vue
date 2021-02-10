@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: -webkit-center">
   <div class="name text-truncate">{{ guildName }}</div>
-  <v-simple-table>
+  <v-simple-table class="leaderboard-table">
     <thead>
     <tr>
       <th>
@@ -29,7 +29,7 @@
     </tbody>
   </v-simple-table>
   <div class="leaderboard-menu">
-    <v-pagination v-model="page" :length="pageCount" :total-visible="windowWidth >= 600 ? 3 : 0" :disabled="loading" @input="loadLeaderboard"></v-pagination>
+    <v-pagination v-model="page" :length="pageCount" :total-visible="windowWidth >= 600 ? 5 : 0" :disabled="loading" @input="loadLeaderboard"></v-pagination>
     <div>
       <v-select v-model="sortBy" :items="sortValues" :disabled="loading" :label="content.sort" @input="loadLeaderboard" class="sort-select"></v-select>
     </div>
@@ -96,13 +96,18 @@ export default {
   max-width: 80%;
 }
 
+.leaderboard-table {
+  width: 95%;
+  border-radius: 20px;
+}
+
 .leaderboard-menu {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 10px;
-  width: 96%;
+  width: 90%;
 }
 
 .sort-select {
