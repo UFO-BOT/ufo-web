@@ -14,14 +14,26 @@ export default {
                     })
                     token = response.accessToken;
                 }
-                if (token) {
-                    Oauth2.getUser(token).then(async user => {
-                        user.tag = user.username + '#' + user.discriminator
-                        user.avatarURL = UserAvatar(user)
-                        ctx.commit('updateUser', user)
-                        resolve(user)
-                    }).catch(err => reject(err))
-                }
+                if (!token) return;
+                Oauth2.getUser(token).then(async user => {
+                    user.tag = user.username + '#' + user.discriminator
+                    user.avatarURL = UserAvatar(user)
+                    ctx.commit('updateUser', user)
+                    resolve(user)
+                }).catch(async () => {
+                    let refreshToken = cookies.refreshToken;
+                    if(!refreshToken) return;
+                    let response = await Oauth2.refreshToken(cookies.refreshToken).catch(() => {
+                    })
+                    if(response) {
+                        token = response.accessToken;
+                        let newUser = await Oauth2.getUser(token).catch(() => {})
+                        newUser.tag = newUser.username + '#' + newUser.discriminator
+                        newUser.avatarURL = UserAvatar(newUser)
+                        window.location.reload()
+                    }
+                    else resolve()
+                })
             })
         },
         async getUserBadges(ctx) {
@@ -29,10 +41,13 @@ export default {
                 let user = ctx.getters.user;
                 let cookies = Cookies.parse()
                 let token = cookies.token;
-                let responseBadges = await fetch(`${config.API}/private/badges`, {headers: {
+                let responseBadges = await fetch(`${config.API}/private/badges`, {
+                    headers: {
                         Authorization: token
-                    }})
+                    }
+                })
                 let badges = await responseBadges.json()
+                if(!responseBadges.ok) badges = [];
                 ctx.commit('updateBadges', badges)
                 resolve(badges)
             })
