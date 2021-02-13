@@ -4,61 +4,73 @@
       "list": [
         {
           "name": "Главная",
-          "path": "/"
+          "path": "/",
+          "icon": "home"
         },
         {
           "name": "Команды",
-          "path": "/commands"
+          "path": "/commands",
+          "icon": "list"
         },
         {
           "name": "Статистика",
-          "path": "/stats"
+          "path": "/stats",
+          "icon": "poll"
         },
         {
           "name": "Донат",
-          "path": "/donate"
+          "path": "/donate",
+          "icon": "volunteer_activism"
         },
         {
           "name": "Поддержка",
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
-          "blank": true
+          "blank": true,
+          "icon": "group"
         }
       ],
       "login": {
         "name": "Войти",
         "path": "/public/auth",
-        "right": true
+        "right": true,
+        "icon": "login"
       }
     },
     "en": {
       "list": [
         {
           "name": "Home",
-          "path": "/"
+          "path": "/",
+          "icon": "home"
         },
         {
           "name": "Commands",
-          "path": "/commands"
+          "path": "/commands",
+          "icon": "list"
         },
         {
           "name": "Stats",
-          "path": "/stats"
+          "path": "/stats",
+          "icon": "poll"
         },
         {
           "name": "Donate",
-          "path": "/donate"
+          "path": "/donate",
+          "icon": "monetization_on"
         },
         {
           "name": "Support",
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
-          "blank": true
+          "blank": true,
+          "icon": "group"
         }
       ],
       "login": {
         "name": "Log in",
-        "path": "/login"
+        "path": "/login",
+        "icon": "login"
       }
     }
   },
@@ -78,7 +90,7 @@
         {
           "name": "Модерация",
           "path": "moderation",
-          "icon": "shield"
+          "icon": "security"
         },
         {
           "name": "Логи",
@@ -113,7 +125,7 @@
         {
           "name": "Moderation",
           "path": "moderation",
-          "icon": "shield"
+          "icon": "security"
         },
         {
           "name": "Logs",
