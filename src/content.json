@@ -340,6 +340,66 @@
       "settings": "Settings"
     }
   },
+  "developer": {
+    "ru": {
+      "title": "Панель разработчика",
+      "subtitles": {
+        "eval": "Выполнить",
+        "input": "Ввод",
+        "output": "Вывод",
+        "shell": "В терминале",
+        "noAwait": "Не ожидать",
+        "doneIn": "Выполнено за",
+        "type": "Тип",
+        "reload": "Перезагрузить",
+        "scopes": "Области",
+        "gitpull": "Гит применить",
+        "reloadScopes": [
+          {"text": "Команды", "value": "commands"},
+          {"text": "Команды разраба", "value": "devcommands"},
+          {"text": "События", "value": "events"},
+          {"text": "Проперти", "value": "properties"},
+          {"text": "Утилиты", "value": "util"},
+          {"text": "Маршруты", "value": "routes"},
+          {"text": "Модерация", "value": "moderation"},
+          {"text": "Эмодзи", "value": "emojis"},
+          {"text": "Переменные", "value": "variables"}
+        ]
+      },
+      "reloaded": "Перезагружено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Developer panel",
+      "subtitles": {
+        "eval": "Evaluate",
+        "input": "Input",
+        "output": "Output",
+        "shell": "In shell",
+        "noAwait": "No await",
+        "doneIn": "Done in",
+        "type": "Type",
+        "reload": "Reload",
+        "scopes": "Scopes",
+        "gitpull": "Git pull",
+        "reloadScopes": [
+          {"text": "Commands", "value": "commands"},
+          {"text": "Dev commands", "value": "devcommands"},
+          {"text": "Events", "value": "events"},
+          {"text": "Props", "value": "properties"},
+          {"text": "Util", "value": "util"},
+          {"text": "Routes", "value": "routes"},
+          {"text": "Moderation", "value": "moderation"},
+          {"text": "Emojis", "value": "emojis"},
+          {"text": "Variables", "value": "variables"}
+        ]
+      },
+      "reloaded": "Reloaded!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
   "me": {
     "ru": {
       "logout": "ВЫЙТИ",

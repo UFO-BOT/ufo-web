@@ -25,6 +25,11 @@
     "component": "Landing.vue"
   },
   {
+    "path": "/developer",
+    "name": "Developer",
+    "component": "Developer.vue"
+  },
+  {
     "path": "/support/application",
     "name": "Application",
     "component": "Form.vue"
