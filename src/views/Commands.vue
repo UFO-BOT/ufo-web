@@ -7,7 +7,7 @@
           v-for="(category, i) of categories"
           :key="i"
       >
-        <v-expansion-panel-header class="category" ripple v-if="commands.find(c => c.category.en === category)">{{emojis[i]}} {{commands.find(c => c.category.en === category).category[language]}}</v-expansion-panel-header>
+        <v-expansion-panel-header class="category" ripple v-if="commands.find(c => c.category.en === category)"><span><v-icon x-large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span></v-expansion-panel-header>
         <v-expansion-panel-content>
           <div class="command" v-for="cmd of commands.filter(c => c.category.en === category)">
             <div>{{cmd.name[language]}}</div>
@@ -69,7 +69,7 @@ export default {
     commands: [],
     dialogs: {},
     categories: ['General', 'Economy', 'Games', 'Utilities', 'Moderation', 'Settings'],
-    emojis: ['🔰', '💰', '📱', '🔧', '🔨', '⚙'],
+    icons: ['public', 'attach_money', 'phone_iphone', 'build', 'security', 'settings'],
     ParsePerms
   }),
   async mounted() {
