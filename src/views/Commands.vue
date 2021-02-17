@@ -24,9 +24,9 @@
                   <div class="info-title">{{ content.description }}</div>
                   <div v-html="cmd.description[language]"></div>
                   <div class="info-title">{{ content.usage }}</div>
-                  <div v-html="'<code>' + cmd.usage[language].replace(/</gmi, '&lt;').replace(/>/gmi, '&gt;') + '</code>'"></div>
+                  <div><code>{{ cmd.usage[language] }}</code></div>
                   <div class="info-title">{{ content.aliases }}</div>
-                  <div v-html="cmd.aliases[language].map(a => '<code>' + a + '</code>').join(' ')"></div>
+                  <div><v-chip v-for="a in cmd.aliases[language]" ripple color="secondary" class="alias cmd-chip">{{ a }}</v-chip></div>
                   <div v-if="cmd.permissions.length">
                     <div class="info-title">{{ content.permissions }}</div>
                     <div v-html="ParsePerms(cmd.permissions, language).join(', ')"></div>
@@ -117,5 +117,11 @@ export default {
   margin-top: 7px;
   margin-bottom: 5px;
   font-size: 1em;
+}
+.cmd-chip {
+  font-size: 0.7em!important;
+}
+.alias {
+  margin-right: 5px;
 }
 </style>

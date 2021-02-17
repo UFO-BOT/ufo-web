@@ -20,14 +20,14 @@
             </v-btn>
           </v-toolbar-items>
         </v-toolbar>
-        <div class="item-settings">
+        <div class="automod-settings">
           <v-form ref="form" v-model="valid">
             <div class="subtitle">{{ content.subtitles.general }}</div>
             <v-switch v-model="automod.enabled" class="fit-content mt-1" :label="content.subtitles.enabled"></v-switch>
             <v-select v-model="automod.punishment.type" :items="punishments" :disabled="!automod.enabled"
                       :label="content.subtitles.punishment" class="punishment-select"></v-select>
             <v-textarea v-model="automod.punishment.reason" filled :disabled="!automod.enabled" counter="512"
-                        :rules="rules.reason" :label="content.subtitles.reason" class="general-automod-field pa-0"></v-textarea>
+                        :rules="rules.reason" :label="content.subtitles.reason" class="pa-0"></v-textarea>
             <div v-if="automod.punishment.type && punishments.find(p => p.value === automod.punishment.type).duration">
               <div class="subtitle">{{ content.subtitles.duration }}</div>
               <v-text-field v-model="automod.punishment.duration" :disabled="!automod.enabled" type="number"
@@ -193,7 +193,7 @@ export default {
   justify-content: space-between;
 }
 
-.item-settings {
+.automod-settings {
   padding: 15px;
 }
 

@@ -65,6 +65,11 @@
         "component": "GuildSettings/Economy.vue"
       },
       {
+        "path": "commands",
+        "name": "GuildCommands",
+        "component": "GuildSettings/Commands.vue"
+      },
+      {
         "path": "moderation",
         "name": "GuildModeration",
         "component": "GuildSettings/Moderation.vue"
