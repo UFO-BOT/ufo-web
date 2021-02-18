@@ -12,11 +12,14 @@
         >
           <v-expansion-panel-header class="category" ripple v-if="commands.find(c => c.category.en === category)"><span><v-icon large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span></v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div class="command" v-for="cmd of commands.filter(c => c.category.en === category)">
-              <div>{{settings.prefix + cmd.name[settings.language.commands]}}</div>
-              <div>
-                <Command :command="settings.prefix + cmd.name[settings.language.commands]" :name="cmd.name.en" :settings="settings.commands[cmd.name.en] || defaultCommand"></Command>
+            <div v-for="(cmd, i) of commands.filter(c => c.category.en === category)">
+              <div class="command">
+                <div class="cmd-name">{{settings.prefix + cmd.name[settings.language.commands]}}</div>
+                <div style="float: right">
+                  <Command :command="settings.prefix + cmd.name[settings.language.commands]" :name="cmd.name.en" :settings="settings.commands[cmd.name.en] || defaultCommand"></Command>
+                </div>
               </div>
+              <v-divider v-if="i < commands.filter(c => c.category.en === category).length-1"></v-divider>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -95,7 +98,11 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   font-size: 1.2em;
-  margin-top: 10px;
+  margin-top: 8px;
+  margin-bottom: 5px;
   word-break: break-all;
+}
+.cmd-name {
+  font-size: 1.1em;
 }
 </style>
