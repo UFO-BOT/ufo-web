@@ -27,11 +27,11 @@ img {
   -ms-user-select: none;
 }
 code {
-  padding: .2rem .4rem!important;
+  padding: .3rem .5rem!important;
   font-size: .875em!important;
-  color: #fff!important;
-  background-color: #171b1d !important;
-  border-radius: .2rem!important;
+  color: #c62f7a !important;
+  background-color: #0e1011 !important;
+  border-radius: .25rem!important;
 }
 
 .fit-content {
