@@ -812,296 +812,296 @@
       "submitted": "Submitted!",
       "error": "Error",
       "close": "Close"
-    },
-    "GuildModeration": {
-      "ru": {
-        "title": "Модерация",
-        "subtitles": {
-          "muterole": "Роль мута",
-          "selectRole": "Выбрать роль",
-          "modroles": "Модераторские роли",
-          "selectRoles": "Выбрать роли",
-          "permissions": "Права",
-          "permissionsList": {
-            "warn": "Пред",
-            "mute": "Мут",
-            "kick": "Кик",
-            "softban": "Софтбан",
-            "ban": "Бан",
-            "unmute": "Размут",
-            "unban": "Разбан"
+    }
+  },
+  "GuildModeration": {
+    "ru": {
+      "title": "Модерация",
+      "subtitles": {
+        "muterole": "Роль мута",
+        "selectRole": "Выбрать роль",
+        "modroles": "Модераторские роли",
+        "selectRoles": "Выбрать роли",
+        "permissions": "Права",
+        "permissionsList": {
+          "warn": "Пред",
+          "mute": "Мут",
+          "kick": "Кик",
+          "softban": "Софтбан",
+          "ban": "Бан",
+          "unmute": "Размут",
+          "unban": "Разбан"
+        },
+        "automoderation": "Автомодерация",
+        "automods": {
+          "invites": "Приглашения"
+        },
+        "general": "Основное",
+        "enabled": "Включен",
+        "punishment": "Наказание",
+        "reason": "Причина",
+        "duration": "Длительность",
+        "infinityDuration": "Для бесконечного наказания введите 0",
+        "unit": "Единица",
+        "whitelist": "Белый список",
+        "roles": "Роли",
+        "channels": "Каналы",
+        "rest": "Остальное",
+        "allowedServers": "Разрешенные сервера (ID серверов)",
+        "units": [
+          {
+            "text": "Секунд",
+            "value": "seconds"
           },
-          "automoderation": "Автомодерация",
-          "automods": {
-            "invites": "Приглашения"
+          {
+            "text": "Минут",
+            "value": "minutes"
           },
-          "general": "Основное",
-          "enabled": "Включен",
-          "punishment": "Наказание",
-          "reason": "Причина",
-          "duration": "Длительность",
-          "infinityDuration": "Для бесконечного наказания введите 0",
-          "unit": "Единица",
-          "whitelist": "Белый список",
-          "roles": "Роли",
-          "channels": "Каналы",
-          "rest": "Остальное",
-          "allowedServers": "Разрешенные сервера (ID серверов)",
-          "units": [
-            {
-              "text": "Секунд",
-              "value": "seconds"
-            },
-            {
-              "text": "Минут",
-              "value": "minutes"
-            },
-            {
-              "text": "Часов",
-              "value": "hours"
-            },
-            {
-              "text": "Дней",
-              "value": "days"
-            }
-          ],
-          "punishments": {
-            "warn": "Пред",
-            "kick": "Кик",
-            "mute": "Мут",
-            "softban": "Софтбан",
-            "ban": "Бан",
-            "tempban": "Врембан"
+          {
+            "text": "Часов",
+            "value": "hours"
+          },
+          {
+            "text": "Дней",
+            "value": "days"
           }
-        },
-        "errors": {
-          "reasonLength": "Причина не должна быть длиннее 512 символов",
-          "invalidDuration": "Длительность должна быть целым положительным числом",
-          "tooLongDuration": "Слишком большая длительность наказания"
-        },
-        "ru": "Русский",
-        "en": "Английский",
-        "submit": "Сохранить",
-        "submitted": "Сохранено!",
-        "error": "Ошибка",
-        "close": "Закрыть"
+        ],
+        "punishments": {
+          "warn": "Пред",
+          "kick": "Кик",
+          "mute": "Мут",
+          "softban": "Софтбан",
+          "ban": "Бан",
+          "tempban": "Врембан"
+        }
       },
-      "en": {
-        "title": "Moderation",
-        "subtitles": {
-          "muterole": "Mute role",
-          "selectRole": "Select role",
-          "modroles": "Moderator roles",
-          "selectRoles": "Select roles",
-          "permissions": "Permissions",
-          "permissionsList": {
-            "warn": "Warn",
-            "mute": "Mute",
-            "kick": "Kick",
-            "softban": "Softban",
-            "ban": "Ban",
-            "unmute": "Unmute",
-            "unban": "Unban"
+      "errors": {
+        "reasonLength": "Причина не должна быть длиннее 512 символов",
+        "invalidDuration": "Длительность должна быть целым положительным числом",
+        "tooLongDuration": "Слишком большая длительность наказания"
+      },
+      "ru": "Русский",
+      "en": "Английский",
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Moderation",
+      "subtitles": {
+        "muterole": "Mute role",
+        "selectRole": "Select role",
+        "modroles": "Moderator roles",
+        "selectRoles": "Select roles",
+        "permissions": "Permissions",
+        "permissionsList": {
+          "warn": "Warn",
+          "mute": "Mute",
+          "kick": "Kick",
+          "softban": "Softban",
+          "ban": "Ban",
+          "unmute": "Unmute",
+          "unban": "Unban"
+        },
+        "automoderation": "Automoderation",
+        "automods": {
+          "invites": "Invites"
+        },
+        "general": "General",
+        "enabled": "Enabled",
+        "punishment": "Punishment",
+        "reason": "Reason",
+        "duration": "Duration",
+        "infinityDuration": "For infinity punishment enter 0",
+        "unit": "Unit",
+        "whitelist": "Whitelist",
+        "roles": "Roles",
+        "channels": "Channels",
+        "rest": "Rest",
+        "allowedServers": "Allowed servers (Servers IDs)",
+        "units": [
+          {
+            "text": "Seconds",
+            "value": "seconds"
           },
-          "automoderation": "Automoderation",
-          "automods": {
-            "invites": "Invites"
+          {
+            "text": "Minutes",
+            "value": "minutes"
           },
-          "general": "General",
-          "enabled": "Enabled",
-          "punishment": "Punishment",
-          "reason": "Reason",
-          "duration": "Duration",
-          "infinityDuration": "For infinity punishment enter 0",
-          "unit": "Unit",
-          "whitelist": "Whitelist",
-          "roles": "Roles",
-          "channels": "Channels",
-          "rest": "Rest",
-          "allowedServers": "Allowed servers (Servers IDs)",
-          "units": [
-            {
-              "text": "Seconds",
-              "value": "seconds"
-            },
-            {
-              "text": "Minutes",
-              "value": "minutes"
-            },
-            {
-              "text": "Hours",
-              "value": "hours"
-            },
-            {
-              "text": "Days",
-              "value": "days"
-            }
-          ],
-          "punishments": {
-            "warn": "Warn",
-            "kick": "Kick",
-            "mute": "Mute",
-            "softban": "Softban",
-            "ban": "Ban",
-            "tempban": "Tempban"
+          {
+            "text": "Hours",
+            "value": "hours"
+          },
+          {
+            "text": "Days",
+            "value": "days"
           }
-        },
-        "errors": {
-          "reasonLength": "Reason cannot be longer than 512 characters",
-          "invalidDuration": "Duration must be a positive integer",
-          "tooLongDuration": "Punishment duration is too long"
-        },
-        "ru": "Russian",
-        "en": "English",
-        "submit": "Submit",
-        "submitted": "Submitted!",
-        "error": "Error",
-        "close": "Close"
-      }
-    },
-    "GuildLogs": {
-      "ru": {
-        "title": "Логи",
-        "subtitles": {
-          "logs": "Логи",
-          "deletelog": "Удаление сообщений",
-          "editlog": "Изменение сообщений",
-          "modlog": "Модерация"
-        },
-        "submit": "Сохранить",
-        "submitted": "Сохранено!",
-        "error": "Ошибка",
-        "close": "Закрыть"
+        ],
+        "punishments": {
+          "warn": "Warn",
+          "kick": "Kick",
+          "mute": "Mute",
+          "softban": "Softban",
+          "ban": "Ban",
+          "tempban": "Tempban"
+        }
       },
-      "en": {
-        "title": "Logs",
-        "subtitles": {
-          "logs": "Logs",
-          "deletelog": "Message delete",
-          "editlog": "Message edit",
-          "modlog": "Moderation"
-        },
-        "submit": "Submit",
-        "submitted": "Submitted!",
-        "error": "Error",
-        "close": "Close"
-      }
-    },
-    "GuildGreetings": {
-      "ru": {
-        "title": "Приветствия",
-        "subtitles": {
-          "jm": "Сообщение о входе",
-          "lm": "Сообщение о выходе",
-          "jdm": "Приветствие в ЛС",
-          "channel": "Канал",
-          "template": "Шаблон сообщения",
-          "selectRoles": "Выбрать роли",
-          "joinroles": "Роли при входе"
-        },
-        "errors": {
-          "invLength": "Длина сообщения не может быть больше 1500 символов"
-        },
-        "submit": "Сохранить",
-        "submitted": "Сохранено!",
-        "error": "Ошибка",
-        "close": "Закрыть"
+      "errors": {
+        "reasonLength": "Reason cannot be longer than 512 characters",
+        "invalidDuration": "Duration must be a positive integer",
+        "tooLongDuration": "Punishment duration is too long"
       },
-      "en": {
-        "title": "Greetings",
-        "subtitles": {
-          "jm": "Join message",
-          "lm": "Leave message",
-          "jdm": "DM greeting",
-          "channel": "Channel",
-          "template": "Message template",
-          "selectRoles": "Select roles",
-          "joinroles": "Join roles"
-        },
-        "errors": {
-          "invLength": "Message may not be longer than 1500 characters"
-        },
-        "submit": "Submit",
-        "submitted": "Submitted!",
-        "error": "Error",
-        "close": "Close"
-      }
-    },
-    "GuildBoost": {
-      "ru": {
-        "title": "Буст",
-        "subtitles": {
-          "messageMoney": "Деньги за сообщения",
-          "chance": "Вероятность",
-          "amount": "Количество",
-          "moneyBonuses": "Денежные бонусы",
-          "dailyBonus": "Ежедневный бонус",
-          "weeklyBonus": "Еженедельный бонус",
-          "punishmentsDM": "Сообщение в ЛС при наказании",
-          "kickdm": "Сообщение при кике",
-          "softbandm": "Сообщение при софтбане",
-          "bandm": "Сообщение при бане",
-          "template": "Шаблон сообщения"
-        },
-        "errors": {
-          "invChance": "Вероятность не должна быть меньше 0% и больше 5%",
-          "invAmount": "Количество должно быть целым положительным числом",
-          "invMoneyBonus": "Денежный бонус должен быть целым положительным числом",
-          "invLength": "Длина сообщения не может быть больше 1500 символов"
-        },
-        "submit": "Сохранить",
-        "submitted": "Сохранено!",
-        "error": "Ошибка",
-        "close": "Закрыть"
+      "ru": "Russian",
+      "en": "English",
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
+  "GuildLogs": {
+    "ru": {
+      "title": "Логи",
+      "subtitles": {
+        "logs": "Логи",
+        "deletelog": "Удаление сообщений",
+        "editlog": "Изменение сообщений",
+        "modlog": "Модерация"
       },
-      "en": {
-        "title": "Boost",
-        "subtitles": {
-          "messageMoney": "Money for messages",
-          "chance": "Chance",
-          "amount": "Amount",
-          "moneyBonuses": "Money bonuses",
-          "dailyBonus": "Daily bonus",
-          "weeklyBonus": "Weekly bonus",
-          "punishmentsDM": "Punishments DM messages",
-          "kickdm": "Kick message",
-          "softbandm": "Softban message",
-          "bandm": "Ban message",
-          "template": "Message template"
-        },
-        "errors": {
-          "invChance": "Chance may not be less than 0% and more than 5%",
-          "invAmount": "Amount must be a positive integer",
-          "invMoneyBonus": "Money bonus must be a positive integer",
-          "invLength": "Message may not be longer than 1500 characters"
-        },
-        "submit": "Submit",
-        "submitted": "Submitted!",
-        "error": "Error",
-        "close": "Close"
-      }
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
     },
-    "login": {
-      "ru": {
-        "title": "Вход",
-        "name": "Входим в аккаунт..."
+    "en": {
+      "title": "Logs",
+      "subtitles": {
+        "logs": "Logs",
+        "deletelog": "Message delete",
+        "editlog": "Message edit",
+        "modlog": "Moderation"
       },
-      "en": {
-        "title": "Log in",
-        "name": "Logging in..."
-      }
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
+  "GuildGreetings": {
+    "ru": {
+      "title": "Приветствия",
+      "subtitles": {
+        "jm": "Сообщение о входе",
+        "lm": "Сообщение о выходе",
+        "jdm": "Приветствие в ЛС",
+        "channel": "Канал",
+        "template": "Шаблон сообщения",
+        "selectRoles": "Выбрать роли",
+        "joinroles": "Роли при входе"
+      },
+      "errors": {
+        "invLength": "Длина сообщения не может быть больше 1500 символов"
+      },
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
     },
-    "notfound": {
-      "ru": {
-        "title": "Страница не найдена",
-        "name": "Вы улетели в открытый космос",
-        "home": "ГЛАВНАЯ"
+    "en": {
+      "title": "Greetings",
+      "subtitles": {
+        "jm": "Join message",
+        "lm": "Leave message",
+        "jdm": "DM greeting",
+        "channel": "Channel",
+        "template": "Message template",
+        "selectRoles": "Select roles",
+        "joinroles": "Join roles"
       },
-      "en": {
-        "title": "Страница не найдена",
-        "name": "You flew into outer space",
-        "home": "HOME"
-      }
+      "errors": {
+        "invLength": "Message may not be longer than 1500 characters"
+      },
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
+  "GuildBoost": {
+    "ru": {
+      "title": "Буст",
+      "subtitles": {
+        "messageMoney": "Деньги за сообщения",
+        "chance": "Вероятность",
+        "amount": "Количество",
+        "moneyBonuses": "Денежные бонусы",
+        "dailyBonus": "Ежедневный бонус",
+        "weeklyBonus": "Еженедельный бонус",
+        "punishmentsDM": "Сообщение в ЛС при наказании",
+        "kickdm": "Сообщение при кике",
+        "softbandm": "Сообщение при софтбане",
+        "bandm": "Сообщение при бане",
+        "template": "Шаблон сообщения"
+      },
+      "errors": {
+        "invChance": "Вероятность не должна быть меньше 0% и больше 5%",
+        "invAmount": "Количество должно быть целым положительным числом",
+        "invMoneyBonus": "Денежный бонус должен быть целым положительным числом",
+        "invLength": "Длина сообщения не может быть больше 1500 символов"
+      },
+      "submit": "Сохранить",
+      "submitted": "Сохранено!",
+      "error": "Ошибка",
+      "close": "Закрыть"
+    },
+    "en": {
+      "title": "Boost",
+      "subtitles": {
+        "messageMoney": "Money for messages",
+        "chance": "Chance",
+        "amount": "Amount",
+        "moneyBonuses": "Money bonuses",
+        "dailyBonus": "Daily bonus",
+        "weeklyBonus": "Weekly bonus",
+        "punishmentsDM": "Punishments DM messages",
+        "kickdm": "Kick message",
+        "softbandm": "Softban message",
+        "bandm": "Ban message",
+        "template": "Message template"
+      },
+      "errors": {
+        "invChance": "Chance may not be less than 0% and more than 5%",
+        "invAmount": "Amount must be a positive integer",
+        "invMoneyBonus": "Money bonus must be a positive integer",
+        "invLength": "Message may not be longer than 1500 characters"
+      },
+      "submit": "Submit",
+      "submitted": "Submitted!",
+      "error": "Error",
+      "close": "Close"
+    }
+  },
+  "login": {
+    "ru": {
+      "title": "Вход",
+      "name": "Входим в аккаунт..."
+    },
+    "en": {
+      "title": "Log in",
+      "name": "Logging in..."
+    }
+  },
+  "notfound": {
+    "ru": {
+      "title": "Страница не найдена",
+      "name": "Вы улетели в открытый космос",
+      "home": "ГЛАВНАЯ"
+    },
+    "en": {
+      "title": "Страница не найдена",
+      "name": "You flew into outer space",
+      "home": "HOME"
     }
   }
 }
