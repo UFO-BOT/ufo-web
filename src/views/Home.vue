@@ -1,9 +1,16 @@
 <template>
   <div style="text-align: -webkit-center">
     <div class="name"><b>UFO</b></div>
-    <v-img src="@/assets/logo.png" max-width="500px" max-height="500px" class="icon"></v-img>
+    <v-img src="@/assets/logo.png" max-width="400px" max-height="300px" class="icon"></v-img>
     <div class="description">{{ content.descriptions[Math.floor(Math.random() * content.descriptions.length)] }}</div>
-    <v-btn x-large color="#7777ff" class="invite" @click="invite">{{ content.invite }}</v-btn>
+    <v-btn x-large color="#7777ff" class="invite" @click="invite"><v-icon class="mr-2">mdi-discord</v-icon>{{ content.invite }}</v-btn>
+    <div class="features-header">{{ content.featuresTitle }}</div>
+    <div class="features-container">
+      <v-card class="feature" v-for="feature of content.features">
+        <div class="feature-name">{{ feature.name }}</div>
+        <div class="feature-description">{{ feature.description }}</div>
+      </v-card>
+    </div>
   </div>
 </template>
 
@@ -34,12 +41,12 @@ export default {
 <style scoped>
 .name {
   margin: 0 0 10px;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .description {
   margin: 10px;
-  font-size: 2.2em;
+  font-size: 1.8em;
   width: 80%;
 }
 .invite {
@@ -47,5 +54,27 @@ export default {
 }
 .icon {
   margin: 10px;
+}
+.features-header {
+  font-size: 2.2em;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.features-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.feature {
+  padding: 20px;
+  margin: 5px 15px 10px;
+  width: 300px;
+}
+.feature-name {
+  font-size: 1.4em;
+}
+.feature-description {
+  color: #b1b1b1;
 }
 </style>
