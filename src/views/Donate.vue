@@ -96,7 +96,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 20px;
 }
 .donate-card {
@@ -108,7 +108,7 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin: 10px 20px;
 }
 .donate-card-standard {
   border-color: #4caf50;

@@ -27,7 +27,7 @@
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
           "blank": true,
-          "icon": "group"
+          "icon": "mdi-discord"
         }
       ],
       "login": {
@@ -165,7 +165,42 @@
         "Пришельцы будут сотрудничать с вашим сервером",
         "Не показывайте это Рен ТВ"
       ],
-      "invite": "Пригласить"
+      "invite": "Пригласить",
+      "featuresTitle": "Функционал",
+      "features": [
+        {
+          "name": "Экономика",
+          "description": "Участники смогут зарабатывать деньги и тратить их на покупку товаров в магазине. Кто же окажется самым богатым и опытным?"
+        },
+        {
+          "name": "Игры",
+          "description": "В казино играх можно развлечься и поставить заработанные в экономике деньги. Просим сильно не кричать, если вы проиграете все свое состояние!"
+        },
+        {
+          "name": "Утилиты",
+          "description": "Бот содержит несколько полезных утилит, которые могут значительно помочь в управлении сервером и общении"
+        },
+        {
+          "name": "Логи",
+          "description": "Бот может логировать удаления и изменения сообщений, а также все модераторские действия, происходящие на сервере"
+        },
+        {
+          "name": "Модерация",
+          "description": "Наказывайте злостных нарушителей правил вашего сервера предупреждениями, мутами, киками и банами"
+        },
+        {
+          "name": "Автомодерация",
+          "description": "А за некоторые нарушения бот может наказывать участников сам!"
+        },
+        {
+          "name": "Приветствия",
+          "description": "UFO с радостью поприветствует новых участников сервера в канале и в ЛС и выдаст им роли при входе"
+        },
+        {
+          "name": "Настройки",
+          "description": "У бота есть удобная и понятная панель управления, которая позволяет кастомизировать большинство функции"
+        }
+      ]
     },
     "en": {
       "title": "UFO",
@@ -175,7 +210,42 @@
         "Aliens will cooperate with your server",
         "Don't show this to Ren TV"
       ],
-      "invite": "Invite"
+      "invite": "Invite",
+      "featuresTitle": "Features",
+      "features": [
+        {
+          "name": "Economy",
+          "description": "Members can earn money and spend them in the shop. Who will become the most rich and experienced?"
+        },
+        {
+          "name": "Games",
+          "description": "In casino games you can have fun and bet your economy money. Please do not scream if you lose all your money!"
+        },
+        {
+          "name": "Utilities",
+          "description": "Bot contains several useful utilities that can help you in server management and communication"
+        },
+        {
+          "name": "Logs",
+          "description": "Bot can log messages deletions and edits and all server moderation actions"
+        },
+        {
+          "name": "Moderation",
+          "description": "Punish malicious violators of your server rules with warns, mutes, kicks and bans"
+        },
+        {
+          "name": "Automoderation",
+          "description": "And for some violations, the bot can punish members automatically!"
+        },
+        {
+          "name": "Greetings",
+          "description": "UFO will gladly greet new server members in channel and in DMs and give them roles"
+        },
+        {
+          "name": "Settings",
+          "description": "The bot has a convenient and intuitive control panel where you can customize the most of the features"
+        }
+      ]
     }
   },
   "commands": {

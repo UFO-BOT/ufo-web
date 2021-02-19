@@ -165,7 +165,7 @@ export default {
 }
 
 .guild:hover {
-  box-shadow: 0 0 20px #131313;
+  box-shadow: 0 0 10px #131313;
   transition-duration: 200ms;
 }
 

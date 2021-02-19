@@ -16,12 +16,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-if="loading" v-for="i in new Array(skeletonsCount || 10)">
+    <tr v-if="loading" v-for="i in new Array(skeletonsCount || 10)" class="no-hover">
       <td><v-skeleton-loader max-width="5vw" type="text"></v-skeleton-loader></td>
       <td><v-skeleton-loader max-width="35vw" type="text"></v-skeleton-loader></td>
       <td><v-skeleton-loader max-width="10vw" type="text"></v-skeleton-loader></td>
     </tr>
-    <tr v-if="!loading" v-for="leader in leaders">
+    <tr v-if="!loading" v-for="leader in leaders" class="no-hover">
       <td>{{ leader.number }}</td>
       <td><v-avatar width="40px" height="40px" class="mr-3"><img :src="leader.user.avatar" alt=""></v-avatar><span>{{ leader.user.tag }}</span></td>
       <td>{{ leader[sortBy] === null ? 'Infinity' : leader[sortBy] }}</td>

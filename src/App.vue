@@ -38,6 +38,10 @@ code {
   width: fit-content;
 }
 
+.no-hover:hover {
+  background-color: inherit!important;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
