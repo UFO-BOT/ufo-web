@@ -2,7 +2,7 @@
   <div style="text-align: -webkit-center">
     <div class="name"><b>UFO</b></div>
     <v-img src="@/assets/logo.png" max-width="400px" max-height="300px" class="icon"></v-img>
-    <div class="description">{{ content.descriptions[Math.floor(Math.random() * content.descriptions.length)] }}</div>
+    <span class="description"></span><br>
     <v-btn x-large color="#7777ff" class="invite" @click="invite"><v-icon class="mr-2">mdi-discord</v-icon>{{ content.invite }}</v-btn>
     <div class="features-header">{{ content.featuresTitle }}</div>
     <div class="features-container">
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import Typed from 'typed.js'
 import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from '@/config.json'
@@ -34,6 +35,17 @@ export default {
     invite() {
       window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&scope=bot`
     }
+  },
+  mounted() {
+    new Typed('.description', {
+      strings: content.descriptions,
+      typeSpeed: 50,
+      backSpeed: 50,
+      shuffle: true,
+      backDelay: 3000,
+      loop: true,
+      cursorChar: '__'
+    })
   }
 }
 </script>
@@ -47,7 +59,6 @@ export default {
 .description {
   margin: 10px;
   font-size: 1.8em;
-  width: 80%;
 }
 .invite {
   font-size: 1.5em;
