@@ -9,7 +9,10 @@ export default {
         })
         let languages = ['ru', 'en'];
         let language = cookies.language;
-        if(!languages.includes(language)) document.cookie = cookies.language = 'en';
+        if(!languages.includes(language)) {
+            document.cookie = 'language=en';
+            cookies.language = 'en';
+        }
         return cookies
     },
     parseWithoutLang: () => {
@@ -22,7 +25,7 @@ export default {
         })
         return cookies
     },
-    set: (name, value, maxAge) => {
+    set: (name, value, maxAge = 1e15) => {
         document.cookie = `${name}=${value};max-age=${maxAge};path=/`
     }
 }

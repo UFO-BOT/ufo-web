@@ -17,9 +17,8 @@ export default {
             let response = await fetch(`${config.API}/oauth2/token?code=${code}`)
             let body = await response.json()
             if(response.ok) {
-                Cookies.set('token', body.accessToken, 1e15)
-                Cookies.set('refreshToken', body.refreshToken, 1e15)
-                Cookies.set('tokenExpiresTimestamp', Date.now() + body.expiresIn*1000, 1e15)
+                Cookies.set('token', body.accessToken)
+                Cookies.set('refreshToken', body.refreshToken)
                 resolve(body)
             }
             else reject(body)
@@ -30,9 +29,8 @@ export default {
             let response = await fetch(`${config.API}/oauth2/token/refresh?refreshToken=${refreshToken}`)
             let body = await response.json()
             if(response.ok) {
-                Cookies.set('token', body.accessToken, 1e15)
-                Cookies.set('refreshToken', body.refreshToken, 1e15)
-                Cookies.set('tokenExpiresTimestamp', Date.now() + body.expiresIn*1000, 1e15)
+                Cookies.set('token', body.accessToken)
+                Cookies.set('refreshToken', body.refreshToken)
                 resolve(body)
             }
             else reject(body)

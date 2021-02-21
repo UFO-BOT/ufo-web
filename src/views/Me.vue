@@ -80,7 +80,6 @@ export default {
     logout() {
       Cookies.set('token', '')
       Cookies.set('refreshToken', '')
-      Cookies.set('tokenExpiresTimestamp', '')
       window.location.replace('/')
     },
     generateInvite(guildID) {

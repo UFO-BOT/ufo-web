@@ -9,11 +9,6 @@ export default {
             return new Promise(async (resolve, reject) => {
                 let cookies = Cookies.parse()
                 let token = cookies.token;
-                if (Date.now() > Number(cookies.tokenExpiresTimestamp) && cookies.refreshToken) {
-                    let response = await Oauth2.refreshToken(cookies.refreshToken).catch(() => {
-                    })
-                    token = response.accessToken;
-                }
                 if (!token) return;
                 Oauth2.getUser(token).then(async user => {
                     user.tag = user.username + '#' + user.discriminator
@@ -38,7 +33,6 @@ export default {
         },
         async getUserBadges(ctx) {
             return new Promise(async (resolve, reject) => {
-                let user = ctx.getters.user;
                 let cookies = Cookies.parse()
                 let token = cookies.token;
                 let responseBadges = await fetch(`${config.API}/private/badges`, {

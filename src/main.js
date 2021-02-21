@@ -8,9 +8,12 @@ import vuetify from './plugins/vuetify'
 import Cookies from './util/cookies'
 
 let cookies = Cookies.parseWithoutLang()
-if (!cookies.language && navigator.language === 'ru-RU') {
-  Cookies.set('language', 'ru', 1e15)
-  window.location.reload()
+if (!cookies.language) {
+  if(navigator.language === 'ru-RU') {
+    Cookies.set('language', 'ru')
+    window.location.reload()
+  }
+  else Cookies.set('language', 'en')
 }
 
 Vue.config.productionTip = true
