@@ -19,6 +19,12 @@
                 <v-card>
                   <v-card-title class="grey darken-3 cmd-name">
                     {{ cmd.name[language].toUpperCase() }}
+                    <v-tooltip top>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon class="ml-2" v-bind="attrs" v-on="on" v-if="cmd.boostRequired"><v-icon color="#7777ff">favorite</v-icon></v-btn>
+                      </template>
+                      <span>{{ content.boostRequired }}</span>
+                    </v-tooltip>
                   </v-card-title>
 
                   <v-card-text class="cmd-info">
@@ -109,7 +115,7 @@ export default {
   cursor: pointer;
 }
 .cmd-name {
-  font-size: 1.7em!important;
+  font-size: 1.4em!important;
 }
 .cmd-info {
   padding-top: 10px!important;

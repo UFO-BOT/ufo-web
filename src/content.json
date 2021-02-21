@@ -254,6 +254,7 @@
     "ru": {
       "title": "Команды",
       "name": "Команды",
+      "boostRequired": "Требуется UFO Boost",
       "description": "Описание",
       "usage": "Использование",
       "aliases": "Псевдонимы (алиасы)",
@@ -263,6 +264,7 @@
     "en": {
       "title": "Commands",
       "name": "Commands",
+      "boostRequired": "UFO Boost required",
       "description": "Description",
       "usage": "Usage",
       "aliases": "Aliases",
