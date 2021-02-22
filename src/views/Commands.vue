@@ -77,8 +77,8 @@ export default {
     loading: true,
     commands: [],
     dialogs: {},
-    categories: ['General', 'Economy', 'Games', 'Utilities', 'Moderation', 'Settings'],
-    icons: ['public', 'attach_money', 'phone_iphone', 'build', 'security', 'settings'],
+    categories: ['General', 'Economy', 'Games', 'Utilities', 'Moderation'],
+    icons: ['public', 'attach_money', 'phone_iphone', 'build', 'security'],
     ParsePerms
   }),
   async mounted() {
