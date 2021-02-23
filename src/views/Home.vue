@@ -57,7 +57,6 @@ export default {
 }
 
 .description {
-  margin: 10px;
   font-size: 1.8em;
 }
 .invite {
