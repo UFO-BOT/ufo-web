@@ -155,8 +155,9 @@ export default {
 }
 
 .shards-table {
-  width: 90%;
+  width: 1100px;
   border-radius: 20px;
+  padding: 10px;
 }
 
 .status-circle {

@@ -99,8 +99,11 @@ export default {
   padding: 26px 26px!important;
 }
 .commands {
-  width: 95%;
-  border-radius: 5px;
+  max-width: 1000px;
+  width: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
 }
 .command {
   display: flex;

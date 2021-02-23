@@ -91,7 +91,7 @@ export default {
 }
 .commands {
   width: 95%;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .command {
   display: flex;
