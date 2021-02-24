@@ -31,6 +31,9 @@
       <v-select v-model="settings.moneybags.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
                 class="unit-select"></v-select>
       <br>
+      <div :label="content.subtitles.moneysymb" class="subtitle">Символ денег</div>
+      <v-text-field v-model="settings.moneysymb" :label="content.subtitles.symbol" outlined :hint="content.subtitles.moneysymbhint" persistent-hint
+                class="monsymb-input mt-1 mb-1"></v-text-field>
       <div class="subtitle">{{ content.subtitles.commission }}</div>
       <v-text-field :rules="rules.commission" v-model="settings.commission" type="number"
                     :label="content.subtitles.percent" suffix="%" class="number-input"></v-text-field>
@@ -41,7 +44,7 @@
                     class="number-input"></v-text-field>
       <br>
       <div class="subtitle">{{ content.subtitles.shop }}</div>
-      <div class="items">
+      <v-card class="items">
         <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block"
                              indeterminate></v-progress-circular>
         <div v-if="items.length <= 0 && !loadingItems">
@@ -59,7 +62,7 @@
           <v-divider></v-divider>
         </div>
         <CreateItem :limit="items.length >= 15" @created="loadItems"></CreateItem>
-      </div>
+      </v-card>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">
         <v-icon medium class="save-icon">save</v-icon>
         {{ content.submit }}
@@ -117,6 +120,7 @@ export default {
         cooldown: 0,
         cooldownUnit: 'seconds'
       },
+      moneysymb: '<:money:705401895019348018>',
       commission: 0,
       duelCommission: false
     },
@@ -179,6 +183,7 @@ export default {
             high: Math.max(this.settings.moneybags.low, this.settings.moneybags.high),
             cooldown: this.getTime(this.settings.moneybags.cooldown, this.settings.moneybags.cooldownUnit)
           },
+          moneysymb: this.settings.moneysymb,
           commission: this.settings.commission,
           duelCommission: this.settings.duelCommission,
           minbets: this.settings.minbets
@@ -231,17 +236,20 @@ export default {
   margin-right: 20px;
 }
 
+.monsymb-input {
+  width: 280px;
+  margin-right: 20px!important;
+}
+
 .unit-select {
   width: 120px;
   display: inline-block;
 }
 
 .items {
-  background-color: #1e1e1e;
   padding: 15px 15px 15px 20px;
   width: 90%;
   border-radius: 5px;
-  box-shadow: 0 0 10px #343434;
   margin-top: 5px;
 }
 

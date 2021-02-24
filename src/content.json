@@ -704,6 +704,9 @@
             "value": "days"
           }
         ],
+        "moneysymb": "Символ денег",
+        "symbol": "Символ",
+        "moneysymbhint": "Чтобы использовать эмодзи, введите его в формате <:имя:id>",
         "minbets": "Минимальные ставки",
         "commission": "Комиссия",
         "duelCommission": "Действует на дуэль",
@@ -790,6 +793,9 @@
             "value": "days"
           }
         ],
+        "moneysymb": "Money symbol",
+        "symbol": "Symbol",
+        "moneysymbhint": "To use emoji, enter it in <:name:id> format",
         "minbets": "Minimal bets",
         "commission": "Commission",
         "duelCommission": "Applies to duel",

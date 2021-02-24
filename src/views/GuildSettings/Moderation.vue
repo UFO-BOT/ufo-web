@@ -8,7 +8,7 @@
       <div class="subtitle">{{ content.subtitles.muterole }}</div>
       <v-select v-model="settings.muterole" :items="roles" :label="content.subtitles.selectRole" class="role-select"></v-select>
       <div class="subtitle">{{ content.subtitles.automoderation }}</div>
-      <div class="settings-list">
+      <v-card class="settings-list">
         <v-progress-circular v-if="loadingAutomods" :size="40" :width="4" color="white" style="display: block"
                              indeterminate></v-progress-circular>
         <div v-if="!loadingAutomods" v-for="(name, automod, i) of content.subtitles.automods">
@@ -20,7 +20,7 @@
           </div>
           <v-divider v-if="Object.keys(content.subtitles.automods).length - 1 > i"></v-divider>
         </div>
-      </div>
+      </v-card>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -140,11 +140,9 @@ export default {
 }
 
 .settings-list {
-  background-color: #1e1e1e;
   padding: 15px 15px 15px 20px;
   width: 90%;
   border-radius: 5px;
-  box-shadow: 0 0 10px #343434;
   margin-top: 5px;
 }
 

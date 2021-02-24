@@ -81,11 +81,9 @@ export default {
     /* box-shadow: 0 5px 15px #14161a; */
     width: 20%;
     height: 100%;
-    display: inline-block;
   }
   .guild-settings {
     width: 80%;
-    display: inline-block;
   }
 }
 .settings {
