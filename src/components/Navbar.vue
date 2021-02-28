@@ -2,7 +2,7 @@
   <div>
     <v-toolbar>
       <v-app-bar-nav-icon id="nav-menu" @click="mobileNav = !mobileNav"></v-app-bar-nav-icon>
-      <v-toolbar-title style="padding: 3px 5px 3px 3px">UFO</v-toolbar-title>
+      <v-toolbar-title class="pa-0 pl-1"><router-link to="/"><img src="@/assets/logo.png" alt="UFO Logo" class="main-icon"/></router-link></v-toolbar-title>
       <v-toolbar-items style="margin-left: 12px" id="nav-links">
         <v-btn v-for="link of links" text :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">
           <v-icon class="nav-icon">{{ link.icon }}</v-icon>{{ link.name }}
@@ -91,6 +91,17 @@ export default {
   .user-username {
     display: inline;
   }
+}
+.main-icon {
+  float: right;
+  width: 55px;
+  height: 30px;
+  transition-duration: 200ms;
+}
+
+.main-icon:active {
+  opacity: 0.7;
+  transition-duration: 200ms;
 }
 
 .nav-icon {
