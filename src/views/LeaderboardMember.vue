@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: -webkit-center">
     <v-card class="member-card">
-      <v-progress-circular v-if="loading" :size="80" :width="5" color="white"
+      <v-progress-circular v-if="loading" :size="80" :width="6" color="white"
                            indeterminate></v-progress-circular>
       <div v-else>
         <v-img :lazy-src="member.user.avatar" :src="member.user.avatar" max-width="150px" max-height="150px" style="border-radius: 50%"></v-img>
@@ -24,6 +24,13 @@
             <div>{{ member.xp }}</div>
           </div>
         </div>
+        <div v-if="manageable">
+          <v-divider class="mt-2 mb-2"></v-divider>
+          <div class="icons-flex">
+            <EditMember :member="member" @edited="loadMember"></EditMember>
+            <DeleteMember :member="member" @deleted="toLeaderboard"></DeleteMember>
+          </div>
+        </div>
       </div>
     </v-card>
   </div>
@@ -34,11 +41,15 @@ import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from '@/config.json'
 
+import EditMember from "@/components/member/EditMember";
+import DeleteMember from "@/components/member/DeleteMember";
+
 let cookies = Cookies.parse()
 let content = WebContent.LeaderboardMember[cookies.language]
 
 export default {
   name: 'Leaderboard',
+  components: {DeleteMember, EditMember},
   metaInfo: {
     title: content.title
   },
@@ -51,7 +62,8 @@ export default {
       xp: 0,
       number: null,
       user: {}
-    }
+    },
+    manageable: false
   }),
   methods: {
     async loadMember() {
@@ -65,8 +77,17 @@ export default {
       if (!response.ok) return window.location.replace('/@me');
       this.guildName = body.name;
       this.member = body.member;
+      let guildResponse = await fetch(`${config.API}/private/guild/${this.$route.params.id}/info`, {headers: {
+          Authorization: cookies.token
+        }})
+      if(guildResponse.ok) {
+        this.manageable = true;
+      }
       document.title = (content.title + ' — ' + body.member.user.tag.split('#')[0])
       this.loading = false;
+    },
+    toLeaderboard() {
+      window.location.replace(`/leaderboard/${this.$route.params.id}`)
     }
   },
   async mounted() {
@@ -92,6 +113,13 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 90%;
+}
+.icons-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 86%;
 }
 .subtitle {
   color: #b1b1b1;

@@ -7,16 +7,16 @@
         </v-btn>
       </template>
       <v-card>
-        <v-card-title>{{ content.subtitles.deleteItem }}</v-card-title>
+        <v-card-title>{{ content.deleteMember }}</v-card-title>
         <v-card-text
-            v-html="content.subtitles.deleteConfirm.replace('{{item}}', `<code>${item.name}</code>`)">
+            v-html="content.deleteConfirm.replace('{{member}}', `<code>${member.user.tag}</code>`)">
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="red" @click="deleteItem" :loading="loading" text>
-            {{ content.subtitles.delete }}
+          <v-btn color="red" @click="deleteMember" :loading="loading" text>
+            {{ content.delete }}
           </v-btn>
-          <v-btn text :disabled="loading" @click="dialog = false">{{ content.subtitles.cancel }}</v-btn>
+          <v-btn text :disabled="loading" @click="dialog = false">{{ content.cancel }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -29,21 +29,20 @@ import Cookies from '@/util/cookies'
 import config from "@/config.json";
 
 let cookies = Cookies.parse()
-let content = WebContent.GuildEconomy[cookies.language]
+let content = WebContent.LeaderboardMember[cookies.language]
 
 export default {
-  name: "DeleteItem",
-  props: ['item'],
+  name: "DeleteMember",
+  props: ['member'],
   data: () => ({
     content,
     loading: false,
     dialog: false
   }),
   methods: {
-    async deleteItem() {
-      let item = this.item;
+    async deleteMember() {
       this.loading = true
-      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items/${encodeURIComponent(item.name)}`, {
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/balances/${this.member.user.id}`, {
         method: 'DELETE',
         headers: {
           Authorization: cookies.token

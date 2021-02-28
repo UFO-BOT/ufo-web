@@ -104,6 +104,12 @@ export default {
 .user-link {
   text-decoration: none;
   color: inherit;
+  transition-duration: 200ms;
+}
+
+.user-link:active {
+  opacity: 0.7;
+  transition-duration: 200ms;
 }
 
 .leaderboard-menu {

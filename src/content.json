@@ -415,7 +415,16 @@
       "user": "Пользователь",
       "rank": "Место в топе",
       "balance": "Баланс",
-      "xp": "Опыт"
+      "xp": "Опыт",
+      "resetXP": "Очистить опыт",
+      "deleteMember": "Удалить участника",
+      "deleteConfirm": "Вы действительно хотите удалить {{member}} из таблицы лидеров сервера?",
+      "errors": {
+        "invalidBalance": "Баланс должен быть целым числом"
+      },
+      "submit": "Сохранить",
+      "delete": "Удалить",
+      "cancel": "Отмена"
     },
     "en": {
       "title": "Leaderboard",
@@ -424,7 +433,16 @@
       "rank": "Leaderboard rank",
       "sort": "Sort",
       "balance": "Balance",
-      "xp": "XP"
+      "xp": "XP",
+      "resetXP": "Reset XP",
+      "deleteMember": "Delete member",
+      "deleteConfirm": "Are you sure you want to delete {{member}} from server leaderboard?",
+      "errors": {
+        "invalidBalance": "Balance must be an integer"
+      },
+      "submit": "Submit",
+      "delete": "Delete",
+      "cancel": "Cancel"
     }
   },
   "landing": {

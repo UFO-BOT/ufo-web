@@ -61,6 +61,7 @@ export default {
 }
 .invite {
   font-size: 1.5em;
+  margin-top: 5px;
 }
 .icon {
   margin: 10px;
