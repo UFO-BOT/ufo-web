@@ -23,7 +23,7 @@
     </tr>
     <tr v-if="!loading" v-for="leader in leaders" class="no-hover">
       <td>{{ leader.number }}</td>
-      <td><v-avatar width="40px" height="40px" class="mr-3"><img :src="leader.user.avatar" alt=""></v-avatar><span>{{ leader.user.tag }}</span></td>
+      <td><router-link class="user-link" :to="`/leaderboard/${$route.params.id}/${leader.user.id}`"><v-avatar width="40px" height="40px" class="mr-3"><img :src="leader.user.avatar" alt=""></v-avatar><span>{{ leader.user.tag }}</span></router-link></td>
       <td>{{ leader[sortBy] === null ? 'Infinity' : leader[sortBy] }}</td>
     </tr>
     </tbody>
@@ -66,7 +66,7 @@ export default {
     async loadLeaderboard() {
       this.skeletonsCount = this.leaders.length
       this.loading = true;
-      let response = await fetch(`${config.API}/public/guild/${this.$route.params.id}/leaderboard?page=${this.page}&sort=${this.sortBy}`, {
+      let response = await fetch(`${config.API}/private/leaderboard/${this.$route.params.id}?page=${this.page}&sort=${this.sortBy}`, {
         headers: {
           Authorization: cookies.token
         }
@@ -99,6 +99,11 @@ export default {
 .leaderboard-table {
   width: 95%;
   border-radius: 20px;
+}
+
+.user-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .leaderboard-menu {

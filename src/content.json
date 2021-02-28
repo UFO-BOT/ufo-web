@@ -408,6 +408,25 @@
       "xp": "XP"
     }
   },
+  "LeaderboardMember": {
+    "ru": {
+      "title": "Лидеры",
+      "server": "Сервер",
+      "user": "Пользователь",
+      "rank": "Место в топе",
+      "balance": "Баланс",
+      "xp": "Опыт"
+    },
+    "en": {
+      "title": "Leaderboard",
+      "server": "Server",
+      "user": "User",
+      "rank": "Leaderboard rank",
+      "sort": "Sort",
+      "balance": "Balance",
+      "xp": "XP"
+    }
+  },
   "landing": {
     "ru": {
       "title": "Спасибо за добавление!",
