@@ -82,7 +82,7 @@ export default {
     }
   },
   mounted() {
-    this.updateMember.balance = this.member.balance === null ? Infinity : this.member.balance
+    this.updateMember.balance = this.member.balance === null ? 'Infinity' : this.member.balance
   }
 }
 </script>
