@@ -79,11 +79,11 @@ export default {
   }
   .guild-menu {
     /* box-shadow: 0 5px 15px #14161a; */
-    width: 20%;
+    width: 250px;
     height: 100%;
   }
   .guild-settings {
-    width: 80%;
+    width: calc(100% - 250px);
   }
 }
 .settings {
