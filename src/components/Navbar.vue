@@ -94,7 +94,7 @@ export default {
 }
 .main-icon {
   float: right;
-  width: 55px;
+  width: 52px;
   height: 30px;
   transition-duration: 200ms;
 }
