@@ -26,7 +26,7 @@
         </div>
         <div v-if="manageable">
           <v-divider class="mt-2 mb-2"></v-divider>
-          <div class="icons-flex">
+          <div class="member-flex">
             <EditMember :member="member" @edited="loadMember"></EditMember>
             <DeleteMember :member="member" @deleted="toLeaderboard"></DeleteMember>
           </div>
@@ -113,13 +113,6 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 90%;
-}
-.icons-flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 86%;
 }
 .subtitle {
   color: #b1b1b1;

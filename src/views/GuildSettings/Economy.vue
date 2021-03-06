@@ -31,7 +31,7 @@
       <v-select v-model="settings.moneybags.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
                 class="unit-select"></v-select>
       <br>
-      <div :label="content.subtitles.moneysymb" class="subtitle">Символ денег</div>
+      <div class="subtitle">{{ content.subtitles.moneysymb }}</div>
       <v-text-field v-model="settings.moneysymb" :label="content.subtitles.symbol" outlined :hint="content.subtitles.moneysymbhint" persistent-hint
                 class="monsymb-input mt-1 mb-1"></v-text-field>
       <div class="subtitle">{{ content.subtitles.commission }}</div>
@@ -42,6 +42,9 @@
       <v-text-field v-for="(minbet, i) of content.subtitles.minbetsList" :key="i" :rules="rules.positiveInteger"
                     v-model="settings.minbets[minbet.prop]" type="number" :label="minbet.name"
                     class="number-input"></v-text-field>
+      <br>
+      <div class="subtitle">{{ content.subtitles.resetBalance }}</div>
+      <ResetBalance :guild="guild"></ResetBalance>
       <br>
       <div class="subtitle">{{ content.subtitles.shop }}</div>
       <v-card class="items">
@@ -88,6 +91,7 @@ import config from "@/config.json";
 import CreateItem from "@/components/items/CreateItem";
 import EditItem from "@/components/items/EditItem";
 import DeleteItem from "@/components/items/DeleteItem";
+import ResetBalance from "@/components/ResetBalance";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildEconomy[cookies.language]
@@ -98,6 +102,7 @@ export default {
     title: content.title
   },
   components: {
+    ResetBalance,
     CreateItem,
     EditItem,
     DeleteItem
@@ -141,6 +146,11 @@ export default {
     resultText: '',
     error: false
   }),
+  computed: {
+    guild() {
+      return this.$store.getters.guilds.find(g => g.id === this.$route.params.id) || {name: ''}
+    }
+  },
   methods: {
     getTime(time, unit) {
       let multipliers = {
