@@ -7,9 +7,10 @@
       <v-card>
         <v-card-title>{{ content.subtitles.resetBalance }}</v-card-title>
         <v-card-text class="pb-0">
-          <div v-html="content.subtitles.resetConfirm"></div>
+          <div class="attention">{{ content.subtitles.attention }}</div>
+          <div>{{ content.subtitles.resetConfirm }}</div>
           <div class="guildName">{{ content.subtitles.enterGuildName }}</div>
-          <v-text-field v-model="name" outlined :placeholder="guild.name" class="mt-1"></v-text-field>
+          <v-text-field v-model="name" color="red" outlined :placeholder="guild.name" class="mt-1"></v-text-field>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
@@ -65,6 +66,10 @@ export default {
 </script>
 
 <style scoped>
+.attention {
+  font-size: 1.1em;
+  font-weight: bold;
+}
 .guildName {
   font-size: 1.1em;
   margin-top: 10px;
