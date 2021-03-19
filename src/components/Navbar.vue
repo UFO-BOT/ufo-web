@@ -44,15 +44,17 @@ export default {
     links,
     content,
     loadingUser: Boolean(cookies.token),
-    location: window.location.origin,
-    translate: () => {
-      Cookies.set('language', cookies.language === 'ru' ? 'en' : 'ru', 1e15)
-      window.location.reload()
-    }
+    location: window.location.origin
   }),
   computed: {
     user() {
       return this.$store.getters.user
+    }
+  },
+  methods: {
+    translate() {
+      Cookies.set('language', cookies.language === 'ru' ? 'en' : 'ru', 1e15)
+      window.location.reload()
     }
   },
   async mounted() {

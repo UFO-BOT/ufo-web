@@ -1,7 +1,9 @@
 <template>
   <v-app id="app">
     <Navbar></Navbar>
-    <router-view/>
+    <transition name="fade" mode="out-in" :duration="70">
+      <router-view/>
+    </transition>
   </v-app>
 </template>
 
@@ -64,5 +66,11 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
 }
 </style>
