@@ -1,13 +1,15 @@
 <template>
-  <div style="text-align: -webkit-center" class="content">
-    <div class="name"><b>{{ content.name }}</b></div>
-    <div class="description" v-html="content.description"></div>
-    <v-expansion-panels accordion focusable>
-      <v-expansion-panel v-for="feature of content.features">
-        <v-expansion-panel-header v-ripple class="feature-name">{{ feature.name }}</v-expansion-panel-header>
-        <v-expansion-panel-content class="feature-description">{{ feature.description }}</v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+  <div style="text-align: -webkit-center">
+    <div class="content">
+      <div class="name"><b>{{ content.name }}</b></div>
+      <div class="description" v-html="content.description"></div>
+      <v-expansion-panels accordion focusable>
+        <v-expansion-panel v-for="feature of content.features">
+          <v-expansion-panel-header v-ripple class="feature-name">{{ feature.name }}</v-expansion-panel-header>
+          <v-expansion-panel-content class="feature-description">{{ feature.description }}</v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </div>
     <div class="cards-container">
       <v-card v-for="(card, i) in content.cards" :class="`donate-card donate-card-${i}`">
         <div>
@@ -73,8 +75,8 @@ export default {
 
 <style scoped>
 .content {
-  padding-right: 20px;
-  padding-left: 20px;
+  max-width: 1100px;
+  padding: 0 20px;
 }
 .name {
   font-size: 3.5em;
