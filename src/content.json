@@ -512,9 +512,14 @@
             "text": "Переменные",
             "value": "variables"
           }
-        ]
+        ],
+        "rules": "Правила",
+        "rulesRU": "Русские правила",
+        "rulesEN": "Английские правила",
+        "edit": "Изменить"
       },
       "reloaded": "Перезагружено!",
+      "edited": "Изменено!",
       "error": "Ошибка",
       "close": "Закрыть"
     },
@@ -568,10 +573,15 @@
             "text": "Variables",
             "value": "variables"
           }
-        ]
+        ],
+        "rules": "Rules",
+        "rulesRU": "Russian rules",
+        "rulesEN": "English rules",
+        "edit": "Edit"
       },
       "reloaded": "Reloaded!",
       "error": "Error",
+      "edited": "Edited!",
       "close": "Close"
     }
   },

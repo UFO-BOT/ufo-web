@@ -34,7 +34,7 @@
       <v-snackbar v-model="updateRulesResult" color="secondary">
         <div class="result-text">{{ updateRulesText }}</div>
         <template v-slot:action="{ attrs }">
-          <v-btn :color="updateRulesError ? 'pink' : 'success'" text v-bind="attrs" @click="reloadResult = false">{{ content.close }}</v-btn>
+          <v-btn :color="updateRulesError ? 'pink' : 'success'" text v-bind="attrs" @click="updateRulesResult = false">{{ content.close }}</v-btn>
         </template>
       </v-snackbar>
     </div>
@@ -60,6 +60,7 @@ export default {
     loadingRules: true,
     evaling: false,
     reloading: false,
+    updatingRules: false,
     input: '',
     output: '',
     shell: false,
@@ -73,7 +74,6 @@ export default {
       ru: '',
       en: ''
     },
-    updatingRules: false,
     updateRulesError: false,
     updateRulesText: '',
     updateRulesResult: false
@@ -148,9 +148,9 @@ export default {
       })
       this.updatingRules = false;
       if(res.ok) {
-        this.uodateRulesError = false;
+        this.updateRulesError = false;
         this.updateRulesText = content.edited;
-        this.reloadRulesResult = true;
+        this.updateRulesResult = true;
       }
       else {
         this.updateRulesError = true;
