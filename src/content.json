@@ -321,6 +321,10 @@
         {
           "name": "Денежные бонусы",
           "description": "Настройте ежедневный и еженедельный бонусы на сервере"
+        },
+        {
+          "name": "Увеличенные лимиты",
+          "description": "Лимит товаров в магазине - 40 (вместо 15), розыгрышей - 25 (вместо 10), купонов - 25 (вместо 10)"
         }
       ],
       "cards": {
@@ -340,7 +344,7 @@
             "Роль Premium Donator на сервере поддержки с правом на просмотр журнала аудита",
             "Доступ в скрытый канал"
           ],
-          "price": 79
+          "price": 69
         }
       },
       "perMonth": "/месяц",
@@ -363,6 +367,10 @@
         {
           "name": "Money bonuses",
           "description": "Set daily and weekly bonuses on the server"
+        },
+        {
+          "name": "Increased limits",
+          "description": "Limit of items in the shop - 40 (instead of 15), giveaways - 25 (instead of 10), coupons - 25 (instead of 10)"
         }
       ],
       "cards": {
@@ -382,7 +390,7 @@
             "Premium Donator role on support server with permission to view audit log",
             "Access to secret channel"
           ],
-          "price": 79
+          "price": 69
         }
       },
       "perMonth": "/month",
