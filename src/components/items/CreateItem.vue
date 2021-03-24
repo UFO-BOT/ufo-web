@@ -158,6 +158,7 @@ export default {
 .itemsLimit {
   font-size: 1.1em;
   color: grey;
+  margin-top: 5px;
 }
 
 .save-icon {

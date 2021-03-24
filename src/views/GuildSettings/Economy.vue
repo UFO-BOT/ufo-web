@@ -64,7 +64,7 @@
           </div>
           <v-divider></v-divider>
         </div>
-        <CreateItem :limit="items.length >= 15" @created="loadItems"></CreateItem>
+        <CreateItem v-if="!loadingItems" :limit="items.length >= (guild.boost ? 40 : 15)" @created="loadItems"></CreateItem>
       </v-card>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">
         <v-icon medium class="save-icon">save</v-icon>

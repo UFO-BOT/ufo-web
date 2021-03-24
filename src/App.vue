@@ -73,4 +73,11 @@ input[type=number] {
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
+::-moz-selection {
+  background: #4444ff;
+}
+
+::selection {
+  background: #4444ff;
+}
 </style>
