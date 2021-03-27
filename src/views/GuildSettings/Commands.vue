@@ -93,7 +93,6 @@ export default {
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');
     this.settings = body;
-    console.log(this.settings.commands)
     this.loading = false;
   }
 }
