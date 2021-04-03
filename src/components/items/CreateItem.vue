@@ -8,7 +8,7 @@
         </v-btn>
         <div v-else class="itemsLimit">{{ content.subtitles.itemsLimit }}</div>
       </template>
-      <v-card>
+      <v-card color="modal">
         <v-toolbar dark color="primary">
           <v-btn icon dark :disabled="loading" @click="dialog = false">
             <v-icon>mdi-close</v-icon>

@@ -1,6 +1,6 @@
 <template>
   <div style="text-align: -webkit-center">
-    <v-card class="member-card">
+    <v-card class="member-card" color="block">
       <v-progress-circular v-if="loading" :size="80" :width="6" color="white"
                            indeterminate></v-progress-circular>
       <div v-else>

@@ -97,7 +97,8 @@ export default {
 }
 
 .leaderboard-table {
-  width: 95%;
+  background-color: var(--v-block-base)!important;
+  width: 1200px;
   border-radius: 20px;
 }
 
@@ -117,8 +118,8 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 10px;
-  width: 90%;
+  max-width: 1200px;
+  margin: 10px;
 }
 
 .sort-select {

@@ -6,7 +6,7 @@
           <v-icon>settings</v-icon>
         </v-btn>
       </template>
-      <v-card>
+      <v-card color="modal">
         <v-toolbar dark color="primary">
           <v-btn icon dark :disabled="loading" @click="dialog = false">
             <v-icon>mdi-close</v-icon>

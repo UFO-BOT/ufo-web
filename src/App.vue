@@ -19,7 +19,7 @@ export default {
 </script>
 <style>
 #app {
-  background-color: #21252b;
+  background-color: var(--v-background-base);
 }
 img {
   user-select: none;
@@ -31,8 +31,9 @@ img {
 code {
   padding: .3rem .5rem!important;
   font-size: .875em!important;
-  color: #c62f7a !important;
-  background-color: #0e1011 !important;
+  color: #c62f5a !important;
+  background-color: var(--v-code-base) !important;
+  box-shadow: 1px 2px 6px -2px var(--v-blockShadow-base)!important;
   border-radius: .25rem!important;
 }
 

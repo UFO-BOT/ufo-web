@@ -7,17 +7,17 @@
           v-for="(category, i) of categories"
           :key="i"
       >
-        <v-expansion-panel-header class="category" ripple v-if="commands.find(c => c.category.en === category)"><span><v-icon x-large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span></v-expansion-panel-header>
-        <v-expansion-panel-content>
+        <v-expansion-panel-header class="category" color="block" ripple v-if="commands.find(c => c.category.en === category)"><span><v-icon x-large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span></v-expansion-panel-header>
+        <v-expansion-panel-content color="block">
           <div v-for="(cmd, j) of commands.filter(c => c.category.en === category)">
             <div class="command">
               <div>{{cmd.name[language]}}</div>
-              <v-dialog v-model="dialogs[cmd.name.en]" width="500" scrollable persistent>
+              <v-dialog v-model="dialogs[cmd.name.en]" width="500" scrollable>
                 <template v-slot:activator="{ on, attrs }">
                   <v-icon x-large class="info-icon" v-bind="attrs" v-on="on">info</v-icon>
                 </template>
-                <v-card>
-                  <v-card-title class="grey darken-3 cmd-name">
+                <v-card color="modal">
+                  <v-card-title color="modalHeader" class="cmd-name">
                     {{ cmd.name[language].toUpperCase() }}
                     <v-tooltip top>
                       <template v-slot:activator="{ on, attrs }">
@@ -44,7 +44,7 @@
 
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="white" text @click="dialogs[cmd.name.en] = false">{{ content.close }}</v-btn>
+                    <v-btn text @click="dialogs[cmd.name.en] = false">{{ content.close }}</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -103,7 +103,6 @@ export default {
   width: auto;
   padding-left: 15px;
   padding-right: 15px;
-  border-radius: 10px;
 }
 .command {
   display: flex;
@@ -119,6 +118,7 @@ export default {
 }
 .cmd-name {
   font-size: 1.4em!important;
+  background-color: var(--v-modalHeader-base);
 }
 .cmd-info {
   padding-top: 10px!important;

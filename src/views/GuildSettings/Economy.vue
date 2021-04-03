@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="text-align: -webkit-center" v-if="loading">
-      <v-progress-circular :size="60" :width="5" color="white"
+      <v-progress-circular :size="60" :width="5"
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
@@ -47,8 +47,8 @@
       <ResetBalance :guild="guild"></ResetBalance>
       <br>
       <div class="subtitle">{{ content.subtitles.shop }}</div>
-      <v-card class="items">
-        <v-progress-circular v-if="loadingItems" :size="40" :width="4" color="white" style="display: block"
+      <div class="items">
+        <v-progress-circular v-if="loadingItems" :size="40" :width="4" style="display: block"
                              indeterminate></v-progress-circular>
         <div v-if="items.length <= 0 && !loadingItems">
           <div style="margin-bottom: 5px;font-size: 1.1em">¯\_(ツ)_/¯</div>
@@ -65,7 +65,7 @@
           <v-divider></v-divider>
         </div>
         <CreateItem v-if="!loadingItems" :limit="items.length >= (guild.boost ? 40 : 15)" @created="loadItems"></CreateItem>
-      </v-card>
+      </div>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">
         <v-icon medium class="save-icon">save</v-icon>
         {{ content.submit }}
@@ -257,6 +257,7 @@ export default {
 }
 
 .items {
+  background-color: var(--v-block-base);
   padding: 15px 15px 15px 20px;
   width: 90%;
   border-radius: 5px;

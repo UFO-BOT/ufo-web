@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar>
+    <v-toolbar color="navbar" dark>
       <v-app-bar-nav-icon id="nav-menu" @click="mobileNav = !mobileNav"></v-app-bar-nav-icon>
       <v-toolbar-title class="pa-0 pl-1"><router-link to="/"><img src="@/assets/logo.png" alt="UFO Logo" class="main-icon"/></router-link></v-toolbar-title>
       <v-toolbar-items style="margin-left: 12px" id="nav-links">
@@ -18,7 +18,7 @@
         <v-btn text @click="mobileNav = false" to="/@me" v-if="user.username"><v-avatar><img :src="user.avatarURL" class="user-avatar" alt="Avatar"></v-avatar> <span class="user-username">{{ user.username }}</span></v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-list v-if="mobileNav" style="margin-top: 5px; margin-bottom: 10px">
+    <v-list v-if="mobileNav" color="mobileNav mt-2 mb-2" class="mobileNav">
       <v-list-item-group color="primary">
         <v-list-item v-for="link of links" @click="mobileNav = false" :to="!link.href ? link.path : ''" :href="link.href ? link.path : ''" :target="link.blank ? '_blank' : '_self'">
           <v-list-item-icon><v-icon>{{ link.icon }}</v-icon></v-list-item-icon>
@@ -75,6 +75,9 @@ export default {
   #nav-links {
     display: none;
   }
+  .mobileNav {
+    display: block;
+  }
 }
 @media screen and (min-width: 1000px) {
   #nav-menu {
@@ -82,6 +85,9 @@ export default {
   }
   #nav-links {
     display: block;
+  }
+  .mobileNav {
+    display: none;
   }
 }
 @media screen and (max-width: 600px){
@@ -93,6 +99,9 @@ export default {
   .user-username {
     display: inline;
   }
+}
+.mobileNav {
+  box-shadow: 0 0 10px var(--v-blockShadow-base)!important;
 }
 .main-icon {
   float: right;

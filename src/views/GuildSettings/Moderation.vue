@@ -1,15 +1,15 @@
 <template>
   <div>
     <div style="text-align: -webkit-center" v-if="loading">
-      <v-progress-circular :size="60" :width="5" color="white"
+      <v-progress-circular :size="60" :width="5"
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
       <div class="subtitle">{{ content.subtitles.muterole }}</div>
       <v-select v-model="settings.muterole" :items="roles" :label="content.subtitles.selectRole" class="role-select"></v-select>
       <div class="subtitle">{{ content.subtitles.automoderation }}</div>
-      <v-card class="settings-list">
-        <v-progress-circular v-if="loadingAutomods" :size="40" :width="4" color="white" style="display: block"
+      <div class="settings-list">
+        <v-progress-circular v-if="loadingAutomods" :size="40" :width="4" style="display: block"
                              indeterminate></v-progress-circular>
         <div v-if="!loadingAutomods" v-for="(name, automod, i) of content.subtitles.automods">
           <div class="settings-list-item">
@@ -20,7 +20,7 @@
           </div>
           <v-divider v-if="Object.keys(content.subtitles.automods).length - 1 > i"></v-divider>
         </div>
-      </v-card>
+      </div>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
@@ -140,6 +140,7 @@ export default {
 }
 
 .settings-list {
+  background-color: var(--v-block-base);
   padding: 15px 15px 15px 20px;
   width: 90%;
   border-radius: 5px;

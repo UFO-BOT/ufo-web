@@ -3,7 +3,7 @@
     <!-- <div class="guild-name" v-if="loadingGuild">{{ content.loading }}</div>
     <div class="guild-name"></div> -->
     <div class="guild-content">
-      <v-list class="guild-menu">
+      <v-list class="guild-menu" color="block">
         <v-subheader class="guild-name" v-if="loadingGuild">{{ content.loading }}</v-subheader>
         <v-subheader class="guild-name" v-else :style="{wordBreak: guild.name.length > 25 ? 'break-all' : 'break-word'}">{{ guild.name.length <= 25 ? guild.name : guild.name.slice(0, 25) + '...'}}</v-subheader>
         <v-divider></v-divider>
@@ -14,7 +14,8 @@
             </v-list-item-icon>
             <v-list-item-content>{{ link.name }}</v-list-item-content>
           </v-list-item>
-          <v-list-item :to="content.boost.path" color="#7777ff" v-if="guild.boost">
+          <v-divider v-if="guild.boost"/>
+          <v-list-item :to="content.boost.path" color="boostTab" v-if="guild.boost">
             <v-list-item-icon>
               <v-icon>{{ content.boost.icon }}</v-icon>
             </v-list-item-icon>
@@ -85,6 +86,9 @@ export default {
   .guild-settings {
     width: calc(100% - 250px);
   }
+}
+.guild-menu {
+  box-shadow: 0 0 10px var(--v-blockShadow-base)!important;
 }
 .settings {
   padding: 20px 0 0 20px;

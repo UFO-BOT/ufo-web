@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="text-align: -webkit-center" v-if="loading">
-      <v-progress-circular :size="60" :width="5" color="white"
+      <v-progress-circular :size="60" :width="5"
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">

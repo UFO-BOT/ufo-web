@@ -2,53 +2,53 @@
   <div style="text-align: -webkit-center">
     <div class="header">{{ content.name }}</div>
     <div class="stats_container">
-      <v-card class="stats-element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.guilds }}
         </div>
         <div class="value-name">{{ content.servers }}</div>
-      </v-card>
-      <v-card class="stats-element">
+      </div>
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.users }}
         </div>
         <div class="value-name">{{ content.users }}</div>
-      </v-card>
-      <v-card class="stats-element">
+      </div>
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.channels }}
         </div>
         <div class="value-name">{{ content.channels }}</div>
-      </v-card>
-      <v-card class="stats-element">
+      </div>
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else>
           {{ stats.stats.emojis }}
         </div>
         <div class="value-name">{{ content.emojis }}</div>
-      </v-card>
+      </div>
     </div>
     <div class="header">{{ content.ping }}</div>
     <div class="stats_container">
-      <v-card class="stats-element">
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else
              :style="{color: stats.ping.bot < 100 ? '#00f56e' : (stats.ping.bot > 1000 ? '#e20000' : '#ffd70c')}">
           {{ stats.ping.bot }} ms
         </div>
         <div class="value-name">{{ content.bot }}</div>
-      </v-card>
-      <v-card class="stats-element">
+      </div>
+      <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
         <div class="value" v-else
              :style="{color: stats.ping.bot < 100 ? '#00f56e' : (stats.ping.database > 1000 ? '#e20000' : '#ffd70c')}">
           {{ stats.ping.database }} ms
         </div>
         <div class="value-name">{{ content.database }}</div>
-      </v-card>
+      </div>
     </div>
     <div class="header">{{ content.shards }}</div>
     <v-data-table :footer-props="{itemsPerPageText: content.shardsPerPage, itemsPerPageAllText: content.all}"
@@ -136,12 +136,14 @@ export default {
 }
 
 .stats-element {
+  background-color: var(--v-block-base)!important;
   padding: 15px 15px;
   text-align: center;
   margin: 10px 10px 10px 10px;
   border-radius: 4px;
   width: 230px;
   word-break: break-all;
+  box-shadow: 3px 3px 3px -3px var(--v-blockShadow-base);
 }
 
 .value {
@@ -149,15 +151,15 @@ export default {
 }
 
 .value-name {
-  color: rgb(190, 190, 190);
+  color: var(--v-opacityColor-base);
   font-size: 1.5em;
-  opacity: 0.7;
 }
 
 .shards-table {
   width: 1100px;
   border-radius: 20px;
   padding: 10px;
+  background-color: var(--v-block-base)!important;
 }
 
 .status-circle {

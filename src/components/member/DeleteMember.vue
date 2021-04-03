@@ -6,7 +6,7 @@
           <v-icon color="red">delete</v-icon>
         </v-btn>
       </template>
-      <v-card>
+      <v-card color="modal">
         <v-card-title>{{ content.deleteMember }}</v-card-title>
         <v-card-text
             v-html="content.deleteConfirm.replace('{{member}}', `<code>${member.user.tag}</code>`)">

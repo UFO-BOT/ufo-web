@@ -6,8 +6,8 @@
           <v-icon>edit</v-icon>
         </v-btn>
       </template>
-      <v-card>
-        <v-card-title class="grey darken-3">
+      <v-card color="modal">
+        <v-card-title class="modalHeader">
           {{ member.user.tag }}
           <v-spacer/>
           <v-btn icon @click="dialog = false">

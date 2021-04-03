@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="text-align: -webkit-center" v-if="loading">
-      <v-progress-circular :size="60" :width="5" color="white"
+      <v-progress-circular :size="60" :width="5"
                            indeterminate></v-progress-circular>
     </div>
     <v-form ref="form" v-if="!loading">
@@ -11,13 +11,13 @@
             :key="i"
             :readonly="categorySettingsHover"
         >
-          <v-expansion-panel-header class="category" :ripple="!categorySettingsHover" v-if="commands.find(c => c.category.en === category)"><span><v-icon large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span>
+          <v-expansion-panel-header class="category" color="block" :ripple="!categorySettingsHover" v-if="commands.find(c => c.category.en === category)"><span><v-icon large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span>
             <template v-slot:actions>
               <Category :category="commands.find(c => c.category.en === category).category[language]" :name="category" @updated="categoryUpdated"></Category>
               <v-icon>$expand</v-icon>
             </template>
           </v-expansion-panel-header>
-          <v-expansion-panel-content>
+          <v-expansion-panel-content color="block">
             <div v-for="(cmd, i) of commands.filter(c => c.category.en === category)">
               <div class="command">
                 <div class="cmd-name">{{settings.prefix + cmd.name[settings.language.commands]}}</div>
@@ -105,7 +105,7 @@ export default {
 }
 .commands {
   width: 95%;
-  border-radius: 10px;
+  border-radius: 10px 10px 10px 10px!important;
 }
 .command {
   display: flex;

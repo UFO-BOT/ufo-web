@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: -webkit-center">
     <div class="content">
-      <v-progress-circular v-if="!user.username" :size="100" :width="7" color="white"
+      <v-progress-circular v-if="!user.username" :size="100" :width="7"
                            indeterminate></v-progress-circular>
       <div v-if="user.username">
         <v-img :lazy-src="user.avatarURL" :src="user.avatarURL" max-width="200px" max-height="200px" style="border-radius: 50%"></v-img>
@@ -18,7 +18,7 @@
         <v-btn @click="logout" class="logout" color="error" outlined large><v-icon class="logout-icon" medium>logout</v-icon> {{ content.logout }}</v-btn>
         <br>
         <div class="guilds">
-          <v-progress-circular v-if="loadingGuilds" :size="60" :width="5" color="white"
+          <v-progress-circular v-if="loadingGuilds" :size="60" :width="5"
                                indeterminate></v-progress-circular>
           <v-select v-if="!loadingGuilds" :items="showItems" v-model="leaders" :label="content.show" class="show-select" color="primary"></v-select>
           <div class="guilds-container">
@@ -30,7 +30,7 @@
               <div>
                 <v-divider class="guild-divider"></v-divider>
                 <div class="guild-buttons">
-                  <v-btn :href="generateInvite(guild.id)" color="primary" outlined v-if="!guild.invited && guild.managePermission"
+                  <v-btn :href="generateInvite(guild.id)" color="blue" outlined v-if="!guild.invited && guild.managePermission"
                          class="action-button">{{ content.invite }}
                   </v-btn>
                   <v-btn :to="`/server/${guild.id}/general`" color="grey" outlined v-if="guild.invited && guild.managePermission"
@@ -110,14 +110,12 @@ export default {
 }
 
 .username {
-  color: white;
   word-break: break-all;
 
 }
 
 .discriminator {
-  opacity: 0.3;
-  color: white;
+  color: var(--v-opacityColor-base);
 }
 
 .user-badge {
@@ -148,8 +146,8 @@ export default {
 }
 
 .guild {
-  color: white;
-  background-color: #131313;
+  background-color: var(--v-block-base);
+  box-shadow: 0 0 3px var(--v-blockShadow-base);
   padding: 20px 20px 5px 20px;
   font-size: 1.5em;
   margin: 5px;
@@ -164,7 +162,7 @@ export default {
 }
 
 .guild:hover {
-  box-shadow: 0 0 10px #131313;
+  box-shadow: 0 0 10px var(--v-blockShadow-base);
   transition-duration: 200ms;
 }
 

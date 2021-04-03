@@ -5,8 +5,8 @@
       <div class="description" v-html="content.description"></div>
       <v-expansion-panels accordion focusable>
         <v-expansion-panel v-for="feature of content.features">
-          <v-expansion-panel-header v-ripple class="feature-name">{{ feature.name }}</v-expansion-panel-header>
-          <v-expansion-panel-content class="feature-description">{{ feature.description }}</v-expansion-panel-content>
+          <v-expansion-panel-header v-ripple class="feature-name" color="block">{{ feature.name }}</v-expansion-panel-header>
+          <v-expansion-panel-content class="feature-description" color="block">{{ feature.description }}</v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
@@ -21,7 +21,7 @@
         </div>
         <div>
           <v-divider class="donate-card-divider"></v-divider>
-          <v-btn @click="donate(i)" :loading="loading" :color="i === 'premium' ? 'primary' : 'success'" class="donate-buy">{{ card.price }}₽<span class="per">{{ content.perMonth }}</span></v-btn>
+          <v-btn @click="donate(i)" dark :loading="loading" :color="i === 'premium' ? '#007bff' : '#4caf50'" class="donate-buy">{{ card.price }}₽<span class="per">{{ content.perMonth }}</span></v-btn>
         </div>
       </v-card>
       <v-snackbar v-model="error" :timeout="5000" color="secondary">
@@ -83,7 +83,6 @@ export default {
 }
 .description {
   font-size: 1.4em;
-  color: #9c9c9c;
   text-align: left;
   margin-bottom: 10px;
 }
@@ -102,6 +101,7 @@ export default {
   margin-top: 20px;
 }
 .donate-card {
+  background-color: var(--v-block-base)!important;
   padding: 5px 15px 5px 15px;
   border-radius: 10px!important;
   border: solid 2px;
@@ -128,9 +128,8 @@ export default {
 .donate-bonuses {
   text-align: left;
   padding-left: 20px;
-  list-style: red;
   list-style: none;
-  color: #d2d2d2;
+  color: var(--v-opacityColor-base);
 }
 .donate-bonus {
   word-break: break-word;

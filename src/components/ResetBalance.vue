@@ -4,13 +4,13 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="red" class="mt-1" v-bind="attrs" v-on="on">{{ content.subtitles.reset }}</v-btn>
       </template>
-      <v-card>
-        <v-card-title>{{ content.subtitles.resetBalance }}</v-card-title>
+      <v-card color="modal">
+        <v-card-title class="modalHeader mb-3">{{ content.subtitles.resetBalance }}</v-card-title>
         <v-card-text class="pb-0">
           <div class="attention">{{ content.subtitles.attention }}</div>
           <div>{{ content.subtitles.resetConfirm }}</div>
           <div class="guildName">{{ content.subtitles.enterGuildName }}</div>
-          <v-text-field v-model="name" color="red" outlined :placeholder="guild.name" class="mt-1"></v-text-field>
+          <v-text-field v-model="name" color="red" outlined :placeholder="guild.name" hide-details class="mt-1 mb-3"></v-text-field>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
