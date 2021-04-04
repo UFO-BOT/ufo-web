@@ -1,6 +1,6 @@
 <template>
   <div style="text-align: -webkit-center">
-    <div class="code"><b>404</b></div>
+    <div class="error-code"><b>404</b></div>
     <div class="description">{{ content.name }}</div>
     <v-btn x-large color="secondary" class="home" to="/">{{ content.home }}</v-btn>
   </div>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style scoped>
-.code {
+.error-code {
   font-size: 10em;
 }
 

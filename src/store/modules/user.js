@@ -6,7 +6,7 @@ import UserAvatar from "@/util/userAvatar";
 export default {
     actions: {
         async getUser(ctx) {
-            return new Promise(async (resolve, reject) => {
+            return new Promise(async (resolve) => {
                 let cookies = Cookies.parse()
                 let token = cookies.token;
                 if (!token) return;
@@ -32,7 +32,7 @@ export default {
             })
         },
         async getUserBadges(ctx) {
-            return new Promise(async (resolve, reject) => {
+            return new Promise(async (resolve) => {
                 let cookies = Cookies.parse()
                 let token = cookies.token;
                 let responseBadges = await fetch(`${config.API}/private/badges`, {

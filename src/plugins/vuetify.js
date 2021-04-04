@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
+import Cookies from '@/util/cookies'
+
+let cookies = Cookies.parse()
 
 Vue.use(Vuetify);
 
 export default new Vuetify({
     theme: {
-        dark: true,
+        dark: cookies.theme === 'dark',
         options: { customProperties: true },
         themes: {
             customProperties: true,
@@ -15,11 +18,15 @@ export default new Vuetify({
                 background: '#1a1e25',
                 code: '#0e1011',
                 navbar: '#1f242d',
+                footer: '#1f242d',
                 mobileNav: '#1f242d',
                 modal: '#212328',
                 modalHeader: '#33363e',
                 boostTab: '#0040ff',
-                opacityColor: '#b1b1b1',
+                opacityColor: '#a8a8a8',
+                footerLink: '#e3e3e3',
+                scrollbarTrack: '#15181d',
+                scrollbarThumb: '#0d1013',
                 primary: '#7777ff',
                 secondary: '#33363e'
             },
@@ -29,11 +36,15 @@ export default new Vuetify({
                 background: '#f6f6f6',
                 code: '#eaeaea',
                 navbar: '#7777ff',
+                footer: '#7777ff',
                 mobileNav: '#ffffff',
                 modal: '#ffffff',
                 modalHeader: '#adbdc4',
                 boostTab: '#0040ff',
-                opacityColor: '#909090',
+                opacityColor: '#898989',
+                footerLink: '#ffffff',
+                scrollbarTrack: '#d0d0d0',
+                scrollbarThumb: '#b8b8b8',
                 primary: '#7777ff',
                 secondary: '#546E7A'
             }

@@ -31,7 +31,6 @@
 import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from "@/config.json";
-import guild from "@/store/modules/guild";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildBoost[cookies.language]

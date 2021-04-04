@@ -1,18 +1,27 @@
 <template>
   <v-app id="app">
-    <Navbar></Navbar>
-    <transition name="fade" mode="out-in" :duration="70">
-      <router-view/>
-    </transition>
+    <div class="content">
+      <div>
+        <Navbar></Navbar>
+        <transition name="fade" mode="out-in" :duration="70">
+          <router-view/>
+        </transition>
+      </div>
+      <div>
+        <Footer></Footer>
+      </div>
+    </div>
   </v-app>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
+import Footer from "@/components/Footer";
 
 export default {
   name: 'App',
   components: {
+    Footer,
     Navbar
   }
 };
@@ -20,6 +29,13 @@ export default {
 <style>
 #app {
   background-color: var(--v-background-base);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  margin-bottom: 10px;
 }
 img {
   user-select: none;
@@ -51,12 +67,12 @@ code {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #181d1f;
+  background: var(--v-scrollbarTrack-base);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #121315;
+  background: var(--v-scrollbarThumb-base);
   border-radius: 10px;
 }
 input::-webkit-outer-spin-button,

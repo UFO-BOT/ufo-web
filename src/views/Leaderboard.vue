@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-if="loading" v-for="i in new Array(skeletonsCount || 10)" class="no-hover">
+    <tr v-if="loading" v-for="i in new Array(skeletonsCount || 10)" :key="i" class="no-hover">
       <td><v-skeleton-loader max-width="5vw" type="text"></v-skeleton-loader></td>
       <td><v-skeleton-loader max-width="35vw" type="text"></v-skeleton-loader></td>
       <td><v-skeleton-loader max-width="10vw" type="text"></v-skeleton-loader></td>

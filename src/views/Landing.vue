@@ -4,7 +4,7 @@
     <v-img src="@/assets/avatar.png" max-width="260px" max-height="260px" class="icon"></v-img>
     <div class="buttons-container">
       <v-btn color="primary" x-large class="action-button" to="/commands"><v-icon large class="button-icon">list</v-icon>{{ content.commands }}</v-btn>
-      <v-btn color="grey" x-large class="action-button" href="https://discord.gg/qPrqVwR"><v-icon large class="button-icon">group</v-icon>{{ content.support }}</v-btn>
+      <v-btn color="secondary lighten-3" x-large class="action-button" href="https://discord.gg/qPrqVwR"><v-icon large class="button-icon">group</v-icon>{{ content.support }}</v-btn>
     </div>
     <v-btn color="secondary" x-large v-if="user.username && $route.query.guild_id" :to="`/server/${$route.query.guild_id}/general`" class="action-button"><v-icon large class="button-icon">settings</v-icon>{{ content.settings }}</v-btn>
   </div>

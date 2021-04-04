@@ -135,13 +135,10 @@ export default {
   width: 220px;
 }
 
-.roles-select {
-  width: 90%;
-}
-
 .settings-list {
-  background-color: var(--v-block-base);
+  box-shadow: 0 0 5px var(--v-blockShadow-base);
   padding: 15px 15px 15px 20px;
+  margin-bottom: 15px;
   width: 90%;
   border-radius: 5px;
   margin-top: 5px;

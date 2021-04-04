@@ -105,7 +105,6 @@ export default {
 }
 .commands {
   width: 95%;
-  border-radius: 10px 10px 10px 10px!important;
 }
 .command {
   display: flex;

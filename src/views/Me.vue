@@ -1,8 +1,10 @@
 <template>
   <div style="text-align: -webkit-center">
     <div class="content">
-      <v-progress-circular v-if="!user.username" :size="100" :width="7"
-                           indeterminate></v-progress-circular>
+      <div>
+        <v-progress-circular v-if="!user.username" :size="100" :width="7"
+                             indeterminate></v-progress-circular>
+      </div>
       <div v-if="user.username">
         <v-img :lazy-src="user.avatarURL" :src="user.avatarURL" max-width="200px" max-height="200px" style="border-radius: 50%"></v-img>
         <div class="user-tag"><span class="username">{{ user.username }}</span><span
@@ -116,6 +118,7 @@ export default {
 
 .discriminator {
   color: var(--v-opacityColor-base);
+  opacity: 0.7;
 }
 
 .user-badge {

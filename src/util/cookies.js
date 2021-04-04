@@ -8,10 +8,16 @@ export default {
             }
         })
         let languages = ['ru', 'en'];
+        let themes = ['light', 'dark'];
         let language = cookies.language;
+        let theme = cookies.theme;
         if(!languages.includes(language)) {
             document.cookie = 'language=en';
             cookies.language = 'en';
+        }
+        if(!themes.includes(theme)) {
+            document.cookie = 'theme=dark';
+            cookies.theme = 'dark';
         }
         return cookies
     },
