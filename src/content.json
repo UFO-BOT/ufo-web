@@ -32,8 +32,6 @@
       ],
       "login": {
         "name": "Войти",
-        "path": "/public/auth",
-        "right": true,
         "icon": "login"
       }
     },
@@ -69,9 +67,108 @@
       ],
       "login": {
         "name": "Log in",
-        "path": "/login",
         "icon": "login"
       }
+    }
+  },
+  "footer": {
+    "ru": {
+      "list": [
+        [
+          {
+            "name": "top.gg",
+            "path": "https://top.gg/bot/705372408281825350",
+            "blank": true
+          },
+          {
+            "name": "SDC",
+            "path": "https://bots.server-discord.com/705372408281825350",
+            "blank": true
+          },
+          {
+            "name": "boticord.top",
+            "path": "https://boticord.top/bot/705372408281825350",
+            "blank": true
+          }
+        ],
+        [
+          {
+            "name": "Команды",
+            "path": "/commands"
+          },
+          {
+            "name": "Статистика",
+            "path": "/stats"
+          },
+          {
+            "name": "Донат",
+            "path": "/donate"
+          }
+        ],
+        [
+          {
+            "name": "Документация",
+            "path": "https://docs.ufobot.ru",
+            "blank": true
+          },
+          {
+            "name": "Сервер поддержки",
+            "path": "https://discord.gg/qPrqVwR",
+            "blank": true
+          }
+        ]
+      ],
+      "darkTheme": "Темная тема",
+      "copyright": "Smoky Play © {year} | Все права похитили"
+    },
+    "en": {
+      "list": [
+        [
+          {
+            "name": "top.gg",
+            "path": "https://top.gg/bot/705372408281825350",
+            "blank": true
+          },
+          {
+            "name": "SDC",
+            "path": "https://bots.server-discord.com/705372408281825350",
+            "blank": true
+          },
+          {
+            "name": "boticord.top",
+            "path": "https://boticord.top/bot/705372408281825350",
+            "blank": true
+          }
+        ],
+        [
+          {
+            "name": "Commands",
+            "path": "/commands"
+          },
+          {
+            "name": "Statistics",
+            "path": "/stats"
+          },
+          {
+            "name": "Donate",
+            "path": "/donate"
+          }
+        ],
+        [
+          {
+            "name": "Documentation",
+            "path": "https://docs.ufobot.ru",
+            "blank": true
+          },
+          {
+            "name": "Support server",
+            "path": "https://discord.gg/qPrqVwR",
+            "blank": true
+          }
+        ]
+      ],
+      "darkTheme": "Dark theme",
+      "copyright": "Smoky Play © {year} | All rights were abducted"
     }
   },
   "guild": {

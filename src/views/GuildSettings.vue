@@ -1,5 +1,4 @@
 <template>
-  <div style="height: 100%">
     <!-- <div class="guild-name" v-if="loadingGuild">{{ content.loading }}</div>
     <div class="guild-name"></div> -->
     <div class="guild-content">
@@ -29,7 +28,6 @@
         </div>
       </v-window>
     </div>
-  </div>
 </template>
 
 <script>
@@ -76,12 +74,10 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100%;
   }
   .guild-menu {
     /* box-shadow: 0 5px 15px #14161a; */
     width: 250px;
-    height: 100%;
   }
   .guild-settings {
     width: calc(100% - 250px);

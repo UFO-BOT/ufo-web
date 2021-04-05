@@ -136,6 +136,7 @@ export default {
 }
 
 .settings-list {
+  background-color: var(--v-block-base);
   box-shadow: 0 0 5px var(--v-blockShadow-base);
   padding: 15px 15px 15px 20px;
   margin-bottom: 15px;

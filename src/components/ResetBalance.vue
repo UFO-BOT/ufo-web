@@ -2,7 +2,7 @@
   <div>
     <v-dialog v-model="dialog" width="500px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="red" class="mt-1" v-bind="attrs" v-on="on">{{ content.subtitles.reset }}</v-btn>
+        <v-btn color="red" dark class="mt-1" v-bind="attrs" v-on="on">{{ content.subtitles.reset }}</v-btn>
       </template>
       <v-card color="modal">
         <v-card-title class="modalHeader mb-3">{{ content.subtitles.resetBalance }}</v-card-title>

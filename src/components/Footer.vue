@@ -8,28 +8,20 @@
           </div>
         </div>
         <div class="links-flex">
-          <div class="footer-block">
-            <div><router-link class="footer-link" to="/commands">top.gg</router-link></div>
-            <div><router-link class="footer-link" to="/commands">SDC</router-link></div>
-            <div><router-link class="footer-link" to="/commands">boticord.top</router-link></div>
-          </div>
-          <div class="footer-block">
-            <div><router-link class="footer-link" to="/commands">Команды</router-link></div>
-            <div><router-link class="footer-link" to="/commands">Статистика</router-link></div>
-            <div><router-link class="footer-link" to="/commands">Донат</router-link></div>
-          </div>
-          <div class="footer-block">
-            <div><router-link class="footer-link" to="/commands">Документация</router-link></div>
-            <div><router-link class="footer-link" to="/commands">Сервер поддержки</router-link></div>
+          <div class="footer-block" v-for="block of links">
+            <div v-for="link of block">
+              <a v-if="link.blank" class="footer-link" target="_blank" :href="link.path">{{ link.name }}</a>
+              <router-link v-else class="footer-link" :to="link.path">{{ link.name }}</router-link>
+            </div>
           </div>
         </div>
         <div class="footer-block">
-          <v-switch v-model="dark" label="Темная тема" :disabled="updatingTheme" @change="updateTheme" hide-details></v-switch>
+          <v-switch v-model="dark" :label="content.darkTheme" :disabled="updatingTheme" @change="updateTheme" hide-details></v-switch>
         </div>
       </div>
       <div class="footer-bottom">
         <v-divider/>
-        <div class="ma-2">Smoky Play © {{ new Date().getFullYear() }} | Все права похитили</div>
+        <div class="ma-2">{{ content.copyright.replace('{year}', year) }}</div>
       </div>
     </v-footer>
   </div>
@@ -39,18 +31,16 @@
 import Cookies from '@/util/cookies'
 
 let cookies = Cookies.parse()
+import WebContent from '@/content.json'
+let content = WebContent.footer[cookies.language]
+let links = content.list;
 
 export default {
   name: "Footer",
   data: () => ({
-    links: [
-      'Home',
-      'About Us',
-      'Team',
-      'Services',
-      'Blog',
-      'Contact Us',
-    ],
+    content,
+    links,
+    year: new Date().getFullYear(),
     dark: cookies.theme === 'dark',
     updatingTheme: false
   }),
@@ -68,6 +58,7 @@ export default {
 <style scoped>
 .footer {
   box-shadow: 0 0 10px var(--v-blockShadow-base)!important;
+  margin-top: 20px;
 }
 .footer-flex {
   display: flex;

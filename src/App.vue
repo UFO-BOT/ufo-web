@@ -35,7 +35,6 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100%;
-  margin-bottom: 10px;
 }
 img {
   user-select: none;
