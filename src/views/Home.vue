@@ -11,6 +11,8 @@
         <div class="feature-description">{{ feature.description }}</div>
       </v-card>
     </div>
+    <DurationPicker v-model="duration"/>
+    <div>{{ duration }}</div>
   </div>
 </template>
 
@@ -19,17 +21,20 @@ import Typed from 'typed.js'
 import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from '@/config.json'
+import DurationPicker from "@/components/DurationPicker";
 
 let cookies = Cookies.parse()
 let content = WebContent.home[cookies.language]
 
 export default {
   name: 'Home',
+  components: {DurationPicker},
   metaInfo: {
     title: content.title
   },
   data: () => ({
-    content
+    content,
+    duration: 1138149000
   }),
   methods: {
     invite() {

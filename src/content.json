@@ -171,6 +171,34 @@
       "copyright": "Smoky Play © {year} | All rights were abducted"
     }
   },
+  "DurationPicker": {
+    "ru": {
+      "input": "Ввести",
+      "durationInput": "Ввод длительности",
+      "enterDuration": "Введите длительность",
+      "unitsList": {
+        "seconds": "Секунды",
+        "minutes": "Минуты",
+        "hours": "Часы",
+        "days": "Дни"
+      },
+      "invalidNumber": "Число должно быть целым и положительным",
+      "tooLongDuration": "Слишком большая длительность"
+    },
+    "en": {
+      "input": "Enter",
+      "durationInput": "Duration input",
+      "enterDuration": "Enter duration",
+      "unitsList": {
+        "seconds": "Seconds",
+        "minutes": "Minutes",
+        "hours": "Hours",
+        "days": "Days"
+      },
+      "invalidNumber": "Number must be a positive integer",
+      "tooLongDuration": "Too long duration"
+    }
+  },
   "guild": {
     "ru": {
       "list": [

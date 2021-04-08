@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: -webkit-center">
     <v-card class="member-card" color="block">
-      <v-progress-circular v-if="loading" :size="80" :width="6" color="white"
+      <v-progress-circular v-if="loading" :size="80" :width="6"
                            indeterminate></v-progress-circular>
       <div v-else>
         <v-img :lazy-src="member.user.avatar" :src="member.user.avatar" max-width="150px" max-height="150px" style="border-radius: 50%"></v-img>

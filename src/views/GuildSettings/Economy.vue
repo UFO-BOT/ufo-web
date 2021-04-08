@@ -13,10 +13,7 @@
                     :label="content.subtitles.to" class="number-input"></v-text-field>
       <br>
       <div class="subsubtitle">{{ content.subtitles.cooldown }}</div>
-      <v-text-field v-model="settings.work.cooldown" type="number" :label="content.subtitles.cooldown" :rules="rules.positiveInteger"
-                    class="number-input"></v-text-field>
-      <v-select v-model="settings.work.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
-                class="unit-select"></v-select>
+      <DurationPicker v-model='settings.work.cooldown' class="mt-1"/>
       <br>
       <div class="subtitle">{{ content.subtitles.moneybags }}</div>
       <div class="subsubtitle">{{ content.subtitles.money }}</div>
@@ -26,10 +23,7 @@
                     class="number-input"></v-text-field>
       <br>
       <div class="subsubtitle">{{ content.subtitles.cooldown }}</div>
-      <v-text-field v-model="settings.moneybags.cooldown" type="number" :label="content.subtitles.cooldown" :rules="rules.positiveInteger"
-                    class="number-input"></v-text-field>
-      <v-select v-model="settings.moneybags.cooldownUnit" :items="content.subtitles.units" :label="content.subtitles.unit"
-                class="unit-select"></v-select>
+      <DurationPicker v-model='settings.moneybags.cooldown' class="mt-1"/>
       <br>
       <div class="subtitle">{{ content.subtitles.moneysymb }}</div>
       <v-text-field v-model="settings.moneysymb" :label="content.subtitles.symbol" outlined :hint="content.subtitles.moneysymbhint" persistent-hint
@@ -92,6 +86,7 @@ import CreateItem from "@/components/items/CreateItem";
 import EditItem from "@/components/items/EditItem";
 import DeleteItem from "@/components/items/DeleteItem";
 import ResetBalance from "@/components/ResetBalance";
+import DurationPicker from "@/components/DurationPicker";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildEconomy[cookies.language]
@@ -102,6 +97,7 @@ export default {
     title: content.title
   },
   components: {
+    DurationPicker,
     ResetBalance,
     CreateItem,
     EditItem,
@@ -152,15 +148,6 @@ export default {
     }
   },
   methods: {
-    getTime(time, unit) {
-      let multipliers = {
-        seconds: 1000,
-        minutes: 60000,
-        hours: 3600000,
-        days: 86400000
-      }
-      return time * multipliers[unit]
-    },
     async loadItems() {
       this.loadingItems = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items`, {
@@ -186,12 +173,12 @@ export default {
           work: {
             low: Math.min(this.settings.work.low, this.settings.work.high),
             high: Math.max(this.settings.work.low, this.settings.work.high),
-            cooldown: this.getTime(this.settings.work.cooldown, this.settings.work.cooldownUnit)
+            cooldown: this.settings.work.cooldown
           },
           moneybags: {
             low: Math.min(this.settings.moneybags.low, this.settings.moneybags.high),
             high: Math.max(this.settings.moneybags.low, this.settings.moneybags.high),
-            cooldown: this.getTime(this.settings.moneybags.cooldown, this.settings.moneybags.cooldownUnit)
+            cooldown: this.settings.moneybags.cooldown
           },
           moneysymb: this.settings.moneysymb,
           commission: this.settings.commission,
@@ -220,10 +207,6 @@ export default {
     let body = await response.json()
     if (!response.ok) return window.location.replace('/@me');
     this.settings = body;
-    this.settings.work.cooldown = body.work.cooldown / 1000
-    this.settings.work.cooldownUnit = 'seconds'
-    this.settings.moneybags.cooldown = body.moneybags.cooldown / 1000
-    this.settings.moneybags.cooldownUnit = 'seconds'
     this.loading = false;
     this.loadItems()
   }

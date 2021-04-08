@@ -91,7 +91,7 @@ export default {
 }
 .feature-description {
   text-align: left;
-  margin-top: 10px;
+  padding-top: 10px;
 }
 .cards-container {
   display: flex;

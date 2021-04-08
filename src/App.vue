@@ -2,13 +2,13 @@
   <v-app id="app">
     <div class="content">
       <div>
-        <Navbar></Navbar>
+        <Navbar/>
         <transition name="fade" mode="out-in" :duration="70">
           <router-view/>
         </transition>
       </div>
       <div>
-        <Footer></Footer>
+        <Footer/>
       </div>
     </div>
   </v-app>
