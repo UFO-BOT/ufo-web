@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" width="500px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="primary" v-bind="attrs" v-on="on">
-          {{ content.input }}
+          {{ label || content.input }}
         </v-btn>
       </template>
       <v-card color="modal">
@@ -13,6 +13,7 @@
             <div class="input-header">{{ content.enterDuration }}</div>
             <v-text-field v-for="unit in units" v-model="values[unit]" type="number" class="value-input" :rules="rules.number" :label="content.unitsList[unit]"/>
           </v-form>
+          <div>{{ hint }}</div>
         </v-card-text>
         <v-divider/>
         <v-card-actions>
@@ -36,7 +37,9 @@ export default {
   props: {
     required: Boolean,
     value: Number,
-    limit: Number
+    limit: Number,
+    label: String,
+    hint: String
   },
   model: {
     prop: "value",

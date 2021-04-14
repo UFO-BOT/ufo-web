@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="create-item-btn" color="primary" v-if="!limit" v-bind="attrs" v-on="on" outlined>
-          <v-icon medium class="save-icon">add</v-icon>
+          <v-icon medium class="mr-1">add</v-icon>
           {{ content.subtitles.create }}
         </v-btn>
         <div v-else class="itemsLimit">{{ content.subtitles.itemsLimit }}</div>
@@ -157,11 +157,7 @@ export default {
 
 .itemsLimit {
   font-size: 1.1em;
-  color: grey;
+  color: var(--v-opacityColor-base);;
   margin-top: 5px;
-}
-
-.save-icon {
-  margin-right: 5px;
 }
 </style>

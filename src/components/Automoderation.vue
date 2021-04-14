@@ -27,18 +27,13 @@
             <v-select v-model="automod.punishment.type" :items="punishments" :disabled="!automod.enabled"
                       :label="content.subtitles.punishment" class="punishment-select"></v-select>
             <v-textarea v-model="automod.punishment.reason" filled :disabled="!automod.enabled" counter="512"
-                        :rules="rules.reason" :label="content.subtitles.reason" class="pa-0"></v-textarea>
-            <div v-if="automod.punishment.type && punishments.find(p => p.value === automod.punishment.type).duration">
+                        :rules="rules.reason" :label="content.subtitles.reason" hide-details class="pa-0 mb-4"></v-textarea>
+            <div v-if="automod.punishment.type && punishments.find(p => p.value === automod.punishment.type).duration" class="mb-3">
               <div class="subtitle">{{ content.subtitles.duration }}</div>
-              <v-text-field v-model="automod.punishment.duration" :disabled="!automod.enabled" type="number"
-                            :rules="punishments.find(p => p.value === automod.punishment.type).durationRequired ? rules.duration : []"
-                            :label="content.subtitles.duration"
-                            :hint="!punishments.find(p => p.value === automod.punishment.type).durationRequired ? content.subtitles.infinityDuration : null"
-                            class="number-input mt-0"></v-text-field>
-              <v-select v-model="automod.punishment.durationUnit" :disabled="!automod.enabled"
-                        :items="content.subtitles.units" :label="content.subtitles.unit"
-                        @change="$refs.form.validate()"
-                        class="unit-select mt-0"></v-select>
+              <DurationPicker v-model="automod.punishment.duration" :limit="315360000000"
+                              :required="punishments.find(p => p.value === automod.punishment.type).durationRequired"
+                              :hint="punishments.find(p => p.value === automod.punishment.type).durationRequired ? null : content.subtitles.infinityDuration"
+                              class="mt-1"/>
             </div>
             <div class="subtitle">{{ content.subtitles.whitelist }}</div>
             <div class="automod-flex">
@@ -70,12 +65,14 @@ import WebContent from '@/content.json'
 import Cookies from '@/util/cookies'
 import config from "@/config.json";
 import ParseForSelect from "@/util/parseForSelect";
+import DurationPicker from "@/components/DurationPicker";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildModeration[cookies.language]
 
 export default {
   name: "Automoderation",
+  components: {DurationPicker},
   props: ['automod', 'type', 'name'],
   data: () => ({
     content,
@@ -119,15 +116,6 @@ export default {
     }
   },
   methods: {
-    getTime(time, unit) {
-      let multipliers = {
-        seconds: 1000,
-        minutes: 60000,
-        hours: 3600000,
-        days: 86400000
-      }
-      return time * multipliers[unit]
-    },
     async editAutomod() {
       this.loading = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/automod/${this.type}`, {
@@ -140,7 +128,7 @@ export default {
           enabled: this.automod.enabled,
           punishment: {
             type: this.automod.punishment.type,
-            duration: this.getTime(this.automod.punishment.duration, this.automod.punishment.durationUnit),
+            duration: this.automod.punishment.duration,
             reason: this.automod.punishment.reason
           },
           whitelist: {
@@ -153,10 +141,6 @@ export default {
       if (response.ok) this.dialog = false;
       this.loading = false;
     }
-  },
-  mounted() {
-    this.automod.punishment.duration = (this.automod.punishment.duration || 0) / 1000
-    this.automod.punishment.durationUnit = 'seconds'
   }
 }
 </script>

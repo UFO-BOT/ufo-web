@@ -234,11 +234,6 @@ export default {
   margin-right: 20px!important;
 }
 
-.unit-select {
-  width: 120px;
-  display: inline-block;
-}
-
 .items {
   background-color: var(--v-block-base);
   box-shadow: 0 0 5px var(--v-blockShadow-base);

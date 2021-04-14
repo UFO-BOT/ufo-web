@@ -62,7 +62,7 @@
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
           "blank": true,
-          "icon": "group"
+          "icon": "mdi-discord"
         }
       ],
       "login": {
@@ -865,25 +865,6 @@
         "salary": "Зарплата",
         "cooldown": "Кулдаун",
         "money": "Деньги",
-        "unit": "Единица измерения",
-        "units": [
-          {
-            "text": "Секунд",
-            "value": "seconds"
-          },
-          {
-            "text": "Минут",
-            "value": "minutes"
-          },
-          {
-            "text": "Часов",
-            "value": "hours"
-          },
-          {
-            "text": "Дней",
-            "value": "days"
-          }
-        ],
         "moneysymb": "Символ денег",
         "symbol": "Символ",
         "moneysymbhint": "Чтобы использовать эмодзи, введите его в формате <:имя:id>",
@@ -959,25 +940,6 @@
         "salary": "Salary",
         "cooldown": "Cooldown",
         "money": "Money",
-        "unit": "Unit",
-        "units": [
-          {
-            "text": "Seconds",
-            "value": "seconds"
-          },
-          {
-            "text": "Minutes",
-            "value": "minutes"
-          },
-          {
-            "text": "Hours",
-            "value": "hours"
-          },
-          {
-            "text": "Days",
-            "value": "days"
-          }
-        ],
         "moneysymb": "Money symbol",
         "symbol": "Symbol",
         "moneysymbhint": "To use emoji, enter it in <:name:id> format",
@@ -1108,10 +1070,13 @@
         },
         "general": "Основное",
         "enabled": "Включен",
+        "warnsPunishments": "Наказания за предупреждения",
+        "warns": "Предупреждения",
         "punishment": "Наказание",
+        "add": "Добавить",
         "reason": "Причина",
         "duration": "Длительность",
-        "infinityDuration": "Для бесконечного наказания введите 0",
+        "infinityDuration": "Для бесконечного наказания введите значение 0",
         "unit": "Единица",
         "whitelist": "Белый список",
         "roles": "Роли",
@@ -1148,7 +1113,9 @@
       "errors": {
         "reasonLength": "Причина не должна быть длиннее 512 символов",
         "invalidDuration": "Длительность должна быть целым положительным числом",
-        "tooLongDuration": "Слишком большая длительность наказания"
+        "tooLongDuration": "Слишком большая длительность наказания",
+        "invalidWarns": "Количество предупреждений должно быть целым положительным числом",
+        "wpLimit": "Достигнут лимит наказаний за предупреждения"
       },
       "ru": "Русский",
       "en": "Английский",
@@ -1180,10 +1147,13 @@
         },
         "general": "General",
         "enabled": "Enabled",
+        "warnsPunishments": "Punishments for warns",
+        "warns": "Warns",
         "punishment": "Punishment",
+        "add": "Add",
         "reason": "Reason",
         "duration": "Duration",
-        "infinityDuration": "For infinity punishment enter 0",
+        "infinityDuration": "For infinity punishment enter value 0",
         "unit": "Unit",
         "whitelist": "Whitelist",
         "roles": "Roles",
@@ -1220,7 +1190,9 @@
       "errors": {
         "reasonLength": "Reason cannot be longer than 512 characters",
         "invalidDuration": "Duration must be a positive integer",
-        "tooLongDuration": "Punishment duration is too long"
+        "tooLongDuration": "Punishment duration is too long",
+        "invalidWarns": "Warns amount must be an integer",
+        "wpLimit": "Punishments for warns limit is reached"
       },
       "ru": "Russian",
       "en": "English",

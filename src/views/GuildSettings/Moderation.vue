@@ -6,7 +6,8 @@
     </div>
     <v-form ref="form" v-model="valid" v-if="!loading">
       <div class="subtitle">{{ content.subtitles.muterole }}</div>
-      <v-select v-model="settings.muterole" :items="roles" :label="content.subtitles.selectRole" class="role-select"></v-select>
+      <v-select v-model="settings.muterole" :items="roles" :label="content.subtitles.selectRole"
+                class="role-select"></v-select>
       <div class="subtitle">{{ content.subtitles.automoderation }}</div>
       <div class="settings-list">
         <v-progress-circular v-if="loadingAutomods" :size="40" :width="4" style="display: block"
@@ -15,18 +16,55 @@
           <div class="settings-list-item">
             <div class="settings-list-item-name text-truncate">{{ name }}</div>
             <div>
-              <Automoderation :automod="automods.find(a => a.type === automod) || defaultAutomod" :type="automod" :name="name"></Automoderation>
+              <Automoderation :automod="automods.find(a => a.type === automod) || defaultAutomod" :type="automod"
+                              :name="name"></Automoderation>
             </div>
           </div>
           <v-divider v-if="Object.keys(content.subtitles.automods).length - 1 > i"></v-divider>
         </div>
       </div>
-      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
+      <div class="subtitle">{{ content.subtitles.warnsPunishments }}</div>
+      <div class="settings-list">
+        <div v-for="(warnsPunishment, i) of settings.warnsPunishments">
+          <div class="wp-flex">
+            <div class="punishment-title">{{ content.subtitles.punishment }} {{ i + 1 }}</div>
+            <v-btn icon @click="settings.warnsPunishments.splice(i, 1)">
+              <v-icon color="red">delete</v-icon>
+            </v-btn>
+          </div>
+          <v-text-field v-model="warnsPunishment.warns" class="warns-count mt-0" :rules="rules.warns"
+                        :label="content.subtitles.warns"/>
+          <v-select v-model="warnsPunishment.punishment.type" class="punishment-select"
+                    :label="content.subtitles.punishment" :items="punishments"/>
+          <DurationPicker v-if="punishments.find(p => p.value === warnsPunishment.punishment.type).duration"
+                          v-model="warnsPunishment.punishment.duration"
+                          class="duration-input"
+                          :label="content.subtitles.duration"
+                          :required="punishments.find(p => p.value === warnsPunishment.punishment.type).durationRequired"
+          />
+          <v-divider/>
+        </div>
+        <div v-if="settings.warnsPunishments.length" class="mb-3"></div>
+        <v-btn color="primary" outlined
+               v-if="settings.warnsPunishments.length < 10"
+               @click="settings.warnsPunishments.push({warns: 0, punishment: {type: 'kick', duration: 0}})">
+          <v-icon medium class="mr-1">add</v-icon>
+          {{ content.subtitles.add }}
+        </v-btn>
+        <div v-else class="wpLimit">{{ content.errors.wpLimit }}</div>
+      </div>
+      <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit">
+        <v-icon medium class="save-icon">save</v-icon>
+        {{ content.submit }}
+      </v-btn>
     </v-form>
     <v-snackbar v-model="result" color="secondary">
       <div class="result-text">{{ resultText }}</div>
       <template v-slot:action="{ attrs }">
-        <v-btn :color="error ? 'pink' : 'success'" text v-bind="attrs" @click="result = false">{{ content.close }}</v-btn>
+        <v-btn :color="error ? 'pink' : 'success'" text v-bind="attrs" @click="result = false">{{
+            content.close
+          }}
+        </v-btn>
       </template>
     </v-snackbar>
   </div>
@@ -39,13 +77,14 @@ import config from "@/config.json";
 import ParseForSelect from "@/util/parseForSelect";
 
 import Automoderation from "@/components/Automoderation";
+import DurationPicker from "@/components/DurationPicker";
 
 let cookies = Cookies.parse()
 let content = WebContent.GuildModeration[cookies.language]
 
 export default {
   name: 'General',
-  components: {Automoderation},
+  components: {DurationPicker, Automoderation},
   metaInfo: {
     title: content.title
   },
@@ -60,15 +99,23 @@ export default {
     automods: [],
     defaultAutomod: {
       enabled: false,
-      punishment: {
-
-      },
+      punishment: {},
       whitelist: {
         roles: [],
         channels: []
       }
     },
+    punishments: [
+      {text: content.subtitles.punishments.mute, value: 'mute', duration: true},
+      {text: content.subtitles.punishments.kick, value: 'kick'},
+      {text: content.subtitles.punishments.softban, value: 'softban'},
+      {text: content.subtitles.punishments.ban, value: 'ban'},
+      {text: content.subtitles.punishments.tempban, value: 'tempban', duration: true, durationRequired: true},
+    ],
     rules: {
+      warns: [
+        warns => (warns > 0 && !(warns % 1)) || content.errors.invalidWarns
+      ]
     },
     submitting: false,
     result: null,
@@ -78,34 +125,38 @@ export default {
   computed: {
     roles() {
       let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
-      if(!guild) return [];
+      if (!guild) return [];
       return ParseForSelect.roles(guild.roles, {none: !this.settings.muterole})
     }
   },
   methods: {
     async loadAutomods() {
       this.loadingAutomods = true
-      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/automods`, {headers: {
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/automods`, {
+        headers: {
           Authorization: cookies.token
-        }})
-      if(!response.ok) return this.automods = [];
+        }
+      })
+      if (!response.ok) return this.automods = [];
       this.automods = await response.json();
       this.loadingAutomods = false;
     },
     async submit() {
       this.submitting = true;
-      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/moderation`, {method: 'POST', headers: {
+      let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/moderation`, {
+        method: 'POST', headers: {
           Authorization: cookies.token,
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
-          muterole: this.settings.muterole
-        })})
-      if(response.ok) {
+          muterole: this.settings.muterole,
+          warnsPunishments: this.settings.warnsPunishments
+        })
+      })
+      if (response.ok) {
         this.error = false;
         this.resultText = content.submitted;
         this.result = true;
-      }
-      else {
+      } else {
         this.error = true;
         this.resultText = content.error;
         this.result = true;
@@ -114,11 +165,13 @@ export default {
     },
   },
   async mounted() {
-    let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {headers: {
+    let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {
+      headers: {
         Authorization: cookies.token
-      }})
+      }
+    })
     let body = await response.json()
-    if(!response.ok) return window.location.replace('/@me');
+    if (!response.ok) return window.location.replace('/@me');
     this.settings = body;
     this.loading = false;
     this.loadAutomods()
@@ -157,6 +210,33 @@ export default {
   font-size: 1.5em;
 }
 
+.wp-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.punishment-title {
+  font-size: 1.2em;
+}
+
+.warns-count {
+  width: 95%;
+}
+
+.punishment-select {
+  width: 200px;
+  display: inline-block;
+  margin-right: 20px !important;
+}
+
+.duration-input {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
 .save-icon {
   margin-right: 5px;
 }
@@ -168,5 +248,11 @@ export default {
 
 .result-text {
   font-size: 1.4em;
+}
+
+.wpLimit {
+  font-size: 1.1em;
+  color: var(--v-opacityColor-base);
+  margin-top: 5px;
 }
 </style>
