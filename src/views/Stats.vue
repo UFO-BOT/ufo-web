@@ -2,39 +2,18 @@
   <div style="text-align: -webkit-center">
     <div class="header">{{ content.name }}</div>
     <div class="stats_container">
-      <div class="stats-element">
-        <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
+      <div class="stats-element" v-for="value of values">
+        <v-progress-circular v-if="loading" :size="45" width="4" indeterminate></v-progress-circular>
         <div class="value" v-else>
-          {{ stats.stats.guilds }}
+          {{ stats.stats[value] }}
         </div>
-        <div class="value-name">{{ content.servers }}</div>
-      </div>
-      <div class="stats-element">
-        <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
-        <div class="value" v-else>
-          {{ stats.stats.users }}
-        </div>
-        <div class="value-name">{{ content.users }}</div>
-      </div>
-      <div class="stats-element">
-        <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
-        <div class="value" v-else>
-          {{ stats.stats.channels }}
-        </div>
-        <div class="value-name">{{ content.channels }}</div>
-      </div>
-      <div class="stats-element">
-        <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
-        <div class="value" v-else>
-          {{ stats.stats.emojis }}
-        </div>
-        <div class="value-name">{{ content.emojis }}</div>
+        <div class="value-name">{{ content[value] }}</div>
       </div>
     </div>
     <div class="header">{{ content.ping }}</div>
     <div class="stats_container">
       <div class="stats-element">
-        <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
+        <v-progress-circular v-if="loading" :size="45" width="4"  indeterminate></v-progress-circular>
         <div class="value" v-else
              :style="{color: stats.ping.bot < 100 ? '#00f56e' : (stats.ping.bot > 1000 ? '#e20000' : '#ffd70c')}">
           {{ stats.ping.bot }} ms
@@ -42,7 +21,7 @@
         <div class="value-name">{{ content.bot }}</div>
       </div>
       <div class="stats-element">
-        <v-progress-circular v-if="loading" :size="45" width="4" color="white" indeterminate></v-progress-circular>
+        <v-progress-circular v-if="loading" :size="45" width="4" indeterminate></v-progress-circular>
         <div class="value" v-else
              :style="{color: stats.ping.bot < 100 ? '#00f56e' : (stats.ping.database > 1000 ? '#e20000' : '#ffd70c')}">
           {{ stats.ping.database }} ms
@@ -97,6 +76,7 @@ export default {
       {text: content.servers, value: 'guilds'},
       {text: content.users, value: 'users'},
       {text: content.ping, value: 'ping'}],
+    values: ['guilds', 'users', 'channels', 'emojis']
   }),
   methods: {
     async loadStats() {
