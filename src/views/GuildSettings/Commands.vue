@@ -54,7 +54,7 @@ export default {
   },
   data: () => ({
     content,
-    language: cookies.language,
+    language: localStorage.getItem('language'),
     loading: true,
     settings: {
       commands: {}
