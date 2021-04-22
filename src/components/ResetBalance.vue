@@ -46,7 +46,7 @@ export default {
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/reset`, {
         method: 'POST',
         headers: {
-          Authorization: cookies.token,
+          Authorization: localStorage.getItem('token'),
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

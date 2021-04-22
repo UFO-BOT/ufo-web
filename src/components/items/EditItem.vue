@@ -97,7 +97,7 @@ export default {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         },
         body: JSON.stringify({
           name: item.newName,

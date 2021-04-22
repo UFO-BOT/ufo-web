@@ -43,7 +43,7 @@ export default {
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/balances/${this.member.user.id}`, {
         method: 'DELETE',
         headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }
       })
       if (response.ok) {
