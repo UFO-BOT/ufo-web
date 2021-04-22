@@ -83,7 +83,6 @@ export default {
     async logout() {
       this.loggingOut = true;
       await Oauth2.revokeToken(localStorage.getItem('token'));
-      this.loggingOut = false;
       window.location.replace('/')
     },
     generateInvite(guildID) {
