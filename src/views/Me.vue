@@ -84,7 +84,7 @@ export default {
       this.loggingOut = true;
       await Oauth2.revokeToken(localStorage.getItem('token'));
       this.loggingOut = false;
-      //window.location.replace('/')
+      window.location.replace('/')
     },
     generateInvite(guildID) {
       return `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&guild_id=${guildID}&scope=bot`
