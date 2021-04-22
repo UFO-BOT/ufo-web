@@ -30,6 +30,9 @@
 </template>
 
 <script>
+import beforeMount from "@/util/beforeMount";
+beforeMount()
+
 import WebContent from '@/content.json'
 
 let content = WebContent.nav[localStorage.getItem('language')]
