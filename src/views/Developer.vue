@@ -43,11 +43,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from '@/config.json'
 
-let cookies = Cookies.parse()
-let content = WebContent.developer[cookies.language]
+let content = WebContent.developer[localStorage.getItem('language')]
 
 export default {
   name: 'Leaderboard',
@@ -85,7 +83,7 @@ export default {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }, body: JSON.stringify({
           noAwait: this.noAwait,
           shell: this.shell,
@@ -107,7 +105,7 @@ export default {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }, body: JSON.stringify({
           gitpull: this.gitpull,
           scopes: this.scopes
@@ -129,7 +127,7 @@ export default {
       let res = await fetch(`${config.API}/private/dev/rules`, {
         method: 'GET',
         headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }
       })
       this.loadingRules = false;
@@ -143,7 +141,7 @@ export default {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }, body: JSON.stringify(this.rules)
       })
       this.updatingRules = false;
@@ -165,7 +163,7 @@ export default {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: cookies.token
+        Authorization: localStorage.getItem('token')
       }, body: JSON.stringify({
         input: '1'
       })

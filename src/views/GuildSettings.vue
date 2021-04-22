@@ -31,11 +31,9 @@
 </template>
 
 <script>
-import Cookies from '@/util/cookies'
-let cookies = Cookies.parse()
-
 import WebContent from '@/content.json'
-let content = WebContent.guild[cookies.language]
+
+let content = WebContent.guild[localStorage.getItem('language')]
 let links = content.list;
 
 export default {

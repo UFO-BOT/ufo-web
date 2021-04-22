@@ -29,11 +29,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from "@/config.json";
 
-let cookies = Cookies.parse()
-let content = WebContent.GuildBoost[cookies.language]
+let content = WebContent.GuildBoost[localStorage.getItem('language')]
 
 export default {
   name: 'Boost',
@@ -82,7 +80,7 @@ export default {
     async submit() {
       this.submitting = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/boost`, {method: 'POST', headers: {
-          Authorization: cookies.token,
+          Authorization: localStorage.getItem('token'),
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
           messagemoney: {
@@ -112,7 +110,7 @@ export default {
   },
   async mounted() {
     let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {headers: {
-        Authorization: cookies.token
+        Authorization: localStorage.getItem('token')
       }})
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');

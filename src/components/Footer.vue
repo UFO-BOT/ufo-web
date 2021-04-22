@@ -28,11 +28,9 @@
 </template>
 
 <script>
-import Cookies from '@/util/cookies'
-
-let cookies = Cookies.parse()
 import WebContent from '@/content.json'
-let content = WebContent.footer[cookies.language]
+
+let content = WebContent.footer[localStorage.getItem('language')]
 let links = content.list;
 
 export default {
@@ -41,14 +39,14 @@ export default {
     content,
     links,
     year: new Date().getFullYear(),
-    dark: cookies.theme === 'dark',
+    dark: localStorage.getItem('theme') === 'dark',
     updatingTheme: false
   }),
   methods: {
     updateTheme() {
       this.updatingTheme = true;
-      if(this.dark) Cookies.set('theme', 'dark')
-      else Cookies.set('theme', 'light')
+      if(this.dark) localStorage.setItem('theme', 'dark')
+      else localStorage.setItem('theme', 'light')
       window.location.reload()
     }
   }

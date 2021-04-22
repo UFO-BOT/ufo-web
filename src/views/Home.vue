@@ -17,11 +17,9 @@
 <script>
 import Typed from 'typed.js'
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from '@/config.json'
 
-let cookies = Cookies.parse()
-let content = WebContent.home[cookies.language]
+let content = WebContent.home[localStorage.getItem('language')]
 
 export default {
   name: 'Home',

@@ -36,14 +36,12 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from "@/config.json";
 
 import Command from "@/components/Command";
 import Category from "@/components/Category";
 
-let cookies = Cookies.parse()
-let content = WebContent.GuildCommands[cookies.language]
+let content = WebContent.GuildCommands[localStorage.getItem('language')]
 
 export default {
   name: 'Commands',
@@ -88,7 +86,7 @@ export default {
     let commands = await fetch(`${config.API}/public/commands`)
     this.commands = await commands.json()
     let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {headers: {
-        Authorization: cookies.token
+        Authorization: localStorage.getItem('token')
       }})
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');

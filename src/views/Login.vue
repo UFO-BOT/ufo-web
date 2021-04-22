@@ -12,11 +12,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import Oauth2 from "@/util/oauth2";
 
-let cookies = Cookies.parse()
-let content = WebContent.login[cookies.language]
+let content = WebContent.login[localStorage.getItem('language')]
 
 export default {
   name: "Login",

@@ -1,14 +1,13 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
-import Cookies from '@/util/cookies'
-
-let cookies = Cookies.parse()
 
 Vue.use(Vuetify);
 
+if(!localStorage.getItem('theme')) localStorage.setItem('theme', 'dark')
+
 export default new Vuetify({
     theme: {
-        dark: cookies.theme === 'dark',
+        dark: localStorage.getItem('theme') === 'dark',
         options: { customProperties: true },
         themes: {
             customProperties: true,

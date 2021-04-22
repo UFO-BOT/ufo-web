@@ -1,5 +1,4 @@
 import config from '@/config.json'
-import Cookies from "@/util/cookies";
 
 export default {
     async getUser(token) {
@@ -14,11 +13,13 @@ export default {
     },
     async getAccessToken(code) {
         return new Promise(async (resolve, reject) => {
-            let response = await fetch(`${config.API}/oauth2/token?code=${code}`)
+            let response = await fetch(`${config.API}/oauth2/token`, {method: 'POST', headers: {
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify({code: code})})
             let body = await response.json()
             if(response.ok) {
-                Cookies.set('token', body.accessToken)
-                Cookies.set('refreshToken', body.refreshToken)
+                localStorage.setItem('token', body.accessToken)
+                localStorage.setItem('refreshToken', body.refreshToken)
                 resolve(body)
             }
             else reject(body)
@@ -26,11 +27,27 @@ export default {
     },
     async refreshToken(refreshToken) {
         return new Promise(async (resolve, reject) => {
-            let response = await fetch(`${config.API}/oauth2/token/refresh?refreshToken=${refreshToken}`)
+            let response = await fetch(`${config.API}/oauth2/token/refresh`, {method: 'POST', headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({refreshToken: refreshToken})})
             let body = await response.json()
             if(response.ok) {
-                Cookies.set('token', body.accessToken)
-                Cookies.set('refreshToken', body.refreshToken)
+                localStorage.setItem('token', body.accessToken)
+                localStorage.setItem('refreshToken', body.refreshToken)
+                resolve(body)
+            }
+            else reject(body)
+        })
+    },
+    async revokeToken(token) {
+        return new Promise(async (resolve, reject) => {
+            let response = await fetch(`${config.API}/oauth2/token/revoke`, {method: 'POST', headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({token: token})})
+            let body = await response.json()
+            if(response.ok) {
+                localStorage.removeItem('token')
+                localStorage.removeItem('refreshToken')
                 resolve(body)
             }
             else reject(body)

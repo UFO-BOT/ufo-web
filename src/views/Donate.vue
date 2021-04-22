@@ -36,11 +36,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from '@/config.json';
 
-let cookies = Cookies.parse()
-let content = WebContent.donate[cookies.language]
+let content = WebContent.donate[localStorage.getItem('language')]
 
 export default {
   name: "Donate",
@@ -56,7 +54,7 @@ export default {
       this.loading = true
       let response = await fetch(`${config.API}/private/bill`, {method: 'POST', headers: {
           'Content-Type': 'application/json',
-          'Authorization': cookies.token
+          'Authorization': localStorage.getItem('token')
         }, body: JSON.stringify({type: subscription})
       })
       let body = await response.json();

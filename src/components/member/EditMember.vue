@@ -36,11 +36,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from "@/config.json";
 
-let cookies = Cookies.parse()
-let content = WebContent.LeaderboardMember[cookies.language]
+let content = WebContent.LeaderboardMember[localStorage.getItem('language')]
 
 export default {
   name: "EditMember",

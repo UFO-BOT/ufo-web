@@ -30,11 +30,9 @@
 </template>
 
 <script>
-import Cookies from '@/util/cookies'
-
-let cookies = Cookies.parse()
 import WebContent from '@/content.json'
-let content = WebContent.nav[cookies.language]
+
+let content = WebContent.nav[localStorage.getItem('language')]
 let links = content.list;
 
 export default {
@@ -43,7 +41,7 @@ export default {
     mobileNav: false,
     links,
     content,
-    loadingUser: Boolean(cookies.token),
+    loadingUser: Boolean(localStorage.getItem('token')),
     location: window.location.origin
   }),
   computed: {
@@ -53,12 +51,12 @@ export default {
   },
   methods: {
     translate() {
-      Cookies.set('language', cookies.language === 'ru' ? 'en' : 'ru', 1e15)
+      localStorage.setItem('language', localStorage.getItem('language') === 'ru' ? 'en' : 'ru')
       window.location.reload()
     }
   },
   async mounted() {
-    if(cookies.token) {
+    if(localStorage.getItem('token')) {
       this.loadingUser = true;
       await this.$store.dispatch('getUser').catch(() => {})
       this.loadingUser = false;

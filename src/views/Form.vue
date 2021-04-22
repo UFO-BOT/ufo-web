@@ -25,11 +25,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from '@/config.json'
 
-let cookies = Cookies.parse()
-let content = WebContent.form[cookies.language]
+let content = WebContent.form[localStorage.getItem('language')]
 
 export default {
   name: 'Form',
@@ -56,7 +54,7 @@ export default {
       let formType = this.$route.path.split('/').pop();
       let response = await fetch(`${config.API}/private/support/${formType}`, {
         method: 'POST', headers: {
-          'Authorization': cookies.token,
+          'Authorization': localStorage.getItem('token'),
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
           answers: this.answers
@@ -74,7 +72,7 @@ export default {
     document.title = content[formType].title
     let isForbidden = await fetch(`${config.API}/private/support/${formType}`, {
       method: 'POST', headers: {
-        'Authorization': cookies.token
+        'Authorization': localStorage.getItem('token')
       }, body: JSON.stringify({})
     })
     let body = await isForbidden.json()

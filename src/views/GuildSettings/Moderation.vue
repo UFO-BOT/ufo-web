@@ -72,15 +72,13 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from "@/config.json";
 import ParseForSelect from "@/util/parseForSelect";
 
 import Automoderation from "@/components/Automoderation";
 import DurationPicker from "@/components/DurationPicker";
 
-let cookies = Cookies.parse()
-let content = WebContent.GuildModeration[cookies.language]
+let content = WebContent.GuildModeration[localStorage.getItem('language')]
 
 export default {
   name: 'General',
@@ -134,7 +132,7 @@ export default {
       this.loadingAutomods = true
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/automods`, {
         headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }
       })
       if (!response.ok) return this.automods = [];
@@ -145,7 +143,7 @@ export default {
       this.submitting = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/moderation`, {
         method: 'POST', headers: {
-          Authorization: cookies.token,
+          Authorization: localStorage.getItem('token'),
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
           muterole: this.settings.muterole,
@@ -167,7 +165,7 @@ export default {
   async mounted() {
     let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {
       headers: {
-        Authorization: cookies.token
+        Authorization: localStorage.getItem('token')
       }
     })
     let body = await response.json()

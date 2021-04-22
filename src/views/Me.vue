@@ -17,7 +17,7 @@
             <span>{{ content.badges[badge] }}</span>
           </v-tooltip>
         </div>
-        <v-btn @click="logout" class="logout" color="error" outlined large><v-icon class="logout-icon" medium>logout</v-icon> {{ content.logout }}</v-btn>
+        <v-btn @click="logout" class="logout" color="error" :loading="loggingOut" outlined large><v-icon class="logout-icon" medium>logout</v-icon> {{ content.logout }}</v-btn>
         <br>
         <div class="guilds">
           <v-progress-circular v-if="loadingGuilds" :size="60" :width="5"
@@ -52,18 +52,19 @@
 </template>
 
 <script>
+import Oauth2 from "@/util/oauth2";
+
 import WebContent from '@/content.json'
-import Cookies from "@/util/cookies";
 import config from '@/config.json';
 
-let cookies = Cookies.parse()
-let content = WebContent.me[cookies.language]
-if (!cookies.token) window.location.replace('/')
+let content = WebContent.me[localStorage.getItem('language')]
+if (!localStorage.getItem('token')) window.location.replace('/')
 
 export default {
   name: 'Home',
   data: () => ({
     content,
+    loggingOut: false,
     loadingGuilds: true,
     guilds: [],
     showItems: [{text: content.settings,value:false}, {text: content.leaders, value:true}],
@@ -79,10 +80,11 @@ export default {
     }
   },
   methods: {
-    logout() {
-      Cookies.set('token', '')
-      Cookies.set('refreshToken', '')
-      window.location.replace('/')
+    async logout() {
+      this.loggingOut = true;
+      await Oauth2.revokeToken(localStorage.getItem('token'));
+      this.loggingOut = false;
+      //window.location.replace('/')
     },
     generateInvite(guildID) {
       return `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&guild_id=${guildID}&scope=bot`
@@ -92,7 +94,7 @@ export default {
     await this.$store.dispatch('getUserBadges').catch(() => {})
     let response = await fetch(`${config.API}/private/guilds`, {
       headers: {
-        Authorization: cookies.token
+        Authorization: localStorage.getItem('token')
       }
     })
     let body = await response.json()

@@ -1,5 +1,4 @@
 import Oauth2 from "@/util/oauth2";
-import Cookies from "@/util/cookies";
 import config from '@/config.json'
 import UserAvatar from "@/util/userAvatar";
 
@@ -7,8 +6,7 @@ export default {
     actions: {
         async getUser(ctx) {
             return new Promise(async (resolve) => {
-                let cookies = Cookies.parse()
-                let token = cookies.token;
+                let token = localStorage.getItem('token');
                 if (!token) return;
                 Oauth2.getUser(token).then(async user => {
                     user.tag = user.username + '#' + user.discriminator
@@ -16,9 +14,9 @@ export default {
                     ctx.commit('updateUser', user)
                     resolve(user)
                 }).catch(async () => {
-                    let refreshToken = cookies.refreshToken;
+                    let refreshToken = localStorage.getItem('refreshToken');
                     if(!refreshToken) return;
-                    let response = await Oauth2.refreshToken(cookies.refreshToken).catch(() => {
+                    let response = await Oauth2.refreshToken(localStorage.getItem('refreshToken')).catch(() => {
                     })
                     if(response) {
                         token = response.accessToken;
@@ -33,8 +31,7 @@ export default {
         },
         async getUserBadges(ctx) {
             return new Promise(async (resolve) => {
-                let cookies = Cookies.parse()
-                let token = cookies.token;
+                let token = localStorage.getItem('token');
                 let responseBadges = await fetch(`${config.API}/private/badges`, {
                     headers: {
                         Authorization: token

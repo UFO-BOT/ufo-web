@@ -62,13 +62,11 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from "@/config.json";
 import ParseForSelect from "@/util/parseForSelect";
 import DurationPicker from "@/components/DurationPicker";
 
-let cookies = Cookies.parse()
-let content = WebContent.GuildModeration[cookies.language]
+let content = WebContent.GuildModeration[localStorage.getItem('language')]
 
 export default {
   name: "Automoderation",

@@ -1,13 +1,11 @@
 import config from '@/config.json'
-import Cookies from "@/util/cookies";
 
 export default {
     actions: {
         async getGuild(ctx, id) {
             return new Promise(async (resolve, reject) => {
-                let cookies = Cookies.parse()
                 let response = await fetch(`${config.API}/private/guild/${id}/info`, {headers: {
-                    Authorization: cookies.token
+                    Authorization: localStorage.getItem('token')
                 }})
                 let body = await response.json()
                 if(response.ok) {
@@ -19,9 +17,8 @@ export default {
         },
         async updateGuild(ctx, id) {
             return new Promise(async (resolve, reject) => {
-                let cookies = Cookies.parse()
                 let response = await fetch(`${config.API}/private/guild/${id}/info`, {headers: {
-                        Authorization: cookies.token
+                        Authorization: localStorage.getItem('token')
                     }})
                 let body = await response.json()
                 if(response.ok) {

@@ -8,10 +8,8 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 
-let cookies = Cookies.parse()
-let content = WebContent.notfound[cookies.language]
+let content = WebContent.notfound[localStorage.getItem('language')]
 
 export default {
   name: 'Home',

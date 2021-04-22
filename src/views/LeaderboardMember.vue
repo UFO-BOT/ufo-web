@@ -38,14 +38,12 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from '@/config.json'
 
 import EditMember from "@/components/member/EditMember";
 import DeleteMember from "@/components/member/DeleteMember";
 
-let cookies = Cookies.parse()
-let content = WebContent.LeaderboardMember[cookies.language]
+let content = WebContent.LeaderboardMember[localStorage.getItem('language')]
 
 export default {
   name: 'Leaderboard',
@@ -70,7 +68,7 @@ export default {
       this.loading = true;
       let response = await fetch(`${config.API}/private/leaderboard/${this.$route.params.id}/${this.$route.params.user}`, {
         headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }
       })
       let body = await response.json()
@@ -78,7 +76,7 @@ export default {
       this.guildName = body.name;
       this.member = body.member;
       let guildResponse = await fetch(`${config.API}/private/guild/${this.$route.params.id}/info`, {headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }})
       if(guildResponse.ok) {
         this.manageable = true;

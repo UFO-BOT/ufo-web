@@ -27,10 +27,8 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 
-let cookies = Cookies.parse()
-let content = WebContent.DurationPicker[cookies.language]
+let content = WebContent.DurationPicker[localStorage.getItem('language')]
 
 export default {
   name: "DurationPicker",

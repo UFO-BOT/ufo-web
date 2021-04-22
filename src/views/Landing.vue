@@ -12,10 +12,8 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 
-let cookies = Cookies.parse()
-let content = WebContent.landing[cookies.language]
+let content = WebContent.landing[localStorage.getItem('language')]
 
 export default {
   name: "Landing",

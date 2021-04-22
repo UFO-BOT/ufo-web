@@ -79,7 +79,6 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from "@/config.json";
 
 import CreateItem from "@/components/items/CreateItem";
@@ -88,8 +87,7 @@ import DeleteItem from "@/components/items/DeleteItem";
 import ResetBalance from "@/components/ResetBalance";
 import DurationPicker from "@/components/DurationPicker";
 
-let cookies = Cookies.parse()
-let content = WebContent.GuildEconomy[cookies.language]
+let content = WebContent.GuildEconomy[localStorage.getItem('language')]
 
 export default {
   name: 'Economy',
@@ -152,7 +150,7 @@ export default {
       this.loadingItems = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/items`, {
         headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }
       })
       let body = await response.json()
@@ -167,7 +165,7 @@ export default {
       this.submitting = true;
       let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/economy`, {
         method: 'POST', headers: {
-          Authorization: cookies.token,
+          Authorization: localStorage.getItem('token'),
           'Content-Type': 'application/json'
         }, body: JSON.stringify({
           work: {
@@ -201,7 +199,7 @@ export default {
   async mounted() {
     let response = await fetch(`${config.API}/private/guild/${this.$route.params.id}/settings`, {
       headers: {
-        Authorization: cookies.token
+        Authorization: localStorage.getItem('token')
       }
     })
     let body = await response.json()

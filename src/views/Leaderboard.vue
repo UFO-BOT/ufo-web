@@ -39,11 +39,9 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import config from '@/config.json'
 
-let cookies = Cookies.parse()
-let content = WebContent.leaderboard[cookies.language]
+let content = WebContent.leaderboard[localStorage.getItem('language')]
 
 export default {
   name: 'Leaderboard',
@@ -68,7 +66,7 @@ export default {
       this.loading = true;
       let response = await fetch(`${config.API}/private/leaderboard/${this.$route.params.id}?page=${this.page}&sort=${this.sortBy}`, {
         headers: {
-          Authorization: cookies.token
+          Authorization: localStorage.getItem('token')
         }
       })
       let body = await response.json()

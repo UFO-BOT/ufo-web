@@ -59,12 +59,10 @@
 
 <script>
 import WebContent from '@/content.json'
-import Cookies from '@/util/cookies'
 import ParsePerms from "@/util/parsePerms";
 import config from '@/config.json';
 
-let cookies = Cookies.parse()
-let content = WebContent.commands[cookies.language]
+let content = WebContent.commands[localStorage.getItem('language')]
 
 export default {
   name: "Commands",
@@ -73,7 +71,7 @@ export default {
   },
   data: () => ({
     content,
-    language: cookies.language,
+    language: localStorage.getItem('language'),
     loading: true,
     commands: [],
     dialogs: {},
