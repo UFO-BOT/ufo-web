@@ -71,7 +71,7 @@ export default {
         value: 'id',
       },
       {text: content.status, value: 'ready'},
-      {text: content.servers, value: 'guilds'},
+      {text: content.guilds, value: 'guilds'},
       {text: content.users, value: 'users'},
       {text: content.ping, value: 'ping'}],
     values: ['guilds', 'users', 'channels', 'emojis']
