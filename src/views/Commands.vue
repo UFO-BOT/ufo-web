@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: -webkit-center">
     <div class="name"><b>{{ content.name }}</b></div>
-    <v-progress-circular v-if="loading" :size="60" width="5" color="white" indeterminate></v-progress-circular>
+    <v-progress-circular v-if="loading" :size="60" width="5" indeterminate></v-progress-circular>
     <v-expansion-panels v-else class="commands" accordion focusable>
       <v-expansion-panel
           v-for="(category, i) of categories"
