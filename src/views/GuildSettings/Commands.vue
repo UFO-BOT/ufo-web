@@ -21,7 +21,7 @@
             <div v-for="(cmd, i) of commands.filter(c => c.category.en === category)">
               <div class="command">
                 <div class="cmd-name">{{settings.prefix + cmd.name[settings.language.commands]}}</div>
-                <div style="float: right">
+                <div>
                   <Command :command="settings.prefix + cmd.name[settings.language.commands]" :name="cmd.name.en" :settings="settings.commands[cmd.name.en]"></Command>
                 </div>
               </div>
