@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="footer-block">
-          <v-switch v-model="dark" :label="content.darkTheme" :disabled="updatingTheme" @change="updateTheme" hide-details></v-switch>
+          <v-switch v-model="dark" :label="content.darkTheme" @change="updateTheme" hide-details></v-switch>
         </div>
       </div>
       <div class="footer-bottom">
@@ -39,15 +39,13 @@ export default {
     content,
     links,
     year: new Date().getFullYear(),
-    dark: localStorage.getItem('theme') === 'dark',
-    updatingTheme: false
+    dark: localStorage.getItem('theme') === 'dark'
   }),
   methods: {
     updateTheme() {
-      this.updatingTheme = true;
       if(this.dark) localStorage.setItem('theme', 'dark')
       else localStorage.setItem('theme', 'light')
-      window.location.reload()
+      this.$vuetify.theme.dark = this.dark;
     }
   }
 }
