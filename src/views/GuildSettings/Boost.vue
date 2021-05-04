@@ -14,7 +14,6 @@
       <br>
       <div class="subtitle">{{ content.subtitles.punishmentsDM }}</div>
       <v-textarea counter="1500" v-model="settings.kickdm" :rules="rules.template" filled :label="content.subtitles.kickdm" :placeholder="content.subtitles.template" class="template"></v-textarea>
-      <v-textarea counter="1500" v-model="settings.softbandm" :rules="rules.template" filled :label="content.subtitles.softbandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
       <v-textarea counter="1500" v-model="settings.bandm" :rules="rules.template" filled :label="content.subtitles.bandm" :placeholder="content.subtitles.template" class="template"></v-textarea>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
@@ -52,7 +51,6 @@ export default {
         weekly: 0
       },
       kickdm: '',
-      softbandm: '',
       bandm: ''
     },
     rules: {
@@ -92,7 +90,6 @@ export default {
             weekly: this.settings.moneybonuses.weekly
           },
           kickdm: this.settings.kickdm,
-          softbandm: this.settings.softbandm,
           bandm: this.settings.bandm
         })})
       if(response.ok) {
