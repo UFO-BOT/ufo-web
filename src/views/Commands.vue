@@ -14,7 +14,7 @@
               <div>{{cmd.name[language]}}</div>
               <v-dialog v-model="dialogs[cmd.name.en]" width="500" scrollable>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-icon x-large class="info-icon" v-bind="attrs" v-on="on">info</v-icon>
+                  <v-icon large class="info-icon" v-bind="attrs" v-on="on">info</v-icon>
                 </template>
                 <v-card color="modal">
                   <v-card-title color="modalHeader" class="cmd-name">
@@ -93,7 +93,7 @@ export default {
   font-size: 2.5em;
 }
 .category {
-  font-size: 2em;
+  font-size: 1.9em;
   padding: 26px 26px!important;
 }
 .commands {
@@ -106,7 +106,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1.5em;
+  align-items: center;
+  font-size: 1.4em;
   margin-top: 5px;
   margin-bottom: 5px;
   word-break: break-all;

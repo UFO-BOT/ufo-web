@@ -11,7 +11,8 @@
             :key="i"
             :readonly="categorySettingsHover"
         >
-          <v-expansion-panel-header class="category" color="block" :ripple="!categorySettingsHover" v-if="commands.find(c => c.category.en === category)"><span><v-icon large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span>
+          <v-expansion-panel-header class="category" color="block" :ripple="!categorySettingsHover" v-if="commands.find(c => c.category.en === category)">
+            <span><v-icon large left>{{ icons[i] }}</v-icon>{{commands.find(c => c.category.en === category).category[language]}}</span>
             <template v-slot:actions>
               <Category :category="commands.find(c => c.category.en === category).category[language]" :name="category" @updated="categoryUpdated"></Category>
               <v-icon>$expand</v-icon>
