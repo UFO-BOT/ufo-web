@@ -58,7 +58,7 @@ export default {
   font-size: 1.8em;
 }
 .invite {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-top: 5px;
 }
 .icon {

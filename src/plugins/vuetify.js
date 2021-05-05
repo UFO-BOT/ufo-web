@@ -26,7 +26,7 @@ export default new Vuetify({
                 footerLink: '#e3e3e3',
                 scrollbarTrack: '#15181d',
                 scrollbarThumb: '#0d1013',
-                primary: '#7777ff',
+                primary: '#6161fd',
                 secondary: '#33363e'
             },
             light: {
@@ -34,8 +34,8 @@ export default new Vuetify({
                 blockShadow: '#909090',
                 background: '#F8F7FF',
                 code: '#eaeaea',
-                navbar: '#7777ff',
-                footer: '#7777ff',
+                navbar: '#6161fd',
+                footer: '#6161fd',
                 mobileNav: '#ffffff',
                 modal: '#ffffff',
                 modalHeader: '#bcc3c7',
@@ -44,7 +44,7 @@ export default new Vuetify({
                 footerLink: '#ffffff',
                 scrollbarTrack: '#d0d0d0',
                 scrollbarThumb: '#b8b8b8',
-                primary: '#7777ff',
+                primary: '#6161fd',
                 secondary: '#546E7A'
             }
         }
