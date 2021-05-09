@@ -81,7 +81,6 @@ export default {
       {text: content.subtitles.punishments.warn, value: 'warn'},
       {text: content.subtitles.punishments.mute, value: 'mute', duration: true},
       {text: content.subtitles.punishments.kick, value: 'kick'},
-      {text: content.subtitles.punishments.softban, value: 'softban'},
       {text: content.subtitles.punishments.ban, value: 'ban'},
       {text: content.subtitles.punishments.tempban, value: 'tempban', duration: true, durationRequired: true},
     ]

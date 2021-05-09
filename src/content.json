@@ -441,7 +441,7 @@
         },
         {
           "name": "Сообщения в ЛС при наказании",
-          "description": "Настройте сообщения с переменными шаблона, которые будут отправляться участникам при кике/софтбане/бане в личку"
+          "description": "Настройте сообщения с переменными шаблона, которые будут отправляться участникам при кике/бане в личку"
         },
         {
           "name": "Денежные бонусы",
@@ -487,7 +487,7 @@
         },
         {
           "name": "Punishments DM messages",
-          "description": "Set message with template variables that will be sent to kicked/softbanned/banned members id DM"
+          "description": "Set message with template variables that will be sent to kicked/banned members id DM"
         },
         {
           "name": "Money bonuses",
@@ -1052,18 +1052,7 @@
       "subtitles": {
         "muterole": "Роль мута",
         "selectRole": "Выбрать роль",
-        "modroles": "Модераторские роли",
         "selectRoles": "Выбрать роли",
-        "permissions": "Права",
-        "permissionsList": {
-          "warn": "Пред",
-          "mute": "Мут",
-          "kick": "Кик",
-          "softban": "Софтбан",
-          "ban": "Бан",
-          "unmute": "Размут",
-          "unban": "Разбан"
-        },
         "automoderation": "Автомодерация",
         "automods": {
           "invites": "Приглашения"
@@ -1105,7 +1094,6 @@
           "warn": "Пред",
           "kick": "Кик",
           "mute": "Мут",
-          "softban": "Софтбан",
           "ban": "Бан",
           "tempban": "Врембан"
         }
@@ -1129,18 +1117,7 @@
       "subtitles": {
         "muterole": "Mute role",
         "selectRole": "Select role",
-        "modroles": "Moderator roles",
         "selectRoles": "Select roles",
-        "permissions": "Permissions",
-        "permissionsList": {
-          "warn": "Warn",
-          "mute": "Mute",
-          "kick": "Kick",
-          "softban": "Softban",
-          "ban": "Ban",
-          "unmute": "Unmute",
-          "unban": "Unban"
-        },
         "automoderation": "Automoderation",
         "automods": {
           "invites": "Invites"
@@ -1182,7 +1159,6 @@
           "warn": "Warn",
           "kick": "Kick",
           "mute": "Mute",
-          "softban": "Softban",
           "ban": "Ban",
           "tempban": "Tempban"
         }
@@ -1207,9 +1183,38 @@
       "title": "Логи",
       "subtitles": {
         "logs": "Логи",
-        "deletelog": "Удаление сообщений",
-        "editlog": "Изменение сообщений",
-        "modlog": "Модерация"
+        "channel": "Канал",
+        "channels": "Каналы",
+        "ignoredChannels": "Игнорируемые каналы",
+        "ignoredChannelsHint": "Логи сообщений будут игнорировать эти каналы",
+        "categories": {
+          "messages": {
+            "name": "Сообщения",
+            "icon": "speaker_notes"
+          },
+          "roles": {
+            "name": "Роли",
+            "icon": "assignment"
+          },
+          "moderation": {
+            "name": "Модерация",
+            "icon": "security"
+          }
+        },
+        "logsList": {
+          "messageDelete": "Удаление сообщений",
+          "messageEdit": "Изменение сообщений",
+          "messageDeleteBulk": "Очистка сообщений",
+          "roleCreate": "Создание ролей",
+          "roleEdit": "Изменение ролей",
+          "roleDelete": "Удаление ролей",
+          "moderationWarn": "Предупреждение участника",
+          "moderationMute": "Мут участника",
+          "moderationKick": "Кик участника",
+          "moderationBan": "Бан участника",
+          "moderationUnmute": "Размут участника",
+          "moderationUnban": "Разбан участника"
+        }
       },
       "submit": "Сохранить",
       "submitted": "Сохранено!",
@@ -1220,9 +1225,38 @@
       "title": "Logs",
       "subtitles": {
         "logs": "Logs",
-        "deletelog": "Message delete",
-        "editlog": "Message edit",
-        "modlog": "Moderation"
+        "channel": "Channel",
+        "channels": "Channels",
+        "ignoredChannels": "Ignored channels",
+        "ignoredChannelsHint": "Messages logs will ignore these channels",
+        "categories": {
+          "messages": {
+            "name": "Messages",
+            "icon": "speaker_notes"
+          },
+          "roles": {
+            "name": "Roles",
+            "icon": "assignment"
+          },
+          "moderation": {
+            "name": "Moderation",
+            "icon": "security"
+          }
+        },
+        "logsList": {
+          "messageDelete": "Message delete",
+          "messageEdit": "Message edit",
+          "messageDeleteBulk": "Messages clear",
+          "roleCreate": "Role create",
+          "roleEdit": "Role edit",
+          "roleDelete": "Role delete",
+          "moderationWarn": "Member warn",
+          "moderationMute": "Member mute",
+          "moderationKick": "Member kick",
+          "moderationBan": "Member ban",
+          "moderationUnmute": "Member unmute",
+          "moderationUnban": "Member unban"
+        }
       },
       "submit": "Submit",
       "submitted": "Submitted!",
@@ -1282,7 +1316,6 @@
         "weeklyBonus": "Еженедельный бонус",
         "punishmentsDM": "Сообщение в ЛС при наказании",
         "kickdm": "Сообщение при кике",
-        "softbandm": "Сообщение при софтбане",
         "bandm": "Сообщение при бане",
         "template": "Шаблон сообщения"
       },
@@ -1308,7 +1341,6 @@
         "weeklyBonus": "Weekly bonus",
         "punishmentsDM": "Punishments DM messages",
         "kickdm": "Kick message",
-        "softbandm": "Softban message",
         "bandm": "Ban message",
         "template": "Message template"
       },
