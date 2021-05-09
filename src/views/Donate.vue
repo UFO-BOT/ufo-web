@@ -127,7 +127,7 @@ export default {
   text-align: left;
   padding-left: 20px;
   list-style: none;
-  color: var(--v-opacityColor-base);
+  opacity: 0.7;
 }
 .donate-bonus {
   word-break: break-word;
@@ -155,13 +155,6 @@ export default {
 }
 .per {
   font-size: 0.7em;
-}
-.donate-error {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  vertical-align: middle;
 }
 .error-text {
   font-size: 1.3em;

@@ -48,8 +48,9 @@ code {
   font-size: .875em!important;
   color: #c62f5a !important;
   background-color: var(--v-code-base) !important;
-  box-shadow: 1px 2px 6px -2px var(--v-blockShadow-base)!important;
+  box-shadow: 3px 3px 6px -3px var(--v-blockShadow-base)!important;
   border-radius: .25rem!important;
+  margin: 0 2px;
 }
 
 .fit-content {
