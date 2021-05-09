@@ -84,7 +84,7 @@ export default {
   }),
   computed: {
     channels() {
-      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      let guild = this.$store.getters.fullGuilds.find(g => g.id === this.$route.params.id)
       if(!guild) return [];
       return ParseForSelect.channels(guild.channels, {none: false})
     }

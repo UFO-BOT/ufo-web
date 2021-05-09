@@ -725,6 +725,7 @@
       "settings": "Настройки",
       "leaders": "Лидеры",
       "show": "Показывать",
+      "noGuilds": "Нет серверов для добавления и настройки бота",
       "badges": {
         "developer": "Разработчик",
         "moderator": "Модератор",
@@ -741,6 +742,7 @@
       "settings": "Settings",
       "leaders": "Leaders",
       "show": "Show",
+      "noGuilds": "No servers to add or configure the bot",
       "badges": {
         "developer": "Developer",
         "moderator": "Moderator",

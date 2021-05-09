@@ -45,17 +45,14 @@ export default {
   }),
   computed: {
     guild() {
-      return this.$store.getters.guilds.find(g => g.id === this.$route.params.id) || {name: ''}
+      return this.$store.getters.fullGuilds.find(g => g.id === this.$route.params.id) || {name: ''}
     }
   },
   async mounted() {
     if(!this.guild.id) {
       this.loadingGuild = true;
-      await this.$store.dispatch('getGuild', this.$route.params.id).catch(() => window.location.replace('/@me'))
+      await this.$store.dispatch('getFullGuild', this.$route.params.id).catch(() => window.location.replace('/@me'))
       this.loadingGuild = false;
-    }
-    else {
-      await this.$store.dispatch('updateGuild', this.$route.params.id).catch(() => window.location.replace('/@me'))
     }
   }
 }

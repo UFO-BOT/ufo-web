@@ -121,7 +121,7 @@ export default {
   }),
   computed: {
     roles() {
-      let guild = this.$store.getters.guilds.find(g => g.id === this.$route.params.id)
+      let guild = this.$store.getters.fullGuilds.find(g => g.id === this.$route.params.id)
       if (!guild) return [];
       return ParseForSelect.roles(guild.roles, {none: !this.settings.muterole})
     }
