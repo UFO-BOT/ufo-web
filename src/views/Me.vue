@@ -37,7 +37,7 @@
                   <v-btn :href="generateInvite(guild.id)" color="blue" outlined v-if="!guild.invited && guild.managePermission"
                          class="action-button">{{ content.invite }}
                   </v-btn>
-                  <v-btn :to="`/server/${guild.id}/general`" color="grey" outlined v-if="guild.invited && guild.managePermission"
+                  <v-btn :to="`/server/${guild.id}/general`" color="blue-grey" outlined v-if="guild.invited && guild.managePermission"
                          class="action-button">{{ content.settings }}
                   </v-btn>
                   <v-btn :to="`/leaderboard/${guild.id}`" color="warning" outlined v-if="leaders && guild.invited"
