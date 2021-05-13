@@ -121,6 +121,11 @@ export default {
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');
     this.settings = body;
+    this.categories.forEach(category => {
+      this.logs[category].forEach(log => {
+        if(!this.settings.logs.list[log]) this.settings.logs.list[log] = {enabled: false, channel: null}
+      })
+    })
     this.loading = false;
   }
 }
