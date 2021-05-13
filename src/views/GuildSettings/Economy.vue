@@ -142,7 +142,7 @@ export default {
   }),
   computed: {
     guild() {
-      return this.$store.getters.guilds.find(g => g.id === this.$route.params.id) || {name: ''}
+      return this.$store.getters.fullGuilds.find(g => g.id === this.$route.params.id) || {name: ''}
     }
   },
   methods: {
