@@ -24,9 +24,9 @@
           <v-progress-circular v-if="loadingGuilds" :size="60" :width="5"
                                indeterminate></v-progress-circular>
           <v-select v-if="!loadingGuilds" :items="showItems" v-model="leaders" :label="content.show" class="show-select" color="primary"></v-select>
-          <div class="noGuilds" v-if="guilds.filter(guild => guild.managePermission || (leaders && guild.invited)).length <= 0 && !loadingGuilds">¯\_(ツ)_/¯</div>
+          <div class="noGuilds" v-if="guilds.filter(guild => guild.manageable || (leaders && guild.invited)).length <= 0 && !loadingGuilds">¯\_(ツ)_/¯</div>
           <div class="guilds-container">
-            <div class="guild" v-for="guild of guilds" v-if="guild.managePermission || (leaders && guild.invited)">
+            <div class="guild" v-for="guild of guilds" v-if="guild.manageable || (leaders && guild.invited)">
               <div>
                 <v-avatar><img :src="guild.icon" alt="Icon"></v-avatar>
                 {{ guild.name.length <= 25 ? guild.name : guild.name.slice(0, 25) + '...' }}
@@ -34,10 +34,10 @@
               <div>
                 <v-divider class="guild-divider"></v-divider>
                 <div class="guild-buttons">
-                  <v-btn :href="generateInvite(guild.id)" color="blue" outlined v-if="!guild.invited && guild.managePermission"
+                  <v-btn :href="generateInvite(guild.id)" color="blue" outlined v-if="!guild.invited && guild.manageable"
                          class="action-button">{{ content.invite }}
                   </v-btn>
-                  <v-btn :to="`/server/${guild.id}/general`" color="blue-grey" outlined v-if="guild.invited && guild.managePermission"
+                  <v-btn :to="`/server/${guild.id}/general`" color="blue-grey" outlined v-if="guild.invited && guild.manageable"
                          class="action-button">{{ content.settings }}
                   </v-btn>
                   <v-btn :to="`/leaderboard/${guild.id}`" color="warning" outlined v-if="leaders && guild.invited"

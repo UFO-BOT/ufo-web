@@ -33,7 +33,7 @@
                 :label="content.subtitles.channels"
                 :hint="content.subtitles.ignoredChannelsHint"
                 persistent-hint multiple chips deletable-chips
-                :items="channels"
+                :items="ignoredChannels"
                 class="channels-select mb-2"/>
       <v-btn :disabled="!valid" :loading="submitting" large color="secondary" class="submit" @click="submit"><v-icon medium class="save-icon">save</v-icon>{{ content.submit }}</v-btn>
     </v-form>
@@ -87,6 +87,11 @@ export default {
       let guild = this.$store.getters.fullGuilds.find(g => g.id === this.$route.params.id)
       if(!guild) return [];
       return ParseForSelect.channels(guild.channels, {none: false})
+    },
+    ignoredChannels() {
+      let guild = this.$store.getters.fullGuilds.find(g => g.id === this.$route.params.id)
+      if(!guild) return [];
+      return ParseForSelect.channels(guild.channels, {none: false, checkBotManageable: false})
     }
   },
   methods: {

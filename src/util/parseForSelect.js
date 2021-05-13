@@ -1,13 +1,12 @@
 export default {
-    channels(channels, {none = true, checkMemberManageable = true, checkBotManageable = true} = {}) {
+    channels(channels, {none = true, checkBotManageable = true} = {}) {
         let newChannels = []
         if(none) newChannels.push({
             value: null,
             text: '-'
         })
         channels.forEach(channel => {
-            if((checkMemberManageable ? channel.memberManageable : true)
-                && (checkBotManageable ? channel.botManageable : true)) newChannels.push({
+            if(checkBotManageable ? channel.botManageable : true) newChannels.push({
                 value: channel.id,
                 text: channel.name
             })
