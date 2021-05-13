@@ -120,12 +120,12 @@ export default {
       }})
     let body = await response.json()
     if(!response.ok) return window.location.replace('/@me');
-    this.settings = body;
     this.categories.forEach(category => {
       this.logs[category].forEach(log => {
-        if(!this.settings.logs.list[log]) this.settings.logs.list[log] = {enabled: false, channel: null}
+        if(!body.logs.list[log]) body.logs.list[log] = {enabled: false, channel: null}
       })
     })
+    this.settings = body;
     this.loading = false;
   }
 }
