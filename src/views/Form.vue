@@ -85,10 +85,10 @@ export default {
     }
     let res = await fetch(`${config.API}/public/support/questions`)
     let questions = await res.json();
-    questions[formType][cookies.language].forEach((q, i) => {
+    questions[formType][localStorage.getItem('language')].forEach((q, i) => {
       this.answers[i] = ''
     })
-    this.questions = questions[formType][cookies.language]
+    this.questions = questions[formType][localStorage.getItem('language')]
     this.loading = false;
   }
 }

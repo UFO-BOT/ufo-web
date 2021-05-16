@@ -169,7 +169,7 @@ export default {
   font-size: 1.5em;
   margin: 5px;
   border-radius: 10px;
-  width: 400px;
+  flex-basis: 400px;
   word-break: break-all;
   display: flex;
   flex-direction: column;
