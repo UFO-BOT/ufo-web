@@ -23,7 +23,7 @@
       <div class="stats-element">
         <v-progress-circular v-if="loading" :size="45" width="4" indeterminate></v-progress-circular>
         <div class="value" v-else
-             :style="{color: stats.ping.bot < 100 ? '#00f56e' : (stats.ping.database > 1000 ? '#e20000' : '#ffd70c')}">
+             :style="{color: stats.ping.database < 100 ? '#00f56e' : (stats.ping.database > 1000 ? '#e20000' : '#ffd70c')}">
           {{ stats.ping.database }} ms
         </div>
         <div class="value-name">{{ content.database }}</div>
