@@ -238,7 +238,6 @@ export default {
   padding: 15px 15px 15px 20px;
   margin-bottom: 15px;
   width: 90%;
-  border-radius: 5px;
   margin-top: 5px;
 }
 
@@ -256,10 +255,6 @@ export default {
 
 .item-action {
   display: inline;
-}
-
-.save-icon {
-  margin-right: 5px;
 }
 
 .submit {

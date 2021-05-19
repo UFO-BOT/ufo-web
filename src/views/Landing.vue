@@ -6,7 +6,7 @@
       <v-btn color="primary" x-large class="action-button" to="/commands"><v-icon large class="button-icon">list</v-icon>{{ content.commands }}</v-btn>
       <v-btn color="info" x-large class="action-button" href="https://discord.gg/qPrqVwR"><v-icon large class="button-icon">mdi-discord</v-icon>{{ content.support }}</v-btn>
     </div>
-    <v-btn color="secondary" x-large v-if="user.username && $route.query.guild_id" :to="`/server/${$route.query.guild_id}/general`" class="action-button"><v-icon large class="button-icon">settings</v-icon>{{ content.settings }}</v-btn>
+    <v-btn color="secondary" x-large v-if="user.username && settings" :to="`/server/${$route.query.guild_id}/general`" class="action-button"><v-icon large class="button-icon">settings</v-icon>{{ content.settings }}</v-btn>
   </div>
 </template>
 
@@ -21,13 +21,18 @@ export default {
     title: content.title
   },
   data: () => ({
-    content
+    content,
+    settings: false
   }),
   computed: {
     user() {
       return this.$store.getters.user
     }
   },
+  async mounted() {
+    let guild = await this.$store.dispatch('getFullGuild', this.$route.query.guild_id).catch(() => {})
+    if(guild.id) this.settings = true;
+  }
 }
 </script>
 

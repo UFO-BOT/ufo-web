@@ -904,7 +904,6 @@
         "invNumber": "Введите целое число",
         "invCommission": "Комиссия должна быть целым числом, не меньшим 0 и не большим 100",
         "invItemName": "Товар должен иметь название, не длиннее 50 символов",
-        "itemNameSpaces": "Название товара не должно содержать пробелы",
         "invItemDescription": "Описание товара не может быть длиннее 200 символов"
       },
       "submit": "Сохранить",
@@ -979,7 +978,6 @@
         "invNumber": "Enter an integer",
         "invCommission": "Commission must be an integer not less than 0 and not more than 100",
         "invItemName": "Item must have a name not longer than 50 characters",
-        "itemNameSpaces": "Item name may not contain spaces",
         "invItemDescription": "Description may not be longer than 200 characters"
       },
       "submit": "Submit",

@@ -74,8 +74,7 @@ export default {
     valid: true,
     rules: {
       name: [
-        name => (name.length > 0 && name.length <= 50) || content.errors.invItemName,
-        name => !name.includes(" ") || content.errors.itemNameSpaces
+        name => (name.length > 0 && name.length <= 50) || content.errors.invItemName
       ],
       description: [
         description => (description.length <= 200) || content.errors.invItemDescription
