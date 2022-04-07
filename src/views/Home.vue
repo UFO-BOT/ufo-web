@@ -31,7 +31,7 @@ export default {
   }),
   methods: {
     invite() {
-      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&scope=bot`
+      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=1515519995134&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&scope=bot`
     }
   },
   mounted() {
