@@ -101,7 +101,7 @@ export default {
       this.loadGuilds()
     },
     generateInvite(guildID) {
-      return `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=403549310&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&guild_id=${guildID}&scope=bot`
+      return `https://discord.com/api/oauth2/authorize?client_id=${config.botID}&response_type=code&permissions=1515519995134&redirect_uri=${encodeURIComponent(window.location.origin + '/landing')}&guild_id=${guildID}&scope=bot`
     }
   },
   async mounted() {
