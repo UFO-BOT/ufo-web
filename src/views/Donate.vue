@@ -16,7 +16,14 @@
           <div class="donate-name">{{ card.name }}</div>
           <v-divider class="donate-card-divider"></v-divider>
           <ul class="donate-bonuses">
-            <li v-for="perk of card.perks" :class="`donate-bonus-${i} donate-bonus`" v-html="perk"></li>
+            <li v-for="perk of card.perks" :class="`donate-bonus-${i} donate-bonus`">
+              <span v-if="!perk.includes('role')">{{ perk }}</span>
+              <span v-if="perk.includes('{role}')">{{ perk.split('{role}')[0] }}
+                <v-chip v-if="i !== 'premium'" ripple outlined color="#4caf50">Donator</v-chip>
+                <v-chip v-if="i === 'premium'" ripple outlined color="#007bff">Premium Donator</v-chip>
+                {{ perk.split('{role}')[1] }}
+              </span>
+            </li>
           </ul>
         </div>
         <div>
@@ -124,10 +131,10 @@ export default {
   margin-top: 3px;
 }
 .donate-bonuses {
+  color: var(--v-opacityColor-base);
   text-align: left;
   padding-left: 20px;
   list-style: none;
-  opacity: 0.7;
 }
 .donate-bonus {
   word-break: break-word;
