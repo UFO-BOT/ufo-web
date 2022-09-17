@@ -27,7 +27,7 @@
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
           "blank": true,
-          "icon": "mdi-discord"
+          "icon": "discord"
         }
       ],
       "login": {
@@ -62,7 +62,7 @@
           "path": "https://discord.gg/qPrqVwR",
           "href": true,
           "blank": true,
-          "icon": "mdi-discord"
+          "icon": "discord"
         }
       ],
       "login": {

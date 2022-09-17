@@ -3,7 +3,7 @@
     <div class="name"><b>UFO</b></div>
     <v-img src="@/assets/logo.png" max-width="400px" max-height="300px" class="icon"></v-img>
     <span class="description"></span><br>
-    <v-btn x-large color="primary" class="invite" @click="invite"><v-icon class="mr-2">mdi-discord</v-icon>{{ content.invite }}</v-btn>
+    <v-btn x-large color="primary" class="invite" @click="invite"><v-icon class="mr-2" large>discord</v-icon>{{ content.invite }}</v-btn>
     <div class="features-header">{{ content.featuresTitle }}</div>
     <div class="features-container">
       <v-card class="feature" color="block" v-for="feature of content.features">
