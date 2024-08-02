@@ -14,8 +14,8 @@
     </v-fade-transition>
     <v-scale-transition mode="out-in" :duration="1000">
       <div v-if="logo">
-        <v-img v-if="$vuetify.theme.dark" src="@/assets/logo-v2-dark.png" class="logo item-center"></v-img>
-        <v-img v-else src="@/assets/logo-v2-light.png" class="logo item-center"></v-img>
+        <v-img v-if="$vuetify.theme.dark" src="@/assets/logo-v2-dark.svg" class="logo item-center"></v-img>
+        <v-img v-else src="@/assets/logo-v2-light.svg" class="logo item-center"></v-img>
       </div>
     </v-scale-transition>
     <v-fade-transition mode="out-in" :duration="1000">
