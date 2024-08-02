@@ -2,7 +2,9 @@
   <div style="text-align: -webkit-center">
     <div class="error-code"><b>404</b></div>
     <div class="description">{{ content.name }}</div>
-    <v-btn x-large color="secondary" class="home" to="/">{{ content.home }}</v-btn>
+    <v-btn x-large color="secondary" class="home" to="/">
+      <v-icon class="mr-2" large>home</v-icon>{{ content.home }}
+    </v-btn>
   </div>
 </template>
 
@@ -12,7 +14,7 @@ import WebContent from '@/content.json'
 let content = WebContent.notfound[localStorage.getItem('language')]
 
 export default {
-  name: 'Home',
+  name: 'NotFound',
   metaInfo: {
     title: content.title
   },

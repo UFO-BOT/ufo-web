@@ -9,6 +9,11 @@
           <v-expansion-panel-content class="feature-description" color="block">{{ feature.description }}</v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
+      <div class="other-info">
+        <div>{{ content.otherInfo1 }}</div>
+        <span>{{ content.otherInfo2 }} </span>
+        <a class="link" href="https://discord.gg/qPrqVwR" target="_blank">{{ content.supportServer }}</a>
+      </div>
     </div>
     <div class="cards-container">
       <v-card v-for="(card, i) in content.cards" :class="`donate-card donate-card-${i}`">
@@ -90,6 +95,14 @@ export default {
   font-size: 1.4em;
   text-align: left;
   margin-bottom: 10px;
+}
+.other-info {
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+.link {
+  color: var(--v-primary-base);
+  text-decoration: none;
 }
 .feature-name {
   font-size: 1.4em;

@@ -102,6 +102,11 @@
     "component": "Login.vue"
   },
   {
+    "path": "/update",
+    "name": "Update",
+    "component": "Update.vue"
+  },
+  {
     "path": "*",
     "name": "Notfound",
     "component": "Notfound.vue"

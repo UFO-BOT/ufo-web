@@ -434,6 +434,9 @@
       "title": "Донат",
       "name": "Донат",
       "description": "Поддержите нас чтобы получить UFO бусты! Их вы сможете активировать на любых серверах командой <code>буст</code><br>Активация буста на сервере открывает на нем бонусные функции:",
+      "otherInfo1": "Мы не являемся коммерческой организацией. Все средства идут на оплату хостинга и поддержку проекта",
+      "otherInfo2": "Если требуется дополнительная информация, обращайтесь на нашу почту smokyplay.kr@gmail.com или",
+      "supportServer": "сервер поддержки",
       "features": [
         {
           "name": "Деньги за сообщения",
@@ -480,6 +483,9 @@
       "title": "Donate",
       "name": "Donate",
       "description": "Support us to get UFO Boosts! You can activate them on servers with command <code>boost</code><br>Activating the boost on the server opens bonus features on it:",
+      "otherInfo1": "We are not a commercial organization. All funds are used to pay for hosting and supporting the project",
+      "otherInfo2": "If you have any questions, contact our email smokyplay.kr@gmail.com or",
+      "supportServer": "support server",
       "features": [
         {
           "name": "Money for messages",
@@ -503,7 +509,7 @@
           "name": "Standard",
           "perks": [
             "Boosts for 2 servers",
-            "Donator role on support server with permission to change nickname",
+            "Role {role} on support server with permission to change nickname",
             "Access to secret channel"
           ],
           "price": 39
@@ -512,7 +518,7 @@
           "name": "Premium",
           "perks": [
             "Boosts for 4 servers",
-            "Premium Donator role on support server with permission to view audit log",
+            "Role {role} on support server with permission to view audit log",
             "Access to secret channel"
           ],
           "price": 69
@@ -1364,6 +1370,27 @@
     "en": {
       "title": "Log in",
       "name": "Logging in..."
+    }
+  },
+  "update": {
+    "ru": {
+      "title": "Страница не найдена",
+      "descriptions": [
+        "Вы улетели в открытый космос",
+        "Найдена пригодная для жизни планета!",
+        "Подготовка к посадке..."
+      ],
+      "name": "Вы улетели в открытый космос",
+      "home": "ГЛАВНАЯ"
+    },
+    "en": {
+      "title": "Страница не найдена",
+      "descriptions": [
+        "You flew into outer space",
+        "Found a habitable planet!",
+        "Preparing for landing..."
+      ],
+      "home": "HOME"
     }
   },
   "notfound": {
