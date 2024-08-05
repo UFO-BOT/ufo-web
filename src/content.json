@@ -436,6 +436,7 @@
       "description": "Поддержите нас чтобы получить UFO бусты! Их вы сможете активировать на любых серверах командой <code>буст</code><br>Активация буста на сервере открывает на нем бонусные функции:",
       "otherInfo1": "Мы не являемся коммерческой организацией. Все средства идут на оплату хостинга и поддержку проекта",
       "otherInfo2": "Если требуется дополнительная информация, обращайтесь на нашу почту smokyplay.kr@gmail.com или",
+      "otherInfo3": "ИНН: 920161444325, Пасынков Р. Д.",
       "supportServer": "сервер поддержки",
       "features": [
         {
@@ -485,6 +486,7 @@
       "description": "Support us to get UFO Boosts! You can activate them on servers with command <code>boost</code><br>Activating the boost on the server opens bonus features on it:",
       "otherInfo1": "We are not a commercial organization. All funds are used to pay for hosting and supporting the project",
       "otherInfo2": "If you have any questions, contact our email smokyplay.kr@gmail.com or",
+      "otherInfo3": "ITN: 920161444325, Pasynkov R. D.",
       "supportServer": "support server",
       "features": [
         {

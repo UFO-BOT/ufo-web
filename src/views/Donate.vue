@@ -13,6 +13,7 @@
         <div>{{ content.otherInfo1 }}</div>
         <span>{{ content.otherInfo2 }} </span>
         <a class="link" href="https://discord.gg/qPrqVwR" target="_blank">{{ content.supportServer }}</a>
+        <div>{{ content.otherInfo3 }}</div>
       </div>
     </div>
     <div class="cards-container">
